@@ -1,0 +1,18 @@
+{
+  "name": "course-tracker",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/100devs/course-tracker.git"
+  },
+  "packages": ["packages/*"],
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/100devs/course-tracker/issues"
+  },
+  "homepage": "https://github.com/100devs/course-tracker#readme"
+}
