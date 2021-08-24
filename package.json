@@ -4,15 +4,26 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "prettier": "prettier --write \"**/*.{js,jsx}\"",
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet"
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/100devs/course-tracker.git"
   },
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "keywords": [],
   "author": "",
   "bugs": {
     "url": "https://github.com/100devs/course-tracker/issues"
   },
-  "homepage": "https://github.com/100devs/course-tracker#readme"
+  "homepage": "https://github.com/100devs/course-tracker#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
+  }
 }
