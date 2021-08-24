@@ -1,13 +1,12 @@
 const express = require('express')
 const session = require('express-session')
+const apiRoutes = require('./routes/apiRoutes')
 
 // saves express function to the variable app
 const app = express()
 
-// sets up boilerplate routes to access the database
-app.use('/api', getRoutes)
-app.use('/api/post', postRoutes)
-app.use('/api/auth', authRoutes)
+// sets up root route
+app.use('/api', apiRoutes)
 
 // Code that tells heroku where to find react build files
 if(process.env.NODE_ENV === 'production'){

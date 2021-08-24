@@ -6,5 +6,12 @@
     "express-session": "^1.17.2",
     "mongoose": "^5.13.8",
     "sessions": "0.0.2-7"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
