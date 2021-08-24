@@ -1,10 +1,9 @@
-   var testing;
-     var linting;
-        var didLintingHookWork = true;
+var testing;
+var linting;
+var didLintingHookWork = true;
 
-            let working = didLintingHookWork;
+                let working = didLintingHookWork; let myobj = { hello: true, yoo: "true", husky: "sucks", team: "istheshit" }; module.exports = { working, myobj };
 
-let myobj = {hello: true, yoo: "true", husky: 'sucks', team: 'istheshit'}
+                
 
-    module.exports = {working, myobj
-        }
+
