@@ -6,4 +6,5 @@ var didLintingHookWork = true;
 
                 
 var newthing;
+var newthing2;
 
