@@ -4,6 +4,23 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,jsx}\"",
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet",
+    "lint:fix": "eslint \"**/*.{js,jsx}\" --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "npm run format",
+      "npm run lint:fix"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/100devs/course-tracker.git"
@@ -17,5 +34,11 @@
     "url": "https://github.com/100devs/course-tracker/issues"
   },
   "homepage": "https://github.com/100devs/course-tracker#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "4.2.5",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2"
+  }
 }
