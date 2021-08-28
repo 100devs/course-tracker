@@ -2,9 +2,9 @@
 
 ## Database Setup
 
- 1. Set up MongoDB atlas string with an authorized user.
- 2. Create `.env` file
- 3. Copy and paste info from `.env.example` & fill in `DB_PASSWORD` and `DB_USER` that you created during mongo setup.
+1.  Set up MongoDB atlas string with an authorized user.
+2.  Create `.env` file
+3.  Copy and paste info from `.env.example` & fill in `DB_PASSWORD` and `DB_USER` that you created during mongo setup.
 
 ## Installing Yarn
 
@@ -53,3 +53,7 @@ Please whitelist your project folder and the Yarn cache directory `(%LocalAppDat
 Check that Yarn is installed by running the following command
 
     yarn --version
+
+I have Yarn installed successfully now what?
+
+Check out - [How to use Yarn](https://classic.yarnpkg.com/en/docs/usage)
