@@ -3,7 +3,7 @@ require("dotenv").config();
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 
-const DB_STRING = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@test.tktoz.mongodb.net/test?retryWrites=true&w=majority`;
+const DB_STRING = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@user-dashboard.p60yz.mongodb.net/user-dashboard?retryWrites=true&w=majority`;
 
 const connectDB = async () => {
   try {
