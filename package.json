@@ -11,7 +11,7 @@
     "client": "yarn workspace @course-tracker/client start",
     "build": "yarn workspace @course-tracker/client build",
     "dev": "yarn workspace @course-tracker/server dev",
-    "start": "concurrently --kill-others-on-fail \"yarn dev\" \"yarn client\"",
+    "start": "concurrently --kill-others-on-fail \"yarn dev\" \"yarn client\" \"yarn build\"",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
     "lint:fix": "eslint \"**/*.{js,jsx}\" --fix"
