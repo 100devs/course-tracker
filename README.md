@@ -1,10 +1,12 @@
+![100devs logo](./assets/100devs.png)
+
 # 100Devs Course Tracker
 
 ## Database Setup
 
-1.  Set up MongoDB atlas string with an authorized user.
-2.  Create `.env` file
-3.  Copy and paste info from `.env.example` & fill in `DB_PASSWORD` and `DB_USER` that you created during mongo setup.
+1. Set up MongoDB atlas string with an authorized user.
+2. Create `.env` file
+3. Copy and paste info from `.env.example` & fill in `DB_PASSWORD` and `DB_USER` that you created during mongo setup.
 
 ## Installing Yarn
 
@@ -56,4 +58,16 @@ Check that Yarn is installed by running the following command
 
 I have Yarn installed successfully now what?
 
-Check out - [How to use Yarn](https://classic.yarnpkg.com/en/docs/usage)
+## Running the project locally
+
+Clone this repository locally
+
+    git clone git@github.com:100devs/course-tracker.git
+
+Install the dependencies. Inside the root
+
+    yarn install
+
+Start both applications.
+
+    yarn start
