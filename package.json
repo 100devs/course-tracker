@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
+    "client": "yarn workspace @course-tracker/client start",
+    "build": "yarn workspace @course-tracker/client build",
+    "dev": "yarn workspace @course-tracker/server dev",
+    "start": "concurrently --kill-others-on-fail \"yarn dev\" \"yarn client\"",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
     "lint:fix": "eslint \"**/*.{js,jsx}\" --fix"
@@ -41,5 +48,8 @@
     "lint-staged": "^11.1.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.1"
   }
 }
