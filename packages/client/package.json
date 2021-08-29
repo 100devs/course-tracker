@@ -1,5 +1,5 @@
 {
-  "name": "@course-tracker/server",
+  "name": "@course-tracker/client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
