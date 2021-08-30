@@ -1,9 +1,6 @@
 const router = require("express").Router();
 // const User = require('../models/User');
-const checkAdmin = (req, res, next) => {
-  console.log("You're authorized!");
-  next();
-};
+const { checkAdmin } = require("../middleware/auth");
 
 router
   .get("/login", (req) => {
@@ -12,7 +9,7 @@ router
   .post("/login", (req, res) => {
     console.log(req.url, req.method, req.body);
     // const { email, password } = req.body;
-    res.status(302).redirect("/"); //TODO: check where exactly this redirects to
+    res.status(302).redirect("./"); //TODO: check where exactly this redirects to
   })
   .post("/admin/create-user", checkAdmin, (req) => {
     //TODO: write the checkAdmin function (line 4)
