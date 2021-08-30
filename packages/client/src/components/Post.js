@@ -29,18 +29,18 @@ const Post = ({Content, children}) => {
     
     return (
         <div>
-            <header className={{}}>
-                <h2 className={{}}>{title}</h2>
+            <header className="">
+                <h2 className="">{title}</h2>
             </header>
-            <div className={{}}>
-               {children}
+            <div className="">
+               { children }
             </div>
-            <div className={{}}>
+            <div className="">
                 {isAdmin && (
                 <div>
-                <button className={{}} onClick={() => {}}  >Edit</button>
-                <button className={{}} onClick={() => {}}  >Publish</button>
-                <button className={{}} onClick={() => {}}  >Delete</button>
+                    <button className="" >Edit</button>
+                    <button className="" >Publish</button>
+                    <button className="" >Delete</button>
                 </div>
                 )
                 }

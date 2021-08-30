@@ -2,7 +2,7 @@
 
 const mockPost = {
     title: 'first post',
-    body: 'This is a sentence about the first post i ever made',
+    body: "this is a body",
     isDraft: true,
     _id: 6456132589,
     userID: 123    
