@@ -34,7 +34,7 @@ You can install Yarn through the Homebrew package manager. This will also instal
 
 Yarn will warn you if a new version is available. To upgrade Yarn, you can do so with Homebrew.
 
-    brew upgrade Yarn
+    brew upgrade yarn
 
 #### Windows
 
@@ -62,7 +62,7 @@ I have Yarn installed successfully now what?
 
 Clone this repository locally
 
-    git clone git@github.com:100devs/course-tracker.git
+    git clone https://github.com/100devs/course-tracker.git
 
 Install the dependencies. Inside the root
 
