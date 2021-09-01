@@ -68,6 +68,25 @@ Install the dependencies. Inside the root
 
     yarn install
 
-Start both applications.
+## Available Scripts
 
-    yarn start
+In the project root directory, you can run:
+
+    yarn client
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+    yarn build
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+    yarn server
+
+Runs the server in the development mode.\
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+    yarn parallel
+
+Runs the `client`, `build` and `server` scripts to run in parallel.
