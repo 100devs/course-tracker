@@ -10,8 +10,9 @@
   "scripts": {
     "client": "yarn --cwd packages/client start",
     "build": "yarn --cwd packages/client build",
-    "server": "yarn --cwd packages/server/ dev",
-    "parallel": "npm-run-all --parallel client build server",
+    "server": "yarn --cwd packages/server dev",
+    "dev": "run-p client server",
+    "start": "yarn --cwd packages/server start"
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
     "lint:fix": "eslint \"**/*.{js,jsx}\" --fix"
