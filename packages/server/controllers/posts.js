@@ -4,21 +4,21 @@ module.exports = {
     
     createPost: async (req, res) => {
         try {
-            await Post.create({
+            const post = await Post.create({
                 title: req.body.title,
                 body: req.body.body,
                 isDraft: req.body.isDraft,
             })
 
-            res.json({message: 'Post Created!'})
+            res.json({message: 'Post Created!', post})
 
-            } catch (error) {
+        } catch (error) {
             console.log(error)
         }
     },
     editPost: async (req, res) => {
 
-        const {title, body} = req.body
+        const {title, body, isDraft} = req.body
         const id = req.params.id
 
         try {
@@ -26,7 +26,7 @@ module.exports = {
                 // try catch that updates title
                 try {
 
-                    await Post.findOneAndUpdate({_id: id},{title: title})
+                    await Post.findOneAndUpdate({_id: id},{title: title},{new: true})
 
                 } catch (error) {
                     console.log(error)
@@ -36,15 +36,28 @@ module.exports = {
                 // try catch that updates body
                 try {
 
-                    await Post.findOneAndUpdate({_id: id},{body: body})
+                    await Post.findOneAndUpdate({_id: id},{body: body},{new: true})
 
                 } catch (error) {
-                    
+                    console.log(error)
                 }
             }
-            res.json({message: 'Post has been updated!'})
+            if(isDraft){
+                // try catch that updates body
+                try {
 
-            } catch (error) {
+                    await Post.findOneAndUpdate({_id: id},{isDraft: isDraft},{new: true})
+
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+
+            const post = await Post.findById({_id: id})
+
+            res.json({message: 'Post has been updated!', post})
+
+        } catch (error) {
             console.log(error)
         }
     }
