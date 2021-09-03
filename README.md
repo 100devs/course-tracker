@@ -87,6 +87,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 Runs the server in the development mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
-    yarn parallel
+    yarn dev
 
-Runs the `client`, `build` and `server` scripts to run in parallel.
+Runs the `client` and `server` scripts to run in parallel.
