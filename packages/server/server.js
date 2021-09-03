@@ -2,7 +2,6 @@ const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const apiRoutes = require("./routes/apiRoutes");
-const authRoutes = require("./routes/authRoutes");
 const path = require("path");
 
 // saves express function to the variable app
@@ -28,7 +27,7 @@ app.use(
 );
 
 // sets up root route
-app.use("/api", apiRoutes, authRoutes);
+app.use("/api", apiRoutes);
 
 // Code that tells heroku where to find react build files
 if (process.env.NODE_ENV === "production") {

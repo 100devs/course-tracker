@@ -4,9 +4,6 @@ const bcrypt = require("bcrypt");
 const { checkAdmin } = require("../middleware/auth");
 
 router
-  .get("/login", (req) => {
-    console.log(req.url, req.method);
-  })
   .post("/login", async (req, res) => {
     console.log(req.url, req.method, req.body);
     const { email, password } = req.body;
@@ -42,7 +39,7 @@ router
       res.status(422).json({ message: err.message });
     }
   })
-  .put("/admin/update-password/:id", async (req, res) => {
+  .put("/admin/update-password/:id", checkAdmin, async (req, res) => {
     console.log(req.url, req.method, req.body, req.params);
     const { password } = req.body;
     const user = await User.findByIdAndUpdate(
