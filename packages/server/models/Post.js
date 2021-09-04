@@ -13,12 +13,17 @@ const PostSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    publishedAt: {
+    publishedAt:{
         type: Date
+    }
+}, {timestamps: true})
+
+PostSchema.pre('save', function save(next){
+
+    const changes = this.getChanges()
+    
+    if(changes.isDraft === false){
+        this.publishedAt = new Date()
     }
 })
 

@@ -3,11 +3,14 @@ const Post = require('../models/Post')
 module.exports = {
     
     createPost: async (req, res) => {
+
+        const {title, body, isDraft} = req.body
+
         try {
             const post = await Post.create({
-                title: req.body.title,
-                body: req.body.body,
-                isDraft: req.body.isDraft,
+                title: title,
+                body: body,
+                isDraft: isDraft
             })
 
             res.json({message: 'Post Created!', post})
@@ -20,45 +23,27 @@ module.exports = {
 
         const {title, body, isDraft} = req.body
         const id = req.params.id
+        const changeObject = {};
 
+        if(title){
+            changeObject.title = title
+        }
+        if(body){
+            changeObject.body = body
+        }
+        if(isDraft !== undefined){
+            changeObject.isDraft = isDraft
+        }
+        
         try {
-            if(title){
-                // try catch that updates title
-                try {
 
-                    await Post.findOneAndUpdate({_id: id},{title: title},{new: true})
-
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-            if(body){
-                // try catch that updates body
-                try {
-
-                    await Post.findOneAndUpdate({_id: id},{body: body},{new: true})
-
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-            if(isDraft){
-                // try catch that updates body
-                try {
-
-                    await Post.findOneAndUpdate({_id: id},{isDraft: isDraft},{new: true})
-
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-
-            const post = await Post.findById({_id: id})
-
+            const post = await Post.findOneAndUpdate({_id: id}, changeObject,{new: true})
+            
             res.json({message: 'Post has been updated!', post})
 
         } catch (error) {
-            console.log(error)
+            
+            res.status(500).json({message: error})
         }
     }
 }
