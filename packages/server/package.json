@@ -1,6 +1,9 @@
 {
   "name": "@course-tracker/server",
-  "version": "0.0.0",
+
+  "version": "0.1.0",
+  "private": true,
+
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.5.0",
