@@ -1,13 +1,31 @@
 const express = require("express");
-// const session = require('express-session')
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const apiRoutes = require("./routes/apiRoutes");
 const path = require("path");
 
 // saves express function to the variable app
 const app = express();
 
-const connectDB = require("./config/database");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const { connectDB, DB_STRING } = require("./config/database");
 connectDB();
+
+//session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: DB_STRING,
+      ttl: 24 * 60 * 60, // 1 day
+    }),
+  })
+);
+
 // sets up root route
 app.use("/api", apiRoutes);
 
