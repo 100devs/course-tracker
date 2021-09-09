@@ -60,10 +60,8 @@ const Post = ({children}) => {
 
     const styles = {
         show:{
-            // backgroundColor: `aliceblue`,
             transform: 'scaleY(1)',
             transformOrigin: 'top',
-            // visibility: `visible`,
             position: 'static',
             overflow: 'hidden',
             webkitTransition: `transform 200ms`,
@@ -72,10 +70,6 @@ const Post = ({children}) => {
         hide:{
             transform: 'scaleY(0)',
             transformOrigin: 'top',
-            // height: '0%',
-            // visibility: `hidden`,
-            // position: `absolute`,
-            // overflowX: `hidden`,
             webkitTransition: `transform 300ms ease-in-out 200ms`,
             transition:`transform 300ms ease-in-out 200ms`
         },
