@@ -4,25 +4,19 @@ import { useState } from "react";
 // console.log({
 //     title:'string',
 //     body:'string',
-//     publish:boolean
+//     isDraft:boolean
 // })
-
-let backend = "https://localhost3000";
+let backend = process.env.REACT_APP_BACKEND;
 let endpoint = `${backend}/api/createPost`;
 function AdminPostCreation() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [publish, setPublish] = useState(false);
+  const [isDraft, setIsDraft] = useState(true);
 
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
-    if (!title || !body) {
-      // lets remove this at some point before google deprecates it
-      alert("Please add a body/text");
-      return;
-    }
-
+    // Question: Do we need form validation here for Leon?
     try {
       const res = await fetch(endpoint, {
         method: "POST",
@@ -32,7 +26,7 @@ function AdminPostCreation() {
         body: JSON.stringify({
           title,
           body,
-          publish,
+          isDraft,
         }),
       });
     } catch (error) {
@@ -68,15 +62,15 @@ function AdminPostCreation() {
 
       {/* Publish and Submit Section */}
       <section className="">
-        <label htmlFor="publish">Publish</label>
+        <label htmlFor="isDraft">Is Draft?</label>
         <input
           type="checkbox"
-          name="publish"
-          checked={publish}
-          value={publish}
-          onChange={(e) => setPublish(e.currentTarget.checked)}
+          name="isDraft"
+          checked={isDraft}
+          value={isDraft}
+          onChange={(e) => setIsDraft(e.currentTarget.checked)}
         />
-
+        {/* Change button element to component once avail. */}
         <button className="btn" type="submit">
           Submit
         </button>
