@@ -4,16 +4,26 @@ const bcrypt = require("bcrypt");
 const { checkAdmin } = require("../middleware/auth");
 
 router
+  .get("/getSession", async (req, res) => {
+    res.json({ session: req.session });
+  })
   .post("/login", async (req, res) => {
-    console.log(req.url, req.method, req.body);
+    // console.log(req.url, req.method, req.body);
+
     const { email, password } = req.body;
+
     const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(400).send({ error: "User not found" });
     }
+
     try {
       const passwordMatch = await bcrypt.compare(password, user.password);
+
       if (passwordMatch) {
+        req.session.isAdmin = user.isAdmin;
+
         return res.status(200).json({ message: "User logged in successfully" });
       }
     } catch (err) {
@@ -22,26 +32,34 @@ router
     res.status(401).json({ message: "Invalid credentials" });
   })
   .post("/admin/create-user", checkAdmin, async (req, res) => {
-    console.log(req.url, req.method, req.body);
+    // console.log(req.url, req.method, req.body);
+
     const { username, email, password } = req.body;
+
     const user = new User({
       email,
       username,
       password,
       isAdmin: true,
     });
+
     try {
       const _response = await user.save();
+
       console.log(_response);
+
       res.status(201).json({ message: "User created" });
     } catch (err) {
       console.log(err);
+
       res.status(422).json({ message: err.message });
     }
   })
   .put("/admin/update-password/:id", checkAdmin, async (req, res) => {
-    console.log(req.url, req.method, req.body, req.params);
+    // console.log(req.url, req.method, req.body, req.params);
+
     const { password } = req.body;
+
     const user = await User.findByIdAndUpdate(
       { _id: req.params.id },
       { password: password },

@@ -3,6 +3,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const apiRoutes = require("./routes/apiRoutes");
 const path = require("path");
+require("dotenv").config();
 
 // saves express function to the variable app
 const app = express();
