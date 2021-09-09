@@ -56,7 +56,7 @@ let isAdmin = true;
 const Post = ({children}) => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [isCollapsed, setIsCollapsed] = useState(false)
+    const [isCollapsed, setIsCollapsed] = useState(true)
 
     const styles = {
         show:{
