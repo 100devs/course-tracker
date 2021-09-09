@@ -28,7 +28,7 @@ padding: 1rem 3rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-
+z-index: 1000;
 h2 {
     font-size: 3rem;    
 }
@@ -36,7 +36,6 @@ h2 {
 
 const Body = styled.section`
     padding: 4em;
-    background: white;
     color: black;
     width: 100%;
 `;
@@ -49,6 +48,7 @@ display: flex;
 flex-flow: column nowrap;
 justify-content: center;
 align-content: center;
+position: relative;
 `;
 
 let isAdmin = true;
@@ -57,6 +57,37 @@ const Post = ({children}) => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const [isCollapsed, setIsCollapsed] = useState(false)
+
+    const styles = {
+        show:{
+            // backgroundColor: `aliceblue`,
+            transform: 'scaleY(1)',
+            transformOrigin: 'top',
+            // visibility: `visible`,
+            position: 'static',
+            overflow: 'hidden',
+            webkitTransition: `transform 200ms`,
+            transition:`transform 200ms`
+        },
+        hide:{
+            transform: 'scaleY(0)',
+            transformOrigin: 'top',
+            // height: '0%',
+            // visibility: `hidden`,
+            // position: `absolute`,
+            // overflowX: `hidden`,
+            webkitTransition: `transform 300ms ease-in-out 200ms`,
+            transition:`transform 300ms ease-in-out 200ms`
+        },
+        showChildren: {
+            opacity: 1,
+            transition:`opacity 150ms ease-in-out 150ms`,
+        },
+        hideChildren: {
+            opacity: 0,
+            transition:`opacity 100ms ease-in-out`            
+        }
+    }
 
     const handleGetPost = async () => {
         // const data = await axios.get('some url')
@@ -83,22 +114,22 @@ const Post = ({children}) => {
         <PostContainer>
             <PostHeading>
                 <h2>{title}</h2>
-                {isCollapsed ? <EyeSlash size={48} color="red"  onClick={handleCollapse} /> : <Eye size={48} color="green" onClick={handleCollapse} />}
+                {isCollapsed ? <Eye aria-label="" size={48} color="green" onClick={handleCollapse} /> : <EyeSlash aria-label="" size={48} color="red"  onClick={handleCollapse} />}
             </PostHeading>
-            {isCollapsed && 
-            <>
-            <Body className="">
-               { children }
-            </Body>
-            <div className="">
-                {isAdmin && (
-                <ButtonDiv>
-                    <Button>Edit</Button>
-                    <Button>Delete</Button>   
-                </ButtonDiv>
-                ) }
+            <div style={isCollapsed ? styles.hide : styles.show}>
+                <Body style={isCollapsed ? styles.hideChildren : styles.showChildren}>
+                { children }
+                </Body>
+                <div style={isCollapsed ? styles.hideChildren : styles.showChildren}>
+                    {isAdmin && (
+                    <ButtonDiv>
+                        <Button>Edit</Button>
+                        <Button>Delete</Button>   
+                    </ButtonDiv>
+                    ) }
+                </div>
             </div>
-            </>}
+            
         </PostContainer>
     )
 }
