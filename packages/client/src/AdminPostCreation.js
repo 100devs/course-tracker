@@ -6,8 +6,8 @@ import { useState } from "react";
 //     body:'string',
 //     isDraft:boolean
 // })
-let backend = process.env.REACT_APP_BACKEND;
-let endpoint = `${backend}/api/createPost`;
+const backend = process.env.REACT_APP_BACKEND;
+const endpoint = `${backend}/api/createPost`;
 function AdminPostCreation() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
