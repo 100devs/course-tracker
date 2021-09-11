@@ -8,8 +8,6 @@ router
     res.json({ session: req.session });
   })
   .post("/login", async (req, res) => {
-    // console.log(req.url, req.method, req.body);
-
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
@@ -32,8 +30,6 @@ router
     res.status(401).json({ message: "Invalid credentials" });
   })
   .post("/admin/create-user", checkAdmin, async (req, res) => {
-    // console.log(req.url, req.method, req.body);
-
     const { username, email, password } = req.body;
 
     const user = new User({
@@ -46,8 +42,6 @@ router
     try {
       const _response = await user.save();
 
-      console.log(_response);
-
       res.status(201).json({ message: "User created" });
     } catch (err) {
       console.log(err);
@@ -56,8 +50,6 @@ router
     }
   })
   .put("/admin/update-password/:id", checkAdmin, async (req, res) => {
-    // console.log(req.url, req.method, req.body, req.params);
-
     const { password } = req.body;
 
     const user = await User.findByIdAndUpdate(
