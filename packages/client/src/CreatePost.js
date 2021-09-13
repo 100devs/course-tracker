@@ -8,7 +8,7 @@ import { useState } from "react";
 // })
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/createPost`;
-function AdminPostCreation() {
+function CreatePost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
@@ -79,4 +79,4 @@ function AdminPostCreation() {
   );
 }
 
-export default AdminPostCreation;
+export default CreatePost;
