@@ -40,15 +40,43 @@ const Body = styled.section`
     width: 100%;
 `;
 
-const PostContainer = styled.div`
+const CollapsibleDiv = styled.div`
 width: 100%;
-height: 100vh;
+border: solid red 2px;
 padding: 1.5rem;
 display: flex;
 flex-flow: column nowrap;
 justify-content: center;
 align-content: center;
-position: relative;
+position: static;
+overflow: hidden;
+transform: scaleY(1);
+transform-origin: top;
+transition: transform 200ms;
+webkit-transition: transform 200ms;
+{({ hidden }) => {
+    if (hidden) {
+        return 
+        border: dashed red 2px;
+        overflow: hidden;
+        transform: scaleY(0);
+        transition: transform 3000ms ease-in-out 2000ms;
+        webkit-transition: transform 3000ms ease-in-out 2000ms;
+    }
+}}
+`;
+
+const CollapsibleChildren = styled.div`
+{({ hidden }) => {
+    if(hidden) {
+        return
+        opacity: 0;
+        transition: opacity 100ms ease-in-out;
+
+    }
+    opacity: 1;
+    transition: opacity 150ms ease-in-out 150ms;
+}}
 `;
 
 let isAdmin = true;
@@ -56,22 +84,22 @@ let isAdmin = true;
 const Post = ({children}) => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [isCollapsed, setIsCollapsed] = useState(true)
+    const [hidden, setHidden] = useState(true)
 
     const styles = {
         show:{
-            transform: 'scaleY(1)',
-            transformOrigin: 'top',
+            backgroundColor: 'aliceblue',
+            maxHeight: '7500px',
             position: 'static',
             overflow: 'hidden',
-            webkitTransition: `transform 200ms`,
-            transition:`transform 200ms`
+            webkitTransition: `max-height 2000ms`,
+            transition:`max-height 2000ms`
         },
         hide:{
-            transform: 'scaleY(0)',
-            transformOrigin: 'top',
-            webkitTransition: `transform 300ms ease-in-out 200ms`,
-            transition:`transform 300ms ease-in-out 200ms`
+            maxHeight: '0rem',
+            overflow: 'hidden',
+            webkitTransition: `max-height 3000ms ease-in-out 2000ms`,
+            transition:`max-height 3000ms ease-in-out 2000ms`
         },
         showChildren: {
             opacity: 1,
@@ -91,10 +119,9 @@ const Post = ({children}) => {
     };
 
     const handleCollapse = () => {
-        setIsCollapsed(prev => !prev);
+        setHidden(prev => !prev);
     };
 
-    /*  */
     useEffect(() => {
         handleGetPost();
     }, [])
@@ -105,16 +132,20 @@ const Post = ({children}) => {
     }, [title, body])
     
     return (
-        <PostContainer>
+        <CollapsibleDiv>
+
             <PostHeading>
                 <h2>{title}</h2>
-                {isCollapsed ? <Eye aria-label="" size={48} color="green" onClick={handleCollapse} /> : <EyeSlash aria-label="" size={48} color="red"  onClick={handleCollapse} />}
+                {hidden ? <Eye aria-label="" size={48} color="green" onClick={handleCollapse} /> : <EyeSlash aria-label="" size={48} color="red"  onClick={handleCollapse} />}
             </PostHeading>
-            <div style={isCollapsed ? styles.hide : styles.show}>
-                <Body style={isCollapsed ? styles.hideChildren : styles.showChildren}>
+
+            <div style={hidden ? styles.hide : styles.show}>
+                
+                <Body>
                 { children }
                 </Body>
-                <div style={isCollapsed ? styles.hideChildren : styles.showChildren}>
+
+                <div>
                     {isAdmin && (
                     <ButtonDiv>
                         <Button>Edit</Button>
@@ -122,9 +153,10 @@ const Post = ({children}) => {
                     </ButtonDiv>
                     ) }
                 </div>
+                
             </div>
             
-        </PostContainer>
+        </CollapsibleDiv>
     )
 }
 
