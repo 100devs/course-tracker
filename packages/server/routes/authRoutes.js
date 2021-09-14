@@ -40,7 +40,7 @@ router
     });
 
     try {
-      const _response = await user.save();
+      await user.save();
 
       res.status(201).json({ message: "User created" });
     } catch (err) {
