@@ -17,6 +17,15 @@
   "skipCi": true,
   "contributors": [
     {
+      "login": "yobee333",
+      "name": "yobee333",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69943959?v=4",
+      "profile": "http://thedeveloperbee.com",
+            "contributions": [
+        "ideas"
+      ]
+    },
+    {
       "login": "aureliefomum",
       "name": "Aurelie Fomum",
       "avatar_url": "https://avatars.githubusercontent.com/u/24625551?v=4",
