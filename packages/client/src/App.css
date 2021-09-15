@@ -1,3 +1,14 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: "Work Sans", sans-serif;
+}
+
 .App {
   text-align: center;
 }

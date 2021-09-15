@@ -7,13 +7,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="content">
           <Switch>
             <Route path="/createPost">
               <CreatePost />
             </Route>
           </Switch>
-        </div>
       </Router>
     </div>
   );
