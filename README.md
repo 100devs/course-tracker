@@ -2,12 +2,14 @@
 
 # 100Devs Course Tracker
 
+<!-- test -->
+
 ## Database Setup
 
 1. Set up MongoDB atlas string with an authorized user.
 2. Create `.env` file
 3. Copy and paste info from `.env.example` & fill in `DB_PASSWORD` and `DB_USER` that you created during mongo setup.
-4. Add `REACT_APP_BACKEND=` to `.env` for backend endpoint (this should be set to `http://localhost:5000/` currently). 
+4. Add `REACT_APP_BACKEND=` to `.env` for backend endpoint (this should be set to `http://localhost:5000/` currently).
 
 ## Installing Yarn
 
