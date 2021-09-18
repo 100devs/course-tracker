@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const router = require("express").Router();
+// const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
 module.export = {
@@ -57,10 +57,8 @@ module.export = {
     console.log(user);
     res.status(200).json({ message: "Password updated successfully" });
 
-    if (process.env.NODE_ENV !== "production") {
-      router.get("/get-user/:id", async (req, res) => {
-        res.json(await User.findOne({ _id: req.params.id }));
-      });
-    }
+    async (req, res) => {
+      res.json(await User.findOne({ _id: req.params.id }));
+    };
   },
 };

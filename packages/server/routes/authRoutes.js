@@ -11,4 +11,8 @@ router.put(
   authController.updatePassword
 );
 
+if (process.env.NODE_ENV !== "production") {
+  router.get("/get-user/:id", authController.getUser);
+}
+
 module.exports = router;
