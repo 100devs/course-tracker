@@ -45,6 +45,9 @@ module.export = {
       res.status(422).json({ message: err.message });
     }
   },
+  getUser: async (req, res) => {
+    res.json(await User.findOne({ _id: req.params.id }));
+  },
   updatePassword: async (req, res) => {
     const { password } = req.body;
 
@@ -56,9 +59,5 @@ module.export = {
     user.save();
     console.log(user);
     res.status(200).json({ message: "Password updated successfully" });
-
-    async (req, res) => {
-      res.json(await User.findOne({ _id: req.params.id }));
-    };
   },
 };
