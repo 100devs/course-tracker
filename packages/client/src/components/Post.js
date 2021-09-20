@@ -10,9 +10,9 @@ import ButtonDiv from "./ButtonDiv";
 import styled from "styled-components";
 import { Eye, EyeSlash } from "phosphor-react";
 
-let isAdmin = true;
+// let isAdmin = true;
 
-const Post = ({ children }) => {
+const Post = ({ title, body, isDraft, isAdmin }) => {
   const [post, setPost] = useState({});
   const [hiddenState, setHiddenState] = useState(true);
 
@@ -44,7 +44,7 @@ const Post = ({ children }) => {
   return (
     <PostDiv>
       <PostHeader>
-        <h2>{post.title}</h2>
+        <h2>{title}</h2>
         {hiddenState ? (
           <Eye aria-label="" size={48} color="green" onClick={handleCollapse} />
         ) : (
@@ -58,7 +58,7 @@ const Post = ({ children }) => {
       </PostHeader>
 
       <CollapsibleDiv hidden={hiddenState}>
-        <Body>{children}</Body>
+        <Body>{body}</Body>
 
         {isAdmin && (
           <ButtonDiv>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Feed from "./Feed";
 import CreatePost from "./components/CreatePost";
 
 const AppContainer = styled.div`
@@ -13,11 +14,16 @@ const AppContainer = styled.div`
   }
 `;
 
+
+
 function App() {
   return (
     <AppContainer>
       <Router>
         <Switch>
+          <Route path="/">
+            <Feed />
+          </Route>
           <Route path="/createPost">
             <CreatePost />
           </Route>
