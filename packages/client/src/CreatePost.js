@@ -1,4 +1,11 @@
 import { useState } from "react";
+import ButtonDiv from "../../../packages/client/src/components/ButtonDiv";
+import Button from "../../../packages/client/src/components/Button";
+import InputDiv from "../../../packages/client/src/components/InputDiv";
+import Input from "../../../packages/client/src/components/Input";
+import InputLabel from "../../../packages/client/src/components/InputLabel";
+import TextArea from "./components/TextArea";
+import Checkbox from "../../../packages/client/src/components/Checkbox";
 
 // Data looks like this (for backend)
 // console.log({
@@ -37,44 +44,48 @@ function CreatePost() {
   return (
     <form className="" onSubmit={handleSubmit}>
       {/* Title Section */}
-      <section className="">
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
+      <InputDiv>
+        <InputLabel htmlFor="title">Title</InputLabel>
+        <Input
           name="title"
           placeholder="Post Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-      </section>
+      </InputDiv>
 
       {/* Body Text Section */}
-      <section className="">
-        <label htmlFor="body">Body of Post</label>
-        <textarea
-          type="textarea"
+      <InputDiv>
+        <InputLabel htmlFor="body">Body of Post</InputLabel>
+        <TextArea
           name="body"
           placeholder="Body Info"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-      </section>
+      </InputDiv>
 
       {/* Publish and Submit Section */}
-      <section className="">
-        <label htmlFor="isDraft">Is Draft?</label>
-        <input
-          type="checkbox"
+      <InputDiv flexDirection="row" justify="center" align="center">
+        <Checkbox
           name="isDraft"
           checked={isDraft}
           value={isDraft}
           onChange={(e) => setIsDraft(e.currentTarget.checked)}
         />
-        {/* Change button element to component once avail. */}
-        <button className="btn" type="submit">
+        <InputLabel htmlFor="isDraft" fontSize="normal">
+          Draft?
+        </InputLabel>
+      </InputDiv>
+
+      {/* Change button element to component once avail. */}
+      <ButtonDiv>
+        <Button>Submit</Button>
+        <Button>Cancel</Button>
+      </ButtonDiv>
+      {/* <button className="btn" type="submit">
           Submit
-        </button>
-      </section>
+        </button> */}
     </form>
   );
 }
