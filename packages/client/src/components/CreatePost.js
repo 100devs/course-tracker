@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -8,7 +9,6 @@ import TextArea from "./styled/TextArea";
 import Checkbox from "./styled/Checkbox";
 import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
-
 // Data looks like this (for backend)
 // console.log({
 //     title:'string',
@@ -17,11 +17,19 @@ import FormHeader from "./styled/FormHeader";
 // })
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/createPost`;
-function CreatePost() {
+
+const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
 
+  const { user, dispatch } = useContext(AuthContext);
+
+  const changeContext = () => {
+    dispatch((prev) => !prev);
+  };
+
+  changeContext();
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
@@ -42,7 +50,7 @@ function CreatePost() {
       console.log(error);
     }
   };
-
+  console.log(user);
   return (
     <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
       <FormHeader>
@@ -92,6 +100,5 @@ function CreatePost() {
       </ButtonDiv>
     </Form>
   );
-}
-
+};
 export default CreatePost;

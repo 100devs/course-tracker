@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
 import CreatePost from "./components/CreatePost";
 
 const AppContainer = styled.div`
@@ -15,6 +16,7 @@ const AppContainer = styled.div`
 
 function App() {
   return (
+<AuthContextProvider>
     <AppContainer>
       <Router>
         <Switch>
@@ -24,7 +26,8 @@ function App() {
         </Switch>
       </Router>
     </AppContainer>
-  );
+</AuthContextProvider>
+  )
 }
 
 export default App;
