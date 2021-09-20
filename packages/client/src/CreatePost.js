@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 // Data looks like this (for backend)
 // console.log({
@@ -8,11 +9,19 @@ import { useState } from "react";
 // })
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/createPost`;
-function CreatePost() {
+
+const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
 
+  const { user, dispatch } = useContext(AuthContext);
+
+  const changeContext = () => {
+    dispatch((prev) => !prev);
+  };
+
+  changeContext();
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
@@ -33,7 +42,7 @@ function CreatePost() {
       console.log(error);
     }
   };
-
+  console.log(user);
   return (
     <form className="" onSubmit={handleSubmit}>
       {/* Title Section */}
@@ -77,6 +86,5 @@ function CreatePost() {
       </section>
     </form>
   );
-}
-
+};
 export default CreatePost;
