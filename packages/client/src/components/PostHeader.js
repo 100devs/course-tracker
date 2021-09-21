@@ -11,6 +11,11 @@ const PostHeader = styled.div`
   h2 {
     font-size: 3rem;
   }
+  &:hover {
+    background-color: #164bc5;
+    color: white;
+  }
+  cursor: pointer;
 `;
 
 export default PostHeader;

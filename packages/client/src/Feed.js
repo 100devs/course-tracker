@@ -35,16 +35,18 @@ const Feed = () => {
             <Post
                 title = post.title
                 body = post.body
+                isDraft = post.isDraft 
                 isAdmin = isAdmin
+                id = post._id
             />
           }
             
         }) */}
 
       {/*test components*/}
-      <Post title={`Week1`} body={`testing1`} isAdmin={isAdmin} />
-      <Post title={`Week2`} body={`testing2`} isAdmin={isAdmin} />
-      <Post title={`Week3`} body={`testing3`} isAdmin={isAdmin} />
+      <Post title={`Week1`} body={`testing1`} isAdmin={isAdmin} isDraft={false} id={1}/>
+      <Post title={`Week2`} body={`testing2`} isAdmin={isAdmin} isDraft={false} id={2}/>
+      <Post title={`Week3`} body={`testing3`} isAdmin={isAdmin} isDraft={true} id={3}/>
     </div>
   );
 };
