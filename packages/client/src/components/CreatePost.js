@@ -1,11 +1,13 @@
 import { useState } from "react";
-import ButtonDiv from "../../../packages/client/src/components/ButtonDiv";
-import Button from "../../../packages/client/src/components/Button";
-import InputDiv from "../../../packages/client/src/components/InputDiv";
-import Input from "../../../packages/client/src/components/Input";
-import InputLabel from "../../../packages/client/src/components/InputLabel";
-import TextArea from "./components/TextArea";
-import Checkbox from "../../../packages/client/src/components/Checkbox";
+import ButtonDiv from "./ButtonDiv";
+import Button from "./Button";
+import InputDiv from "./InputDiv";
+import Input from "./Input";
+import InputLabel from "./InputLabel";
+import TextArea from "./TextArea";
+import Checkbox from "./Checkbox";
+import Form from "./Form";
+import FormHeader from "./FormHeader";
 
 // Data looks like this (for backend)
 // console.log({
@@ -42,12 +44,14 @@ function CreatePost() {
   };
 
   return (
-    <form className="" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
+      <FormHeader>
+        <h2>Add a New Post</h2>
+      </FormHeader>
       {/* Title Section */}
       <InputDiv>
         <InputLabel htmlFor="title">Title</InputLabel>
         <Input
-          border="1px solid black"
           name="title"
           placeholder="Post Title"
           value={title}
@@ -59,7 +63,6 @@ function CreatePost() {
       <InputDiv>
         <InputLabel htmlFor="body">Body of Post</InputLabel>
         <TextArea
-          border="1px solid black"
           name="body"
           placeholder="Body Info"
           value={body}
@@ -82,13 +85,17 @@ function CreatePost() {
 
       {/* Change button element to component once avail. */}
       <ButtonDiv>
-        <Button>Submit</Button>
-        <Button>Cancel</Button>
+        <Button fontSize="1.5rem" size="10rem">
+          Submit
+        </Button>
+        <Button fontSize="1.5rem" size="10rem">
+          Cancel
+        </Button>
       </ButtonDiv>
       {/* <button className="btn" type="submit">
           Submit
         </button> */}
-    </form>
+    </Form>
   );
 }
 

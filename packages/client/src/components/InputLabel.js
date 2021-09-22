@@ -5,7 +5,7 @@ const InputLabel = styled.label.attrs((props) => ({
   font-size: ${(props) => props.fontSize};
   font-weight: lighter;
   text-align: left;
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 `;
 
 export default InputLabel;
