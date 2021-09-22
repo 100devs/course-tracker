@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { Redirect } from "react-router-dom";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -9,12 +10,14 @@ import TextArea from "./styled/TextArea";
 import Checkbox from "./styled/Checkbox";
 import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
+
 // Data looks like this (for backend)
 // console.log({
 //     title:'string',
 //     body:'string',
 //     isDraft:boolean
 // })
+
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/createPost`;
 
@@ -23,13 +26,8 @@ const CreatePost = () => {
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
 
-  const { user, dispatch } = useContext(AuthContext);
+  const { admin } = useContext(AuthContext);
 
-  const changeContext = () => {
-    dispatch((prev) => !prev);
-  };
-
-  changeContext();
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
@@ -50,55 +48,61 @@ const CreatePost = () => {
       console.log(error);
     }
   };
-  console.log(user);
-  return (
-    <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
-      <FormHeader>
-        <h2>Add a New Post</h2>
-      </FormHeader>
-      {/* Title Section */}
-      <InputDiv>
-        <InputLabel htmlFor="title">Title</InputLabel>
-        <Input
-          name="title"
-          placeholder="Post Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </InputDiv>
-
-      {/* Body Text Section */}
-      <InputDiv>
-        <InputLabel htmlFor="body">Body of Post</InputLabel>
-        <TextArea
-          name="body"
-          placeholder="Body Info"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </InputDiv>
-
-      {/* Publish and Submit Section */}
-      <InputDiv flexDirection="row" justify="center" align="center">
-        <Checkbox
-          name="isDraft"
-          checked={isDraft}
-          value={isDraft}
-          onChange={(e) => setIsDraft(e.currentTarget.checked)}
-        />
-        <span>Draft?</span>
-      </InputDiv>
-
-      {/* Change button element to component once avail. */}
-      <ButtonDiv>
-        <Button fontSize="1.5rem" size="11rem">
-          Submit
-        </Button>
-        <Button fontSize="1.5rem" size="11rem">
-          Cancel
-        </Button>
-      </ButtonDiv>
-    </Form>
-  );
+  if(admin){
+    return (
+      <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
+        <FormHeader>
+          <h2>Add a New Post</h2>
+        </FormHeader>
+        {/* Title Section */}
+        <InputDiv>
+          <InputLabel htmlFor="title">Title</InputLabel>
+          <Input
+            name="title"
+            placeholder="Post Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </InputDiv>
+  
+        {/* Body Text Section */}
+        <InputDiv>
+          <InputLabel htmlFor="body">Body of Post</InputLabel>
+          <TextArea
+            name="body"
+            placeholder="Body Info"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+        </InputDiv>
+  
+        {/* Publish and Submit Section */}
+        <InputDiv flexDirection="row" justify="center" align="center">
+          <Checkbox
+            name="isDraft"
+            checked={isDraft}
+            value={isDraft}
+            onChange={(e) => setIsDraft(e.currentTarget.checked)}
+          />
+          <span>Draft?</span>
+        </InputDiv>
+  
+        {/* Change button element to component once avail. */}
+        <ButtonDiv>
+          <Button fontSize="1.5rem" size="11rem">
+            Submit
+          </Button>
+          <Button fontSize="1.5rem" size="11rem">
+            Cancel
+          </Button>
+        </ButtonDiv>
+      </Form>
+    );
+    
+  } else {
+      return (
+        <Redirect to='/' />
+      )
+  }
 };
 export default CreatePost;

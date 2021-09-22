@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
+import Login from "./Login";
 import CreatePost from "./components/CreatePost";
 
 const AppContainer = styled.div`
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route path="/createPost">
             <CreatePost />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       </Router>
