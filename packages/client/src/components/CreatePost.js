@@ -78,17 +78,15 @@ function CreatePost() {
           value={isDraft}
           onChange={(e) => setIsDraft(e.currentTarget.checked)}
         />
-        <InputLabel htmlFor="isDraft" fontSize="normal">
-          Draft?
-        </InputLabel>
+        <span>Draft?</span>
       </InputDiv>
 
       {/* Change button element to component once avail. */}
       <ButtonDiv>
-        <Button fontSize="1.5rem" size="10rem">
+        <Button fontSize="1.5rem" size="11rem">
           Submit
         </Button>
-        <Button fontSize="1.5rem" size="10rem">
+        <Button fontSize="1.5rem" size="11rem">
           Cancel
         </Button>
       </ButtonDiv>

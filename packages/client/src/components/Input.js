@@ -1,7 +1,7 @@
 import styled from "styled-components";
 const Input = styled.input.attrs((props) => ({
   type: props.type || "text",
-  size: props.size || "1em",
+  size: props.size || "1rem",
   border: props.border || "none",
 }))`
   width: 100%;
