@@ -6,9 +6,9 @@ export const AuthContext = createContext();
 //creating provider component
 export const AuthContextProvider = ({ children }) => {
   //what is the difference between using useState() here or useReducer ?
-  const [user, _dispatch] = useState(() => {
+  const [admin, _dispatch] = useState(() => {
     // retrieve token from cookie or returns null/empty object and assign
-    return true;
+    return false;
   });
 
   const dispatch = useCallback((val) => {
@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, dispatch }}>
+    <AuthContext.Provider value={{ admin, dispatch }}>
       {children}
     </AuthContext.Provider>
   );

@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreatePost from "./CreatePost";
 import { AuthContextProvider } from "./context/AuthContext";
+import Login from "./Login";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
           <Switch>
             <Route path="/createPost">
               <CreatePost />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
           </Switch>
         </Router>
