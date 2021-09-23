@@ -90,9 +90,6 @@ function CreatePost() {
           Cancel
         </Button>
       </ButtonDiv>
-      {/* <button className="btn" type="submit">
-          Submit
-        </button> */}
     </Form>
   );
 }
