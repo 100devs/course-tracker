@@ -44,7 +44,7 @@ function CreatePost() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
       <FormHeader>
         <h2>Add a New Post</h2>
       </FormHeader>

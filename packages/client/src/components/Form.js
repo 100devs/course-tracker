@@ -1,6 +1,7 @@
 import styled from "styled-components";
 const Form = styled.form.attrs((props) => ({
-  padding: props.padding || "2rem 18%",
+  padding: props.padding || "2rem",
+  // 18% 4rem
 }))`
   height: fit-content;
   width: 100%;
