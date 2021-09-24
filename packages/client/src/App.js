@@ -14,18 +14,16 @@ const AppContainer = styled.div`
   }
 `;
 
-
-
 function App() {
   return (
     <AppContainer>
       <Router>
         <Switch>
-          <Route path="/">
-            <Feed />
-          </Route>
           <Route path="/createPost">
             <CreatePost />
+          </Route>
+          <Route path="/">
+            <Feed />
           </Route>
         </Switch>
       </Router>

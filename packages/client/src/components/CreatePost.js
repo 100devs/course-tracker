@@ -18,9 +18,18 @@ import FormHeader from "./FormHeader";
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/createPost`;
 function CreatePost() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [isDraft, setIsDraft] = useState(true);
+  const [post, setPost] = useState({
+    title: "",
+    body: "",
+    isDraft: true,
+  });
+
+  const createPostObject = (e) => {
+    const { name, value, type, checked } = e.target;
+    type === "checkbox"
+      ? setPost({ ...post, [name]: checked })
+      : setPost({ ...post, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
@@ -32,17 +41,12 @@ function CreatePost() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({
-          title,
-          body,
-          isDraft,
-        }),
+        body: JSON.stringify({ post }),
       });
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
       <FormHeader>
@@ -54,8 +58,8 @@ function CreatePost() {
         <Input
           name="title"
           placeholder="Post Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={post.title}
+          onChange={(e) => createPostObject(e)}
         />
       </InputDiv>
 
@@ -65,8 +69,8 @@ function CreatePost() {
         <TextArea
           name="body"
           placeholder="Body Info"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={post.body}
+          onChange={(e) => createPostObject(e)}
         />
       </InputDiv>
 
@@ -74,9 +78,8 @@ function CreatePost() {
       <InputDiv flexDirection="row" justify="center" align="center">
         <Checkbox
           name="isDraft"
-          checked={isDraft}
-          value={isDraft}
-          onChange={(e) => setIsDraft(e.currentTarget.checked)}
+          checked={post.isDraft}
+          onChange={(e) => createPostObject(e)}
         />
         <span>Draft?</span>
       </InputDiv>

@@ -6,6 +6,11 @@ import Button from "./Button";
 import Body from "./Body";
 import ButtonDiv from "./ButtonDiv";
 import { Eye, EyeSlash } from "phosphor-react";
+import InputDiv from "./InputDiv";
+import Input from "./Input";
+import InputLabel from "./InputLabel";
+import TextArea from "./TextArea";
+import Checkbox from "./Checkbox";
 
 const Post = ({ title, body, isDraft, isAdmin, id }) => {
   const [hiddenState, setHiddenState] = useState(true);
@@ -22,11 +27,16 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
   const [changeObj, setChangeObj] = useState({});
 
   const createChangeObject = (e) => {
-    const { name, value } = e.target;
-    setChangeObj({
-      ...changeObj,
-      [name]: value,
-    });
+    console.log(changeObj);
+    // e.currentTarget.checked
+
+    const { name, value, type, checked } = e.target;
+    type === "checkbox"
+      ? setChangeObj({ ...changeObj, [name]: checked })
+      : setChangeObj({ ...changeObj, [name]: value });
+    type === "checkbox"
+      ? updatePost({ ...changeObj, [name]: checked })
+      : updatePost({ ...changeObj, [name]: value });
   };
 
   const sendChangeObj = async () => {
@@ -47,20 +57,20 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
 
   return (
     <PostDiv>
-      <PostHeader onClick={() => !isEdit && handleCollapse()}>
+      <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
         {isEdit ? (
-          <input
-            htmlFor="title"
-            label="Title"
-            type="text"
-            name="title"
-            placeholder={post.title}
-            onChange={(e) => createChangeObject(e)}
-          />
+          <InputDiv>
+            <InputLabel htmlFor="title">Title</InputLabel>
+            <Input
+              name="title"
+              value={post.title}
+              onChange={(e) => createChangeObject(e)}
+            />
+          </InputDiv>
         ) : (
           <h2>{title}</h2>
         )}
-        {isAdmin && (
+        {isAdmin && !isEdit ? (
           <>
             {isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
@@ -68,25 +78,37 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
               <Eye aria-label="" size={48} color="green" />
             )}
           </>
+        ) : (
+          <></>
         )}
       </PostHeader>
 
-      <CollapsibleDiv hidden={hiddenState}>
+      <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
         {isEdit ? (
-          <textarea
-            htmlFor="body"
-            label="Body"
-            type="text"
-            name="body"
-            placeholder={post.body}
-            onChange={(e) => createChangeObject(e)}
-          ></textarea>
+          <>
+            <InputDiv>
+              <InputLabel htmlFor="body">Body of Post</InputLabel>
+              <TextArea
+                name="body"
+                value={post.body}
+                onChange={(e) => createChangeObject(e)}
+              />
+            </InputDiv>
+            <InputDiv flexDirection="row" align="center">
+              <Checkbox
+                name="isDraft"
+                checked={post.isDraft}
+                onChange={(e) => createChangeObject(e)}
+              />
+              <span>Draft?</span>
+            </InputDiv>
+          </>
         ) : (
           <Body>{body}</Body>
         )}
 
         {isAdmin && (
-          <ButtonDiv>
+          <ButtonDiv justify={isEdit ? "flex-end" : "space-evenly"}>
             {isEdit ? (
               <Button onClick={(id) => sendChangeObj(id)}>Save</Button>
             ) : (

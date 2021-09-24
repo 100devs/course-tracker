@@ -3,7 +3,7 @@ import styled from "styled-components";
 const PostHeader = styled.div`
   text-align: left;
   background-color: #e5e5e5;
-  padding: 1rem 3rem;
+  padding: ${(props) => (props.edit ? "1.5rem" : "1rem 3rem")};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,10 +12,8 @@ const PostHeader = styled.div`
     font-size: 3rem;
   }
   &:hover {
-    background-color: #164bc5;
-    color: white;
+    cursor: pointer;
   }
-  cursor: pointer;
 `;
 
 export default PostHeader;
