@@ -28,7 +28,7 @@ const Post = ({ children }) => {
 
   const editPost = async () => {
     try {
-      await axios.post(`api/editPost/${post._id}`).then((data) => {
+      await axios.post(`api/edit-post/${post._id}`).then((data) => {
         setPost(data.post);
       });
     } catch (err) {

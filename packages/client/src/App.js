@@ -18,7 +18,11 @@ function App() {
     <AppContainer>
       <Router>
         <Switch>
+<<<<<<< HEAD
           <Route path="/createPost">
+=======
+          <Route path="/create-post">
+>>>>>>> dcab7fe (updated client and server paths to shish-kebab-case)
             <CreatePost />
           </Route>
         </Switch>
