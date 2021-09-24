@@ -9,5 +9,4 @@ router.use("/auth", authRoutes);
 
 router.use("/get", getRoutes);
 
-
 module.exports = router;
