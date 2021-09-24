@@ -1,13 +1,13 @@
 import { useState } from "react";
-import ButtonDiv from "./ButtonDiv";
-import Button from "./Button";
-import InputDiv from "./InputDiv";
-import Input from "./Input";
-import InputLabel from "./InputLabel";
-import TextArea from "./TextArea";
-import Checkbox from "./Checkbox";
-import Form from "./Form";
-import FormHeader from "./FormHeader";
+import ButtonDiv from "./styled/ButtonDiv";
+import Button from "./styled/Button";
+import InputDiv from "./styled/InputDiv";
+import Input from "./styled/Input";
+import InputLabel from "./styled/InputLabel";
+import TextArea from "./styled/TextArea";
+import Checkbox from "./styled/Checkbox";
+import Form from "./styled/Form";
+import FormHeader from "./styled/FormHeader";
 
 // Data looks like this (for backend)
 // console.log({
