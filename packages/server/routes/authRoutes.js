@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const { checkAdmin } = require("../middleware/auth");
 
 router
-  .get("/getSession", async (req, res) => {
+  .get("/get-session", async (req, res) => {
     res.json({ session: req.session });
   })
   .post("/login", async (req, res) => {
