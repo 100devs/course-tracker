@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import mockPost from "./mockPost";
-import CollapsibleDiv from "./CollapsibleDiv";
-import PostDiv from "./PostDiv";
-import PostHeader from "./PostHeader";
-import Button from "./Button";
-import Body from "./Body";
-import ButtonDiv from "./ButtonDiv";
+import CollapsibleDiv from "./styled/CollapsibleDiv";
+import PostDiv from "./styled/PostDiv";
+import PostHeader from "./styled/PostHeader";
+import Button from "./styled/Button";
+import Body from "./styled/Body";
+import ButtonDiv from "./styled/ButtonDiv";
 import styled from "styled-components";
 import { Eye, EyeSlash } from "phosphor-react";
 
