@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import CreatePost from "./CreatePost";
+import CreatePost from "./components/CreatePost";
 
 const AppContainer = styled.div`
   text-align: center;
   *,
   *:before,
   *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
     font-family: "Work Sans", sans-serif;
   }
 `;

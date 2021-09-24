@@ -1,4 +1,13 @@
 import { useState } from "react";
+import ButtonDiv from "./ButtonDiv";
+import Button from "./Button";
+import InputDiv from "./InputDiv";
+import Input from "./Input";
+import InputLabel from "./InputLabel";
+import TextArea from "./TextArea";
+import Checkbox from "./Checkbox";
+import Form from "./Form";
+import FormHeader from "./FormHeader";
 
 // Data looks like this (for backend)
 // console.log({
@@ -35,47 +44,53 @@ function CreatePost() {
   };
 
   return (
-    <form className="" onSubmit={handleSubmit}>
+    <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
+      <FormHeader>
+        <h2>Add a New Post</h2>
+      </FormHeader>
       {/* Title Section */}
-      <section className="">
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
+      <InputDiv>
+        <InputLabel htmlFor="title">Title</InputLabel>
+        <Input
           name="title"
           placeholder="Post Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-      </section>
+      </InputDiv>
 
       {/* Body Text Section */}
-      <section className="">
-        <label htmlFor="body">Body of Post</label>
-        <textarea
-          type="textarea"
+      <InputDiv>
+        <InputLabel htmlFor="body">Body of Post</InputLabel>
+        <TextArea
           name="body"
           placeholder="Body Info"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-      </section>
+      </InputDiv>
 
       {/* Publish and Submit Section */}
-      <section className="">
-        <label htmlFor="isDraft">Is Draft?</label>
-        <input
-          type="checkbox"
+      <InputDiv flexDirection="row" justify="center" align="center">
+        <Checkbox
           name="isDraft"
           checked={isDraft}
           value={isDraft}
           onChange={(e) => setIsDraft(e.currentTarget.checked)}
         />
-        {/* Change button element to component once avail. */}
-        <button className="btn" type="submit">
+        <span>Draft?</span>
+      </InputDiv>
+
+      {/* Change button element to component once avail. */}
+      <ButtonDiv>
+        <Button fontSize="1.5rem" size="11rem">
           Submit
-        </button>
-      </section>
-    </form>
+        </Button>
+        <Button fontSize="1.5rem" size="11rem">
+          Cancel
+        </Button>
+      </ButtonDiv>
+    </Form>
   );
 }
 
