@@ -119,3 +119,6 @@ dist
 
 # misc
 .DS_Store
+
+# yarn.lock
+yarn.lock
