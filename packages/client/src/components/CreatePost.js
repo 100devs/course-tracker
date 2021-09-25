@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 import { Redirect } from "react-router-dom";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
@@ -48,7 +48,7 @@ const CreatePost = () => {
       console.log(error);
     }
   };
-  if(admin){
+  if (admin) {
     return (
       <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
         <FormHeader>
@@ -64,7 +64,7 @@ const CreatePost = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </InputDiv>
-  
+
         {/* Body Text Section */}
         <InputDiv>
           <InputLabel htmlFor="body">Body of Post</InputLabel>
@@ -75,7 +75,7 @@ const CreatePost = () => {
             onChange={(e) => setBody(e.target.value)}
           />
         </InputDiv>
-  
+
         {/* Publish and Submit Section */}
         <InputDiv flexDirection="row" justify="center" align="center">
           <Checkbox
@@ -86,7 +86,7 @@ const CreatePost = () => {
           />
           <span>Draft?</span>
         </InputDiv>
-  
+
         {/* Change button element to component once avail. */}
         <ButtonDiv>
           <Button fontSize="1.5rem" size="11rem">
@@ -98,11 +98,8 @@ const CreatePost = () => {
         </ButtonDiv>
       </Form>
     );
-    
   } else {
-      return (
-        <Redirect to='/' />
-      )
+    return <Redirect to="/" />;
   }
 };
 export default CreatePost;

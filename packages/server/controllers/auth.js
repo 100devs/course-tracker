@@ -1,11 +1,12 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
-module.export = {
+module.exports = {
   getSession: async (req, res) => {
     res.json({ session: req.session });
   },
   login: async (req, res) => {
+    console.log(req.body);
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
