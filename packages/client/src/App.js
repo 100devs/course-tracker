@@ -17,21 +17,21 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-<AuthContextProvider>
-    <AppContainer>
-      <Router>
-        <Switch>
-          <Route path="/createPost">
-            <CreatePost />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
-      </Router>
-    </AppContainer>
-</AuthContextProvider>
-  )
+    <AuthContextProvider>
+      <AppContainer>
+        <Router>
+          <Switch>
+            <Route path="/createPost">
+              <CreatePost />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+          </Switch>
+        </Router>
+      </AppContainer>
+    </AuthContextProvider>
+  );
 }
 
 export default App;
