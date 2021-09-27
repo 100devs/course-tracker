@@ -11,14 +11,14 @@ import FormHeader from "./components/styled/FormHeader";
 import axios from "axios";
 
 const Login = () => {
-  const { admin, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
+  const [redirect, setRedirect] = useState(false);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   function updateUser(e) {
-    console.log(user);
     const { name, value } = e.target;
     setUser({
       ...user,
@@ -27,18 +27,21 @@ const Login = () => {
   }
 
   const login = async (e) => {
-    // e.preventDefault()
+    e.preventDefault();
 
     // make call to api/auth/login endpoint and send user object
-    // ex
-    // const res = await axios.post('http://localhost:5000/api/auth/login', user)
+    const res = await axios.post("http://localhost:5000/api/auth/login", user);
 
     // use data returned from the call to set global context with dispatch
-    // dispatch(res.data)
+    dispatch(res.data);
 
-    dispatch(true);
+    // if the return object from calling the login endpoint has a refresh token we redirect the user to the feed
+    if (res.data.refreshtoken) {
+      setRedirect(true);
+    }
   };
-  if (admin) {
+
+  if (redirect) {
     return <Redirect to="/" />;
   }
   return (

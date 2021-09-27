@@ -5,10 +5,12 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const apiRoutes = require("./routes/apiRoutes");
 const path = require("path");
+const cors = require("cors");
 
 // saves express function to the variable app
 const app = express();
 
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
