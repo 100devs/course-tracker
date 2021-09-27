@@ -16,7 +16,7 @@ import FormHeader from "./styled/FormHeader";
 //     isDraft:boolean
 // })
 const backend = process.env.REACT_APP_BACKEND;
-const endpoint = `${backend}/api/createPost`;
+const endpoint = `${backend}/api/create-post`;
 function CreatePost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");

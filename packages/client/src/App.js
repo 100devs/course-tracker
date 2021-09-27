@@ -18,7 +18,7 @@ function App() {
     <AppContainer>
       <Router>
         <Switch>
-          <Route path="/createPost">
+          <Route path="/create-post">
             <CreatePost />
           </Route>
         </Switch>
