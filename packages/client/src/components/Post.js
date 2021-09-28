@@ -1,16 +1,17 @@
 import { useState } from "react";
-import CollapsibleDiv from "./CollapsibleDiv";
-import PostDiv from "./PostDiv";
-import PostHeader from "./PostHeader";
-import Button from "./Button";
-import Body from "./Body";
-import ButtonDiv from "./ButtonDiv";
+import CollapsibleDiv from "./styled/CollapsibleDiv";
+import PostDiv from "./styled/PostDiv";
+import PostHeader from "./styled/PostHeader";
+import Button from "./styled/Button";
+import Body from "./styled/Body";
+import ButtonDiv from "./styled/ButtonDiv";
 import { Eye, EyeSlash } from "phosphor-react";
-import InputDiv from "./InputDiv";
-import Input from "./Input";
-import InputLabel from "./InputLabel";
-import TextArea from "./TextArea";
-import Checkbox from "./Checkbox";
+import Form from "./styled/Form";
+import InputDiv from "./styled/InputDiv";
+import Input from "./styled/Input";
+import InputLabel from "./styled/InputLabel";
+import TextArea from "./styled/TextArea";
+import Checkbox from "./styled/Checkbox";
 
 const Post = ({ title, body, isDraft, isAdmin, id }) => {
   const [hiddenState, setHiddenState] = useState(true);
@@ -54,11 +55,17 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
   const handleCollapse = () => {
     setHiddenState((prev) => !prev);
   };
+  if (isEdit) {
+    // all the stuff from create post form
+    return (
+      <PostDiv>
+        <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
+          <h2>{title}</h2>
+          {/* if PUBLISHED show eye? */}
+          <Eye aria-label="" size={48} color="green" />
+        </PostHeader>
 
-  return (
-    <PostDiv>
-      <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
-        {isEdit ? (
+        <Form height="fit-content" padding="0 3rem 1.5rem">
           <InputDiv>
             <InputLabel htmlFor="title">Title</InputLabel>
             <Input
@@ -67,63 +74,58 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
               onChange={(e) => createChangeObject(e)}
             />
           </InputDiv>
-        ) : (
-          <h2>{title}</h2>
-        )}
-        {isAdmin && !isEdit ? (
-          <>
-            {isDraft ? (
-              <EyeSlash aria-label="" size={48} color="grey" />
-            ) : (
-              <Eye aria-label="" size={48} color="green" />
-            )}
-          </>
-        ) : (
-          <></>
-        )}
-      </PostHeader>
 
-      <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
-        {isEdit ? (
-          <>
-            <InputDiv>
-              <InputLabel htmlFor="body">Body of Post</InputLabel>
-              <TextArea
-                name="body"
-                value={post.body}
-                onChange={(e) => createChangeObject(e)}
-              />
-            </InputDiv>
-            <InputDiv flexDirection="row" align="center">
-              <Checkbox
-                name="isDraft"
-                checked={post.isDraft}
-                onChange={(e) => createChangeObject(e)}
-              />
-              <span>Draft?</span>
-            </InputDiv>
-          </>
-        ) : (
-          <Body>{body}</Body>
-        )}
+          <InputDiv>
+            <InputLabel htmlFor="body">Body of Post</InputLabel>
+            <TextArea
+              name="body"
+              value={post.body}
+              onChange={(e) => createChangeObject(e)}
+            />
+          </InputDiv>
 
-        {isAdmin && (
-          <ButtonDiv justify={isEdit ? "flex-end" : "space-evenly"}>
-            {isEdit ? (
-              <Button onClick={(id) => sendChangeObj(id)}>Save</Button>
-            ) : (
-              <>
-                <Button onClick={() => setIsEdit((prevState) => !prevState)}>
-                  Edit
-                </Button>
-                <Button>Delete</Button>
-              </>
-            )}
+          <InputDiv flexDirection="row" justify="center" align="center">
+            <Checkbox
+              name="isDraft"
+              checked={post.isDraft}
+              onChange={(e) => createChangeObject(e)}
+            />
+            <span>Draft?</span>
+          </InputDiv>
+
+          <ButtonDiv>
+            <Button onClick={(id) => sendChangeObj(id)}>Save</Button>
+            {/* <Button fontSize="1.5rem" size="11rem">
+              Cancel
+            </Button> */}
           </ButtonDiv>
-        )}
-      </CollapsibleDiv>
-    </PostDiv>
-  );
+        </Form>
+      </PostDiv>
+    );
+  } else {
+    return (
+      <PostDiv>
+        <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
+          <h2>{title}</h2>
+          {/* look into logic for eye; should be isAdmin && published? */}
+          {isAdmin ? <Eye aria-label="" size={48} color="green" /> : <></>}
+        </PostHeader>
+
+        <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
+          <Body>{body}</Body>
+
+          {isAdmin && (
+            <ButtonDiv justify="space-evenly">
+              <Button onClick={() => setIsEdit((prevState) => !prevState)}>
+                Edit
+              </Button>
+              <Button>Delete</Button>
+            </ButtonDiv>
+          )}
+        </CollapsibleDiv>
+      </PostDiv>
+    );
+  }
 };
 
 export default Post;
