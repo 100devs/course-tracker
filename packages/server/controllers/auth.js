@@ -30,15 +30,12 @@ module.exports = {
         );
 
         req.session.isAdmin = user.isAdmin;
-        return res
-          .status(200)
-          .json({
-            message: "User logged in successfully",
-            userId: user._id,
-            isAdmin: user.isAdmin,
-            accesstoken: accessToken,
-            refreshtoken: refreshToken,
-          });
+        return res.status(200).json({
+          message: "User logged in successfully",
+          userId: user._id,
+          accesstoken: accessToken,
+          refreshtoken: refreshToken,
+        });
       }
     } catch (err) {
       console.log(err);

@@ -1,6 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -25,8 +26,9 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
 
-  const { admin } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
@@ -48,7 +50,19 @@ const CreatePost = () => {
       console.log(error);
     }
   };
-  if (admin) {
+
+  const getAdminStatus = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/api/get/admin-status/${user.userId}`
+    );
+    setIsAdmin(res.data.isAdmin);
+  };
+
+  useEffect(() => {
+    getAdminStatus();
+  }, []);
+
+  if (user.refreshtoken && isAdmin) {
     return (
       <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
         <FormHeader>
