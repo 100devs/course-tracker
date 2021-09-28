@@ -1,23 +1,33 @@
-import "./App.css";
+import styled from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import CreatePost from "./CreatePost";
 import Feed from "./Feed";
+import CreatePost from "./components/CreatePost";
+
+const AppContainer = styled.div`
+  text-align: center;
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    font-family: "Work Sans", sans-serif;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
       <Router>
         <Switch>
-          <Route path="/">
-            <Feed />
-          </Route>
           <Route path="/createPost">
             <CreatePost />
           </Route>
+          <Route path="/">
+            <Feed />
+          </Route>
         </Switch>
       </Router>
-    </div>
+    </AppContainer>
   );
 }
 
