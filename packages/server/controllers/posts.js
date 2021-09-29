@@ -13,7 +13,7 @@ module.exports = {
 
       res.json({ message: "Post Created!", post });
     } catch (error) {
-      console.log(error);
+      res.status(500).json({ message: error.message });
     }
   },
   editPost: async (req, res) => {

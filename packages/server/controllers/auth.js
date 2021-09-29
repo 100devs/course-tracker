@@ -63,18 +63,26 @@ module.exports = {
     }
   },
   getUser: async (req, res) => {
-    res.json(await User.findOne({ _id: req.params.id }));
+    try {
+      res.json(await User.findOne({ _id: req.params.id }));
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
   },
   updatePassword: async (req, res) => {
     const { password } = req.body;
+    try {
+      const user = await User.findByIdAndUpdate(
+        { _id: req.params.id },
+        { password: password },
+        { new: true }
+      );
 
-    const user = await User.findByIdAndUpdate(
-      { _id: req.params.id },
-      { password: password },
-      { new: true }
-    );
-    user.save();
-    console.log(user);
-    res.status(200).json({ message: "Password updated successfully" });
+      user.save();
+      console.log(user);
+      res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
   },
 };

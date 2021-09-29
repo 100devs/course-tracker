@@ -23,6 +23,7 @@ const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/createPost`;
 
 const CreatePost = () => {
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
