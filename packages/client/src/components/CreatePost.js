@@ -86,13 +86,15 @@ function CreatePost() {
           <span>Draft?</span>
         </InputDiv>
 
-        {/* Change button element to component once avail. */}
         <ButtonDiv>
           <Button fontSize="1.5rem" size="11rem">
             Submit
           </Button>
           <Button fontSize="1.5rem" size="11rem">
             Cancel
+          </Button>
+          <Button fontSize="1.5rem" size="11rem">
+            Publish
           </Button>
         </ButtonDiv>
       </Form>
