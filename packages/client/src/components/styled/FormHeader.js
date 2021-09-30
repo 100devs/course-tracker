@@ -7,7 +7,7 @@ const FormHeader = styled.div`
   justify-content: center;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   h2 {
     font-size: 2rem;
     margin: 0;

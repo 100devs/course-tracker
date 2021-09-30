@@ -17,14 +17,12 @@ import FormHeader from "./styled/FormHeader";
 // })
 
 const backend = process.env.REACT_APP_BACKEND;
-const endpoint = `${backend}/api/createPost`;
+const endpoint = `${backend}/api/post/create-post`;
 
 const CreatePost = () => {
-
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [isDraft, setIsDraft] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(true);
 
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)

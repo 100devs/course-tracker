@@ -29,7 +29,6 @@ function App() {
               restricted={true}
               exact
             />
-
             <AdminRoute component={CreatePost} path="/create-post" exact />
           </Switch>
         </Router>

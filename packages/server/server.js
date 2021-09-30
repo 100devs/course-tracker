@@ -10,7 +10,7 @@ const cors = require("cors");
 // saves express function to the variable app
 const app = express();
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

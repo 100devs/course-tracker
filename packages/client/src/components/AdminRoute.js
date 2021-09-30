@@ -3,6 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
+const backend = process.env.REACT_APP_BACKEND;
+
 const AdminRoute = ({ component: Component, ...rest }) => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState();
@@ -11,7 +13,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
 
   const getAdminStatus = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/get/admin-status/${user.userId}`
+      `${backend}api/get/admin-status/${user.userId}`
     );
     setIsAdmin(res.data.isAdmin);
     setLoading(false);

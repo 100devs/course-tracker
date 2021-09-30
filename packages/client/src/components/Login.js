@@ -10,6 +10,8 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import axios from "axios";
 
+const backend = process.env.REACT_APP_BACKEND;
+
 const Login = () => {
   const { user, dispatch } = useContext(AuthContext);
   const [userObj, setUserObj] = useState({
@@ -28,10 +30,7 @@ const Login = () => {
   const login = async (e) => {
     e.preventDefault();
     // make call to api/auth/login endpoint and send user object
-    const res = await axios.post(
-      "http://localhost:5000/api/auth/login",
-      userObj
-    );
+    const res = await axios.post(`${backend}api/auth/login`, userObj);
     // use data returned from the call to set global context with dispatch
     dispatch(res.data);
   };
@@ -50,7 +49,7 @@ const Login = () => {
             name="email"
             placeholder="Email"
             value={user.email}
-            onChange={(e) => updateUser(e)}
+            onChange={updateUser}
           />
         </InputDiv>
 
@@ -61,7 +60,7 @@ const Login = () => {
             name="password"
             placeholder="Password"
             value={user.password}
-            onChange={(e) => updateUser(e)}
+            onChange={updateUser}
           />
         </InputDiv>
 
