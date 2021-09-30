@@ -3,9 +3,7 @@ import Post from "./components/Post";
 import styled from "styled-components";
 
 const Feed = () => {
-  const FeedDiv = styled.div`
-    padding: 1.5rem;
-  `;
+  const FeedDiv = styled.div``;
   //   Import logged in user context information and use it set a state called is Admin
   let isAdmin = true;
 

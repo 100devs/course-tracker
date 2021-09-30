@@ -7,11 +7,13 @@ import Body from "./styled/Body";
 import ButtonDiv from "./styled/ButtonDiv";
 import { Eye, EyeSlash } from "phosphor-react";
 import Form from "./styled/Form";
+import FormHeader from "./styled/FormHeader";
 import InputDiv from "./styled/InputDiv";
 import Input from "./styled/Input";
 import InputLabel from "./styled/InputLabel";
 import TextArea from "./styled/TextArea";
 import Checkbox from "./styled/Checkbox";
+import Container from "./styled/Container";
 
 const Post = ({ title, body, isDraft, isAdmin, id }) => {
   const [hiddenState, setHiddenState] = useState(true);
@@ -58,14 +60,11 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
   if (isEdit) {
     // all the stuff from create post form
     return (
-      <PostDiv>
-        <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
-          <h2>{title}</h2>
-          {/* if PUBLISHED show eye? */}
-          <Eye aria-label="" size={48} color="green" />
-        </PostHeader>
-
-        <Form height="fit-content" padding="0 3rem 1.5rem">
+      <Container height="100vh">
+        <Form padding="2rem 18% 5rem">
+          <FormHeader>
+            <h2>Edit: {post.title}</h2>
+          </FormHeader>
           <InputDiv>
             <InputLabel htmlFor="title">Title</InputLabel>
             <Input
@@ -100,30 +99,32 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
             </Button> */}
           </ButtonDiv>
         </Form>
-      </PostDiv>
+      </Container>
     );
   } else {
     return (
-      <PostDiv>
-        <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
-          <h2>{title}</h2>
-          {/* look into logic for eye; should be isAdmin && published? */}
-          {isAdmin ? <Eye aria-label="" size={48} color="green" /> : <></>}
-        </PostHeader>
+      <Container padding="1.5rem 1.5rem 0 1.5rem">
+        <PostDiv>
+          <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
+            <h2>{title}</h2>
+            {/* look into logic for eye; should be isAdmin && published? */}
+            {isAdmin ? <Eye aria-label="" size={48} color="green" /> : <></>}
+          </PostHeader>
 
-        <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
-          <Body>{body}</Body>
+          <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
+            <Body>{body}</Body>
 
-          {isAdmin && (
-            <ButtonDiv justify="space-evenly">
-              <Button onClick={() => setIsEdit((prevState) => !prevState)}>
-                Edit
-              </Button>
-              <Button>Delete</Button>
-            </ButtonDiv>
-          )}
-        </CollapsibleDiv>
-      </PostDiv>
+            {isAdmin && (
+              <ButtonDiv justify="space-evenly">
+                <Button onClick={() => setIsEdit((prevState) => !prevState)}>
+                  Edit
+                </Button>
+                <Button>Delete</Button>
+              </ButtonDiv>
+            )}
+          </CollapsibleDiv>
+        </PostDiv>
+      </Container>
     );
   }
 };
