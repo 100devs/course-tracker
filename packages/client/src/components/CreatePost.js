@@ -1,7 +1,4 @@
-import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { Redirect } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -28,8 +25,6 @@ const CreatePost = () => {
   const [isDraft, setIsDraft] = useState(true);
   const [isAdmin, setIsAdmin] = useState(true);
 
-  const { user } = useContext(AuthContext);
-
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
@@ -50,70 +45,54 @@ const CreatePost = () => {
       console.log(error);
     }
   };
+  return (
+    <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
+      <FormHeader>
+        <h2>Add a New Post</h2>
+      </FormHeader>
+      {/* Title Section */}
+      <InputDiv>
+        <InputLabel htmlFor="title">Title</InputLabel>
+        <Input
+          name="title"
+          placeholder="Post Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </InputDiv>
 
-  const getAdminStatus = async () => {
-    const res = await axios.get(
-      `http://localhost:5000/api/get/admin-status/${user.userId}`
-    );
-    setIsAdmin(res.data.isAdmin);
-  };
+      {/* Body Text Section */}
+      <InputDiv>
+        <InputLabel htmlFor="body">Body of Post</InputLabel>
+        <TextArea
+          name="body"
+          placeholder="Body Info"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+      </InputDiv>
 
-  useEffect(() => {
-    getAdminStatus();
-  }, []);
+      {/* Publish and Submit Section */}
+      <InputDiv flexDirection="row" justify="center" align="center">
+        <Checkbox
+          name="isDraft"
+          checked={isDraft}
+          value={isDraft}
+          onChange={(e) => setIsDraft(e.currentTarget.checked)}
+        />
+        <span>Draft?</span>
+      </InputDiv>
 
-  if (user.refreshtoken && isAdmin) {
-    return (
-      <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
-        <FormHeader>
-          <h2>Add a New Post</h2>
-        </FormHeader>
-        {/* Title Section */}
-        <InputDiv>
-          <InputLabel htmlFor="title">Title</InputLabel>
-          <Input
-            name="title"
-            placeholder="Post Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </InputDiv>
-
-        {/* Body Text Section */}
-        <InputDiv>
-          <InputLabel htmlFor="body">Body of Post</InputLabel>
-          <TextArea
-            name="body"
-            placeholder="Body Info"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-        </InputDiv>
-
-        {/* Publish and Submit Section */}
-        <InputDiv flexDirection="row" justify="center" align="center">
-          <Checkbox
-            name="isDraft"
-            checked={isDraft}
-            value={isDraft}
-            onChange={(e) => setIsDraft(e.currentTarget.checked)}
-          />
-          <span>Draft?</span>
-        </InputDiv>
-
-        {/* Change button element to component once avail. */}
-        <ButtonDiv>
-          <Button fontSize="1.5rem" size="11rem">
-            Submit
-          </Button>
-          <Button fontSize="1.5rem" size="11rem">
-            Cancel
-          </Button>
-        </ButtonDiv>
-      </Form>
-    );
-  } else {
-    return <Redirect to="/" />;
-  }
+      {/* Change button element to component once avail. */}
+      <ButtonDiv>
+        <Button fontSize="1.5rem" size="11rem">
+          Submit
+        </Button>
+        <Button fontSize="1.5rem" size="11rem">
+          Cancel
+        </Button>
+      </ButtonDiv>
+    </Form>
+  );
 };
 export default CreatePost;

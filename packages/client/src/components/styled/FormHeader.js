@@ -5,11 +5,12 @@ const FormHeader = styled.div`
   text-align: center;
   background-color: inherit;
   justify-content: center;
-  padding: 1rem 0 1rem 0;
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
   h2 {
     font-size: 2rem;
+    margin: 0;
   }
 `;
 
