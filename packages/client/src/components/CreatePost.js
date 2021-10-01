@@ -10,12 +10,23 @@ import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 
-// Data looks like this (for backend)
-// console.log({
-//     title:'string',
-//     body:'string',
-//     isDraft:boolean
-// })
+// Post Model looks like:
+// title: {
+//   type: String,
+//   required: true,
+// },
+// body: {
+//   type: String,
+//   required: true,
+// },
+// isDraft: {
+//   type: Boolean,
+//   required: true,
+// },
+// publishedAt: {
+//   type: Date,
+// },
+
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/create-post`;
 function CreatePost() {
@@ -86,16 +97,14 @@ function CreatePost() {
           <span>Draft?</span>
         </InputDiv>
 
-        <ButtonDiv>
-          <Button fontSize="1.5rem" size="11rem">
-            Submit
-          </Button>
-          <Button fontSize="1.5rem" size="11rem">
-            Cancel
-          </Button>
-          <Button fontSize="1.5rem" size="11rem">
-            Publish
-          </Button>
+        <ButtonDiv justify="space-between">
+          <div>
+            <Button margin="0 .75rem 0 0">Save Draft</Button>
+            <Button background="#7D7D7D" hoverBG="#999999">
+              Cancel
+            </Button>
+          </div>
+          <Button>Publish</Button>
         </ButtonDiv>
       </Form>
     </Container>
