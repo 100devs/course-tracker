@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
 import Input from "./styled/Input";
 import InputLabel from "./styled/InputLabel";
 import TextArea from "./styled/TextArea";
-import Checkbox from "./styled/Checkbox";
 import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
+import TextLink from "./styled/TextLink";
 
 // Post Model looks like:
 // title: {
@@ -36,34 +37,41 @@ function CreatePost() {
     isDraft: true,
   });
 
+  const [redirect, setRedirect] = useState(false);
+
   const createPostObject = (e) => {
-    const { name, value, type, checked } = e.target;
-    type === "checkbox"
-      ? setPost({ ...post, [name]: checked })
-      : setPost({ ...post, [name]: value });
+    const { name, value } = e.target;
+    setPost({ ...post, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
+
+    setPost({ ...post, isDraft: e.target.value });
+    console.log(post);
+
     // Question: Do we need form validation here for Leon?
-    try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ post }),
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   const res = await fetch(endpoint, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     body: JSON.stringify({ post }),
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
   return (
-    <Container height="100vh">
-      <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
+    <Container minHeight="100vh">
+      <Form onSubmit={handleSubmit}>
         <FormHeader>
-          <h2>Add a New Post</h2>
+          <h2>Create Post</h2>
         </FormHeader>
         {/* Title Section */}
         <InputDiv>
@@ -88,23 +96,19 @@ function CreatePost() {
         </InputDiv>
 
         {/* Publish and Submit Section */}
-        <InputDiv flexDirection="row" justify="center" align="center">
-          <Checkbox
-            name="isDraft"
-            checked={post.isDraft}
-            onChange={(e) => createPostObject(e)}
-          />
-          <span>Draft?</span>
-        </InputDiv>
 
-        <ButtonDiv justify="space-between">
+        <ButtonDiv>
+          <TextLink onClick={() => setRedirect(true)}>
+            <span>Cancel</span>
+          </TextLink>
           <div>
-            <Button margin="0 .75rem 0 0">Save Draft</Button>
-            <Button background="#7D7D7D" hoverBG="#999999">
-              Cancel
+            <Button value={true} onClick={handleSubmit}>
+              Save Draft
+            </Button>
+            <Button value={false} onClick={handleSubmit} margin="0 0 0 1.5rem">
+              Publish
             </Button>
           </div>
-          <Button>Publish</Button>
         </ButtonDiv>
       </Form>
     </Container>
