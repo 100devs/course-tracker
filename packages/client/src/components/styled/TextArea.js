@@ -7,6 +7,7 @@ const TextArea = styled.textarea.attrs((props) => ({
   border: ${(props) => props.border};
   border-radius: 1px;
   padding: 1rem;
+  font-size: 1.2rem;
 `;
 
 export default TextArea;

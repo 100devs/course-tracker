@@ -5,14 +5,17 @@ import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
 import Input from "./styled/Input";
 import InputLabel from "./styled/InputLabel";
-import Form from "./styled/Form";
+import AuthForm from "./styled/AuthForm";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
+import TextLink from "./styled/TextLink";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const backend = process.env.REACT_APP_BACKEND;
 
 const Login = () => {
+  const [cancel, setCancel] = useState(false);
   const { user, dispatch } = useContext(AuthContext);
   const [userObj, setUserObj] = useState({
     email: "",
@@ -35,11 +38,15 @@ const Login = () => {
     dispatch(res.data);
   };
 
+  if (cancel) {
+    return <Redirect to="/" />;
+  }
+
   return (
-    <Container height="100vh" padding="1.5rem 25%">
-      <Form padding="3rem" height="auto">
+    <Container height="100vh">
+      <AuthForm height="auto">
         <FormHeader>
-          <h2>Course Tracker</h2>
+          <h2>Task Lemon</h2>
         </FormHeader>
 
         <InputDiv>
@@ -65,11 +72,14 @@ const Login = () => {
         </InputDiv>
 
         <ButtonDiv>
+          <TextLink onClick={() => setCancel(true)}>
+            <span>Cancel</span>
+          </TextLink>
           <Button fontSize="1.5rem" size="11rem" onClick={login}>
             Login
           </Button>
         </ButtonDiv>
-      </Form>
+      </AuthForm>
     </Container>
   );
 };
