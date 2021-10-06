@@ -2,7 +2,6 @@ import styled from "styled-components";
 //TODO: fine-tune transition behavior (line 6)
 const CollapsibleDiv = styled.div`
   max-height: ${(props) => (props.hidden ? "0" : "7500px")};
-  padding: ${(props) => (props.hidden ? "0" : "1.5rem")};
   opacity: ${(props) => (props.hidden ? "0" : "1")};
   transition: ${(props) =>
     props.hidden

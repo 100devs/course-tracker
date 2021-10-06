@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import Login from "./components/Login";
+import Feed from "./Feed";
 import CreatePost from "./components/CreatePost";
 import AdminRoute from "./components/AdminRoute";
 import PublicRoute from "./components/PublicRoute";

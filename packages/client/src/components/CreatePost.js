@@ -1,97 +1,101 @@
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
 import Input from "./styled/Input";
 import InputLabel from "./styled/InputLabel";
 import TextArea from "./styled/TextArea";
-import Checkbox from "./styled/Checkbox";
 import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
-
-// Data looks like this (for backend)
-// console.log({
-//     title:'string',
-//     body:'string',
-//     isDraft:boolean
-// })
+import Container from "./styled/Container";
+import TextLink from "./styled/TextLink";
 
 const backend = process.env.REACT_APP_BACKEND;
-const endpoint = `${backend}/api/post/create-post`;
+const endpoint = `${backend}/api/create-post`;
+function CreatePost() {
+  const [post, setPost] = useState({
+    title: "",
+    body: "",
+    isDraft: true,
+  });
 
-const CreatePost = () => {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [isDraft, setIsDraft] = useState(true);
+  const [redirect, setRedirect] = useState(false);
+
+  const createPostObject = (e) => {
+    const { name, value } = e.target;
+    setPost({ ...post, [name]: value });
+  };
+
 
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
-    // Question: Do we need form validation here for Leon?
+
+    setPost({ ...post, isDraft: e.target.value });
+    
     try {
       const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({
-          title,
-          body,
-          isDraft,
-        }),
+        body: JSON.stringify({ post }),
       });
     } catch (error) {
       console.log(error);
     }
   };
+
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
+
   return (
-    <Form padding="2rem 18% 5rem" onSubmit={handleSubmit}>
-      <FormHeader>
-        <h2>Add a New Post</h2>
-      </FormHeader>
-      {/* Title Section */}
-      <InputDiv>
-        <InputLabel htmlFor="title">Title</InputLabel>
-        <Input
-          name="title"
-          placeholder="Post Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </InputDiv>
+    <Container minHeight="100vh">
+      <Form onSubmit={handleSubmit}>
+        <FormHeader>
+          <h2>Create Post</h2>
+        </FormHeader>
+        {/* Title Section */}
+        <InputDiv>
+          <InputLabel htmlFor="title">Title</InputLabel>
+          <Input
+            name="title"
+            placeholder="Post Title"
+            value={post.title}
+            onChange={(e) => createPostObject(e)}
+          />
+        </InputDiv>
 
-      {/* Body Text Section */}
-      <InputDiv>
-        <InputLabel htmlFor="body">Body of Post</InputLabel>
-        <TextArea
-          name="body"
-          placeholder="Body Info"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </InputDiv>
+        {/* Body Text Section */}
+        <InputDiv>
+          <InputLabel htmlFor="body">Body of Post</InputLabel>
+          <TextArea
+            name="body"
+            placeholder="Body Info"
+            value={post.body}
+            onChange={(e) => createPostObject(e)}
+          />
+        </InputDiv>
 
-      {/* Publish and Submit Section */}
-      <InputDiv flexDirection="row" justify="center" align="center">
-        <Checkbox
-          name="isDraft"
-          checked={isDraft}
-          value={isDraft}
-          onChange={(e) => setIsDraft(e.currentTarget.checked)}
-        />
-        <span>Draft?</span>
-      </InputDiv>
+        {/* Publish and Submit Section */}
 
-      {/* Change button element to component once avail. */}
-      <ButtonDiv>
-        <Button fontSize="1.5rem" size="11rem">
-          Submit
-        </Button>
-        <Button fontSize="1.5rem" size="11rem">
-          Cancel
-        </Button>
-      </ButtonDiv>
-    </Form>
+        <ButtonDiv>
+          <TextLink onClick={() => setRedirect(true)}>
+            <span>Cancel</span>
+          </TextLink>
+          <div className="subButtonDiv">
+            <Button value={true} onClick={handleSubmit}>
+              Save Draft
+            </Button>
+            <Button value={false} onClick={handleSubmit} margin="0 0 0 1.5rem">
+              Publish
+            </Button>
+          </div>
+        </ButtonDiv>
+      </Form>
+    </Container>
   );
 };
 export default CreatePost;

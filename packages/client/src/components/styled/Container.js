@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const Container = styled.div.attrs((props) => ({
   padding: props.padding || "1.5rem",
-  height: props.height || "auto",
+  minHeight: props.minHeight || "auto",
 }))`
-  height: ${(props) => props.height};
+  min-height: ${(props) => props.minHeight};
   padding: ${(props) => props.padding};
   display: flex;
   flex-direction: column;
