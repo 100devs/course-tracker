@@ -3,7 +3,6 @@ import styled from "styled-components";
 const CollapsibleDiv = styled.div`
   max-height: ${(props) => (props.hidden ? "0" : "7500px")};
   opacity: ${(props) => (props.hidden ? "0" : "1")};
-  background-color: ${(props) => (props.edit ? "#e5e5e5" : "none")};
   transition: ${(props) =>
     props.hidden
       ? "opacity 150ms ease-in-out 150ms"
