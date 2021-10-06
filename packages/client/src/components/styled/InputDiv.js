@@ -11,6 +11,7 @@ const InputDiv = styled.div.attrs((props) => ({
   flex-direction: ${(props) => props.flexDirection};
   align-items: ${(props) => props.align};
   justify-content: ${(props) => props.justify};
+  margin-bottom: 1.5rem;
 `;
 
 export default InputDiv;
