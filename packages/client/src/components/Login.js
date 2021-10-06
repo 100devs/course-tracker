@@ -16,7 +16,7 @@ const backend = process.env.REACT_APP_BACKEND;
 
 const Login = () => {
   const [cancel, setCancel] = useState(false);
-  const { user, dispatch } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
   const [userObj, setUserObj] = useState({
     email: "",
     password: "",
@@ -30,12 +30,9 @@ const Login = () => {
     });
   }
 
-  const login = async (e) => {
+  const loginFunc = async (e) => {
     e.preventDefault();
-    // make call to api/auth/login endpoint and send user object
-    const res = await axios.post(`${backend}api/auth/login`, userObj);
-    // use data returned from the call to set global context with dispatch
-    dispatch(res.data);
+    login(userObj);
   };
 
   if (cancel) {
@@ -75,7 +72,7 @@ const Login = () => {
           <TextLink onClick={() => setCancel(true)}>
             <span>Cancel</span>
           </TextLink>
-          <Button fontSize="1.5rem" size="11rem" onClick={login}>
+          <Button fontSize="1.5rem" size="11rem" onClick={loginFunc}>
             Login
           </Button>
         </ButtonDiv>

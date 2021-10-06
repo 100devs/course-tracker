@@ -11,15 +11,15 @@ const AdminRoute = ({ component: Component, ...rest }) => {
 
   const { user } = useContext(AuthContext);
 
-  const getAdminStatus = async () => {
-    const res = await axios.get(
-      `${backend}api/get/admin-status/${user.userId}`
-    );
-    setIsAdmin(res.data.isAdmin);
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const getAdminStatus = async () => {
+      const res = await axios.get(
+        `${backend}api/get/admin-status/${user.userId}`
+      );
+      setIsAdmin(res.data.isAdmin);
+      setLoading(false);
+    };
+
     if (user) {
       getAdminStatus();
     } else {
@@ -33,7 +33,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
   }
   return (
     // {/* // Show the component only when the user is an admin */}
-    // {/* // Otherwise, redirect the user to /signin page */}
+    // {/* // Otherwise, redirect the user to the "/" path */}
     <Route
       {...rest}
       render={(props) =>

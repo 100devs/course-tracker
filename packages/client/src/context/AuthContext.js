@@ -1,4 +1,7 @@
 import { createContext, useState, useCallback } from "react";
+import axios from "axios";
+
+const backend = process.env.REACT_APP_BACKEND;
 
 //creating the auth context object
 export const AuthContext = createContext();
@@ -10,15 +13,26 @@ export const AuthContextProvider = ({ children }) => {
     return JSON.parse(localStorage.getItem("Token Object")) || false;
   });
 
-  const dispatch = useCallback((val) => {
-    // send token to local storage
-    // gives you a function that allows you to assign token to user variable ... (creates _dispatch)
-    _dispatch(val);
-    localStorage.setItem("Token Object", JSON.stringify(val));
+  const login = useCallback(async ({ email, password }) => {
+    const result = await axios.post(`${backend}api/auth/login`, {
+      email,
+      password,
+    });
+    _dispatch(result.data);
+    localStorage.setItem("Token Object", JSON.stringify(result.data));
+  }, []);
+
+  const logout = useCallback(async ({ email, password }) => {
+    const result = await axios.post(`${backend}api/auth/logout`, {
+      email,
+      password,
+    });
+    _dispatch({});
+    localStorage.delteItem("Token Object");
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, dispatch }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -5,12 +5,14 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const apiRoutes = require("./routes/apiRoutes");
 const path = require("path");
-const cors = require("cors");
 
 // saves express function to the variable app
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000" }));
+if (process.env.NODE_ENV !== "production") {
+  const cors = require("cors");
+  app.use(cors({ origin: "http://localhost:3000" }));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
