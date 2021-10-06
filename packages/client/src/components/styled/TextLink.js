@@ -14,6 +14,7 @@ const TextLink = styled.div.attrs((props) => ({
   padding: ${(props) => props.padding};
   span {
     cursor: pointer;
+    font-size: 1.2rem;
     &:hover {
       text-decoration: underline;
     }

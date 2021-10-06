@@ -101,7 +101,7 @@ function CreatePost() {
           <TextLink onClick={() => setRedirect(true)}>
             <span>Cancel</span>
           </TextLink>
-          <div>
+          <div className="subButtonDiv">
             <Button value={true} onClick={handleSubmit}>
               Save Draft
             </Button>

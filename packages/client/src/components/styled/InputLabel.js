@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const InputLabel = styled.label.attrs((props) => ({
-  fontSize: props.fontSize || "smaller",
+  fontSize: props.fontSize || "1rem",
 }))`
   font-size: ${(props) => props.fontSize};
   font-weight: lighter;

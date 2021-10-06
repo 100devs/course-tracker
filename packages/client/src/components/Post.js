@@ -95,7 +95,7 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
             <TextLink onClick={() => setIsEdit((prevState) => !prevState)}>
               <span>Cancel</span>
             </TextLink>
-            <div>
+            <div className="subButtonDiv">
               <Button value={true} onClick={(id) => sendChangeObj(id)}>
                 Save Draft
               </Button>
@@ -130,10 +130,13 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
 
             {isAdmin && (
               <ButtonDiv justify="flex-end">
-                <Button onClick={() => setIsEdit((prevState) => !prevState)}>
+                <Button>Delete</Button>
+                <Button
+                  onClick={() => setIsEdit((prevState) => !prevState)}
+                  margin="0 0 0 1.5rem"
+                >
                   Edit
                 </Button>
-                <Button margin="0 0 0 1.5rem">Delete</Button>
               </ButtonDiv>
             )}
           </CollapsibleDiv>

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Button = styled.button.attrs((props) => ({
-  fontSize: props.fontSize || "1.875rem",
-  size: props.size || "12rem",
+  fontSize: props.fontSize || "1.2rem",
+  size: props.size || "8rem",
   background: props.background || "black",
   hoverBG: props.hoverBG || "#3D3D3D",
   margin: props.margin || "0",
@@ -17,6 +17,10 @@ const Button = styled.button.attrs((props) => ({
   &:hover {
     background-color: ${(props) => props.hoverBG};
     cursor: pointer;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    margin: 0 0 1.5rem 0;
   }
 `;
 

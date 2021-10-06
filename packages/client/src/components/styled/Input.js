@@ -8,6 +8,7 @@ const Input = styled.input.attrs((props) => ({
   border: ${(props) => props.border};
   border-radius: 1px;
   padding: ${(props) => props.size};
+  font-size: 1.2rem;
 `;
 
 export default Input;

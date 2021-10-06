@@ -11,5 +11,8 @@ const Form = styled.form.attrs((props) => ({
   flex-flow: column nowrap;
   justify-content: center;
   align-content: center;
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+  }
 `;
 export default Form;
