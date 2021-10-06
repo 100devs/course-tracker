@@ -10,8 +10,7 @@ const Button = styled.button.attrs((props) => ({
   width: ${(props) => props.size};
   padding: 1rem 0;
   &:hover {
-    background-color: #e5e5e5;
-    color: black;
+    cursor: pointer;
   }
   font-size: ${(props) => props.fontSize};
 `;

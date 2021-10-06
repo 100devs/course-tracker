@@ -11,6 +11,9 @@ const PostHeader = styled.div`
   h2 {
     font-size: 3rem;
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default PostHeader;

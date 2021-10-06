@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Feed from "./Feed";
 import CreatePost from "./components/CreatePost";
 
 const AppContainer = styled.div`
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route path="/create-post">
             <CreatePost />
+          </Route>
+          <Route path="/">
+            <Feed />
           </Route>
         </Switch>
       </Router>
