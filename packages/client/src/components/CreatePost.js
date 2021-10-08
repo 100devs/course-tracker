@@ -9,7 +9,7 @@ import TextArea from "./styled/TextArea";
 import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
-import TextLink from "./styled/TextLink";
+import TextLink from "./TextLink";
 
 // Post Model looks like:
 // title: {
@@ -98,9 +98,7 @@ function CreatePost() {
         {/* Publish and Submit Section */}
 
         <ButtonDiv>
-          <TextLink onClick={() => setRedirect(true)}>
-            <span>Cancel</span>
-          </TextLink>
+          <TextLink onClick={() => setRedirect(true)} text="Cancel" link="/" />
           <div className="subButtonDiv">
             <Button value={true} onClick={handleSubmit}>
               Save Draft

@@ -13,7 +13,7 @@ import Input from "./styled/Input";
 import InputLabel from "./styled/InputLabel";
 import TextArea from "./styled/TextArea";
 import Container from "./styled/Container";
-import TextLink from "./styled/TextLink";
+import TextLink from "./TextLink";
 
 const Post = ({ title, body, isDraft, isAdmin, id }) => {
   const [hiddenState, setHiddenState] = useState(true);
@@ -92,9 +92,12 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
 
           {/* Publish and Submit Section */}
           <ButtonDiv>
-            <TextLink onClick={() => setIsEdit((prevState) => !prevState)}>
-              <span>Cancel</span>
-            </TextLink>
+            <TextLink
+              onClick={() => setIsEdit((prevState) => !prevState)}
+              text="Cancel"
+              link="/"
+            />
+
             <div className="subButtonDiv">
               <Button value={true} onClick={(id) => sendChangeObj(id)}>
                 Save Draft
