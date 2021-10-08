@@ -1,5 +1,9 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const {
+  createAccessToken,
+  createRefreshToken,
+} = require("../middleware/tokens");
 
 module.exports = {
   getSession: async (req, res) => {
@@ -16,8 +20,22 @@ module.exports = {
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (passwordMatch) {
+        const accessToken = createAccessToken(user._id);
+
+        const refreshToken = createRefreshToken(user._id);
+
+        await User.findOneAndUpdate(
+          { email: email },
+          { refreshtoken: refreshToken }
+        );
+
         req.session.isAdmin = user.isAdmin;
-        return res.status(200).json({ message: "User logged in successfully" });
+        return res.status(200).json({
+          message: "User logged in successfully",
+          userId: user._id,
+          accesstoken: accessToken,
+          refreshtoken: refreshToken,
+        });
       }
     } catch (err) {
       console.log(err);

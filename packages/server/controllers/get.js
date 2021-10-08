@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 module.exports = {
   allPosts: async (req, res) => {
@@ -19,6 +20,15 @@ module.exports = {
       res.status(401).json({ message: "Permission denied" });
     } else {
       res.json({ post });
+    }
+  },
+  getAdminStatus: async (req, res) => {
+    try {
+      const user = await User.findById({ _id: req.params.id });
+      const isAdmin = user.isAdmin;
+      res.json({ isAdmin });
+    } catch (err) {
+      console.log(err);
     }
   },
 };

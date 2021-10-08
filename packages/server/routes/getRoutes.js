@@ -7,5 +7,6 @@ const { checkAdmin } = require("../middleware/auth");
 router.get("/all-posts", checkAdmin, getController.allPosts);
 router.get("/published", getController.published);
 router.get("/post/:id", getController.postById);
+router.get("/admin-status/:id", getController.getAdminStatus);
 
 module.exports = router;
