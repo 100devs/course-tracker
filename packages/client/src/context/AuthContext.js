@@ -22,13 +22,9 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("Token Object", JSON.stringify(result.data));
   }, []);
 
-  const logout = useCallback(async ({ email, password }) => {
-    const result = await axios.post(`${backend}api/auth/logout`, {
-      email,
-      password,
-    });
+  const logout = useCallback(() => {
     _dispatch({});
-    localStorage.delteItem("Token Object");
+    localStorage.deleteItem("Token Object");
   }, []);
 
   return (
