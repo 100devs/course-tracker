@@ -29,7 +29,7 @@ jobs:
     - name: Build client package
       run: CI='' yarn build --if-present
     - name: Start server package
-      run: yarn dev
+      run: yarn start
     # - name: Run tests
     #   run: yarn test
     
