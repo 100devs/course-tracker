@@ -25,9 +25,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - name: Install dependencies
-      run: yarn install
+      run: yarn install --frozen-lockfile
     - name: Build client package
-      CI='' run: yarn build
+      run: yarn build --if-present
     - name: Start server package
       run: yarn dev
     # - name: Run tests
