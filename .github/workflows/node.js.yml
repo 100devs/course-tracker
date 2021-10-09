@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build client package
-      run: yarn build --if-present
+      run: CI='' yarn build --if-present
     - name: Start server package
       run: yarn dev
     # - name: Run tests
