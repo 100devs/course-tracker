@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: yarn install
     - name: Build client package
-      run: yarn build
+      CI='' run: yarn build
     - name: Start server package
       run: yarn dev
     # - name: Run tests
