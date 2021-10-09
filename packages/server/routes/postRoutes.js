@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const postsController = require("../controllers/posts");
+const { checkAdmin } = require("../middleware/auth");
 
-router.post("/createPost", postsController.createPost);
-router.put("/editPost/:id", postsController.editPost);
+// URL paths should be in shish-kebab-case
+router.post("/create-post", checkAdmin, postsController.createPost);
+router.put("/edit-post/:id", checkAdmin, postsController.editPost);
 
 module.exports = router;

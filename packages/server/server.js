@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -7,6 +9,10 @@ const path = require("path");
 // saves express function to the variable app
 const app = express();
 
+if (process.env.NODE_ENV !== "production") {
+  const cors = require("cors");
+  app.use(cors({ origin: "http://localhost:3000" }));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

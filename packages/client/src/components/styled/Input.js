@@ -1,0 +1,14 @@
+import styled from "styled-components";
+const Input = styled.input.attrs((props) => ({
+  type: props.type || "text",
+  size: props.size || "1rem",
+  border: props.border || "none",
+}))`
+  width: 100%;
+  border: ${(props) => props.border};
+  border-radius: 1px;
+  padding: ${(props) => props.size};
+  font-size: 1.2rem;
+`;
+
+export default Input;
