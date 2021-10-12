@@ -11,23 +11,6 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 
-// Post Model looks like:
-// title: {
-//   type: String,
-//   required: true,
-// },
-// body: {
-//   type: String,
-//   required: true,
-// },
-// isDraft: {
-//   type: Boolean,
-//   required: true,
-// },
-// publishedAt: {
-//   type: Date,
-// },
-
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/create-post`;
 function CreatePost() {
@@ -44,29 +27,30 @@ function CreatePost() {
     setPost({ ...post, [name]: value });
   };
 
+
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
 
     setPost({ ...post, isDraft: e.target.value });
-    console.log(post);
-
-    // Question: Do we need form validation here for Leon?
-    // try {
-    //   const res = await fetch(endpoint, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //     body: JSON.stringify({ post }),
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ post }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   if (redirect) {
     return <Redirect to="/" />;
   }
+
   return (
     <Container minHeight="100vh">
       <Form onSubmit={handleSubmit}>
@@ -111,6 +95,5 @@ function CreatePost() {
       </Form>
     </Container>
   );
-}
-
+};
 export default CreatePost;
