@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { MinusCircle, PlusCircle, IconContext } from "phosphor-react";
 import NavbarData from "./NavbarData";
@@ -7,9 +7,9 @@ import NavbarData from "./NavbarData";
 const NavStyle = styled.div`
   text-align: left;
   background-color: black;
-  width: 35vw;
+  width: 10vw;
   padding: 2rem;
-  color: #666;
+  color: #ccc;
 `;
 
 const ListItem = styled.li`
@@ -17,11 +17,6 @@ const ListItem = styled.li`
   list-style: none;
   color: #cccccc;
 `;
-
-// const  = styled.a`
-//    color: #cccccc;
-
-// `;
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -31,24 +26,24 @@ function Navbar() {
   return (
     <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
       <NavStyle>
-        <div className="navbar">
-          <Link to="#" className="show-nav">
-            <PlusCircle size={48} color="#cccccc" onClick={showSidebar} />
-          </Link>
+        <div className="navbar" style={{ backgroundColor: "white" }}>
+          <NavLink to="#" className="show-nav">
+            <PlusCircle size={48} color="black" onClick={showSidebar} />
+          </NavLink>
         </div>
         <nav className={sidebar ? "nav-menu on" : "nav-menu"}>
           <ul className="nav-menu-options" onClick={showSidebar}>
             <ListItem className="nav-toggle">
-              <Link>
+              <NavLink to="#">
                 <MinusCircle className="show-nav" size={48} color="#cccccc" />
-              </Link>
+              </NavLink>
             </ListItem>
             {NavbarData.map((item, index) => {
               return (
                 <ListItem key={index} className={item.cName}>
-                  <Link to={item.path}>
+                  <NavLink to={item.path}>
                     {item.title} {item.icon}
-                  </Link>
+                  </NavLink>
                 </ListItem>
               );
             })}
