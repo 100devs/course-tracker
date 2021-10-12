@@ -8,9 +8,8 @@ import { useState } from "react";
 // add admin check functionality in a useEffect
 // Create logout function that uses the logout from AuthContext to delete tokens and clear the object held in user
 
-const Footer = () => {
+const Footer = (props) => {
   // only here for testing visual logic
-  const [isAdmin, setIsAdmin] = useState(true);
 
   const FooterDiv = styled.footer`
     background-color: #e5e5e5;
@@ -79,18 +78,14 @@ const Footer = () => {
 
   return (
     <FooterDiv>
-      {isAdmin && (
+      {props.isAdmin && (
         <div className="linkDiv flex">
           <TextLink
             text="Create a post"
             link="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" onClick={() => setIsAdmin(false)} link="/" />
-
-          {/* <TextLinkComponent onClick={logoutFunc}>
-                        <span>Log out</span>
-                    </TextLinkComponent> */}
+          <TextLink text="Log out" link="/" />
         </div>
       )}
 
