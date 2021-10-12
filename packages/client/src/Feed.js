@@ -86,7 +86,7 @@ const Feed = () => {
           id={4}
         />
       </FeedContainer>
-      <Footer />
+      <Footer isAdmin={isAdmin} />
     </FeedDiv>
   );
 };

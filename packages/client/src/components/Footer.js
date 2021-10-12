@@ -1,19 +1,18 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { DiscordLogo, TwitchLogo, TwitterLogo } from "phosphor-react";
 import TextLink from "./TextLink";
-import { useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-// once ticket-23-auth is merged into main:
-// import user and logout from AuthContext
-// add admin check functionality in a useEffect
-// Create logout function that uses the logout from AuthContext to delete tokens and clear the object held in user
+// create post and logout links will be conditionally rendered once isAdmin is being passed in a prop from feed ... being taken care of in task-84-feed-admin-check
 
 const Footer = (props) => {
-  // only here for testing visual logic
+  const { logout } = useContext(AuthContext);
 
   const FooterDiv = styled.footer`
     background-color: #e5e5e5;
     padding: 4.5rem 1.5rem 1.5rem;
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     .flex {
@@ -85,7 +84,7 @@ const Footer = (props) => {
             link="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" link="/" />
+          <TextLink text="Log out" link="/" onClick={logout} />
         </div>
       )}
 
@@ -125,90 +124,3 @@ const Footer = (props) => {
 };
 
 export default Footer;
-
-// const FooterDiv = styled.footer`
-//     background-color: #e5e5e5;
-//     padding: 4.5rem;
-//     display: grid;
-//     grid-template-columns: 1fr 1fr 1fr;
-//     .socialsDiv, .iconDiv, .copyright, .subDiv {
-//         display: flex;
-//     }
-//     .socialsDiv span {
-//         margin-right: 1rem;
-//     }
-//     .copyright, .socialsDiv {
-//         align-items: flex-end;
-//     }
-//     .copyright{
-//         justify-content: flex-end;
-//     }
-//     .iconDiv {
-//         justify-content: space-evenly;
-//     }
-//     span{
-//         font-size: 1rem;
-//     }
-//     .subDiv{
-//         width:100%;
-//         justify-content: space-between;
-//     }
-//     @media (max-width: 900px){
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: flex-start;
-//         .iconDiv, .copyright{
-//             margin-top: 1.5rem;
-//         }
-//         .iconDiv{
-//             width: 90%;
-//             justify-content: flex-start;
-//             margin: 0 0 1.5rem 0;
-//         }
-//         .socialsDiv{
-//             flex-direction: column;
-//             justify-content: space-between;
-//             align-items: flex-start;
-//         }
-//         .socialsDiv span {
-//             margin: 0 0 1.5rem;
-//         }
-//     }
-//     @media (max-width: 550px){
-//         .iconDiv{
-//             width: 100%;
-//         }
-//     };
-//     @media (max-width: 500px){
-//         padding: 2.5rem;
-//         .iconDiv{
-//            justify-content: space-between;
-//         }
-//     };
-//     `
-//     const IconAnchor = styled.a`
-//         background: #fff;
-//         border-radius: 50%;
-//         width: 5rem;
-//         height: 5rem;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         color: black;
-//         @media (max-width: 900px){
-//             margin-right: 1.5rem;
-//         };
-//         @media (max-width: 600px){
-//             svg{
-//                 width: 2rem;
-//                 height: 2rem;
-//             }
-//             width: 3.5rem;
-//             height: 3.5rem;
-//         };
-//         @media (max-width: 500px){
-//             margin-right: 0;
-//         };
-//     }
-//     `

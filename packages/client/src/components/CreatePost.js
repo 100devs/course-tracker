@@ -10,6 +10,7 @@ import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
+import Footer from "./Footer";
 
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/create-post`;
@@ -27,13 +28,12 @@ function CreatePost() {
     setPost({ ...post, [name]: value });
   };
 
-
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
 
     setPost({ ...post, isDraft: e.target.value });
-    
+
     try {
       const res = await fetch(endpoint, {
         method: "POST",
@@ -52,48 +52,59 @@ function CreatePost() {
   }
 
   return (
-    <Container minHeight="100vh">
-      <Form onSubmit={handleSubmit}>
-        <FormHeader>
-          <h2>Create Post</h2>
-        </FormHeader>
-        {/* Title Section */}
-        <InputDiv>
-          <InputLabel htmlFor="title">Title</InputLabel>
-          <Input
-            name="title"
-            placeholder="Post Title"
-            value={post.title}
-            onChange={(e) => createPostObject(e)}
-          />
-        </InputDiv>
+    <>
+      <Container minHeight="100vh">
+        <Form onSubmit={handleSubmit}>
+          <FormHeader>
+            <h2>Create Post</h2>
+          </FormHeader>
+          {/* Title Section */}
+          <InputDiv>
+            <InputLabel htmlFor="title">Title</InputLabel>
+            <Input
+              name="title"
+              placeholder="Post Title"
+              value={post.title}
+              onChange={(e) => createPostObject(e)}
+            />
+          </InputDiv>
 
-        {/* Body Text Section */}
-        <InputDiv>
-          <InputLabel htmlFor="body">Body of Post</InputLabel>
-          <TextArea
-            name="body"
-            placeholder="Body Info"
-            value={post.body}
-            onChange={(e) => createPostObject(e)}
-          />
-        </InputDiv>
+          {/* Body Text Section */}
+          <InputDiv>
+            <InputLabel htmlFor="body">Body of Post</InputLabel>
+            <TextArea
+              name="body"
+              placeholder="Body Info"
+              value={post.body}
+              onChange={(e) => createPostObject(e)}
+            />
+          </InputDiv>
 
-        {/* Publish and Submit Section */}
+          {/* Publish and Submit Section */}
 
-        <ButtonDiv>
-          <TextLink onClick={() => setRedirect(true)} text="Cancel" link="/" />
-          <div className="subButtonDiv">
-            <Button value={true} onClick={handleSubmit}>
-              Save Draft
-            </Button>
-            <Button value={false} onClick={handleSubmit} margin="0 0 0 1.5rem">
-              Publish
-            </Button>
-          </div>
-        </ButtonDiv>
-      </Form>
-    </Container>
+          <ButtonDiv>
+            <TextLink
+              onClick={() => setRedirect(true)}
+              text="Cancel"
+              link="/"
+            />
+            <div className="subButtonDiv">
+              <Button value={true} onClick={handleSubmit}>
+                Save Draft
+              </Button>
+              <Button
+                value={false}
+                onClick={handleSubmit}
+                margin="0 0 0 1.5rem"
+              >
+                Publish
+              </Button>
+            </div>
+          </ButtonDiv>
+        </Form>
+      </Container>
+      <Footer isAdmin={true} />
+    </>
   );
-};
+}
 export default CreatePost;
