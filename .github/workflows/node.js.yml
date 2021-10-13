@@ -8,7 +8,7 @@ on: [push]
 #     branches: [ $default-branch ]
 
 jobs:
-  build:
+  CI:
 
     runs-on: ubuntu-latest
 
@@ -30,6 +30,10 @@ jobs:
       run: CI='' yarn build --if-present
     - name: Start server package
       run: yarn start
+    - name: Format and Lint-Fix
+      run: yarn lint-staged
+    - name: Lint
+      run: yarn lint
     # - name: Run tests
     #   run: yarn test
     

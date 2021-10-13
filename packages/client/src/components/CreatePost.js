@@ -27,13 +27,12 @@ function CreatePost() {
     setPost({ ...post, [name]: value });
   };
 
-
   const handleSubmit = async (e) => {
     // we might want to go to the next page to see the published post (have to verify this)
     e.preventDefault();
 
     setPost({ ...post, isDraft: e.target.value });
-    
+
     try {
       const res = await fetch(endpoint, {
         method: "POST",
@@ -97,5 +96,5 @@ function CreatePost() {
       </Form>
     </Container>
   );
-};
+}
 export default CreatePost;
