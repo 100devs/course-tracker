@@ -28,8 +28,8 @@ jobs:
       run: yarn install --frozen-lockfile
     - name: Build client package
       run: CI='' yarn build --if-present
-    - name: Start server package
-      run: yarn start
+    # - name: Start server package
+    #   run: yarn start
     - name: Format and Lint-Fix
       run: yarn lint-staged
     - name: Lint
