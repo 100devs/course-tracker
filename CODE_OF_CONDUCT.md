@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+# 100devs Code of Conduct
 
 ## Our Pledge
 
