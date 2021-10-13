@@ -30,10 +30,12 @@ jobs:
       run: CI='' yarn build --if-present
     # - name: Start server package
     #   run: yarn start
-    - name: Format
-      run: yarn format
-    - name: Lint
-      run: yarn lint
+    - name: Run Linters
+      uses: wearerequired/lint-action@v1
+      with:
+        eslint: true
+        prettier: true
+        
     
     # - name: Run tests
     #   run: yarn test
