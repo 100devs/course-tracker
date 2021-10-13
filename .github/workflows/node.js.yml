@@ -32,8 +32,6 @@ jobs:
     #   run: yarn start
     - name: Format
       run: yarn format
-    - name: Lint-Fix
-      run: yarn lint:fix
     - name: Lint
       run: yarn lint
     
