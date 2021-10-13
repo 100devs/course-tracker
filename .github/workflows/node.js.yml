@@ -30,10 +30,13 @@ jobs:
       run: CI='' yarn build --if-present
     # - name: Start server package
     #   run: yarn start
-    - name: Format and Lint-Fix
-      run: yarn lint-staged
+    - name: Format
+      run: yarn format
+    - name: Lint-Fix
+      run: yarn lint:fix
     - name: Lint
       run: yarn lint
+    
     # - name: Run tests
     #   run: yarn test
     
