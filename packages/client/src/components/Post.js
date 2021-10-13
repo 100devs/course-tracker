@@ -117,18 +117,19 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
         <PostDiv>
           <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
             <h2>{title}</h2>
-            {/* look into logic for eye; should be isAdmin && published? */}
             {isAdmin && post.isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
-            ) : (
+            ) : isAdmin ? (
               <Eye aria-label="" size={48} color="green" />
+            ) : (
+              <></>
             )}
           </PostHeader>
 
           <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
             <Body>{body}</Body>
 
-            {isAdmin && (
+            {isAdmin ? (
               <ButtonDiv justify="flex-end">
                 <Button>Delete</Button>
                 <Button
@@ -138,6 +139,8 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
                   Edit
                 </Button>
               </ButtonDiv>
+            ) : (
+              <> </>
             )}
           </CollapsibleDiv>
         </PostDiv>
