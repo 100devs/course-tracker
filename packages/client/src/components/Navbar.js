@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { MinusCircle, PlusCircle, IconContext } from "phosphor-react";
+import { IconContext } from "phosphor-react";
 import NavbarData from "./NavbarData";
 
 const Wrapper = styled.div`
@@ -85,7 +85,7 @@ function Navbar() {
             {/* i commented out the link below bc on the navbar on codepen (link in
             thread) the circle is actually a button and i think that might be
             easier to manipulate and move around than an icon within a div and
-            an icon with a list item, inside an unordered list, etc... */}
+            an icon within a list item, inside an unordered list, etc... */}
             {/* <ListItem className="nav-toggle">
               <StyledLink to="#">
                 <MinusCircle className="show-nav" size={48} />
