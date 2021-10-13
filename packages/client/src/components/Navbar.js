@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { MinusCircle, PlusCircle, IconContext } from "phosphor-react";
 import NavbarData from "./NavbarData";
 
-const NavStyle = styled.div`
+const NavContainer = styled.div`
   text-align: left;
   background-color: black;
   width: 10vw;
@@ -15,8 +15,16 @@ const NavStyle = styled.div`
 const ListItem = styled.li`
   text-decoration: none;
   list-style: none;
-  color: #cccccc;
+  color: #ccc;
 `;
+
+const StyledLink = styled(NavLink)`
+  color: #ccc;
+  text-decoration: none;
+  position: relative;
+`;
+
+const Button = styled.button``;
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -25,31 +33,36 @@ function Navbar() {
 
   return (
     <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
-      <NavStyle>
-        <div className="navbar" style={{ backgroundColor: "white" }}>
-          <NavLink to="#" className="show-nav">
-            <PlusCircle size={48} color="black" onClick={showSidebar} />
-          </NavLink>
-        </div>
+      <div className="navbar" style={{ backgroundColor: "white" }}>
+        <StyledLink to="#" className="show-nav">
+          <Button onClick={showSidebar}> + </Button>
+        </StyledLink>
+      </div>
+      <NavContainer>
+        {/* I wonder if we can make the nav the NavContainer and not have two wrappers  */}
         <nav className={sidebar ? "nav-menu on" : "nav-menu"}>
           <ul className="nav-menu-options" onClick={showSidebar}>
-            <ListItem className="nav-toggle">
-              <NavLink to="#">
-                <MinusCircle className="show-nav" size={48} color="#cccccc" />
-              </NavLink>
-            </ListItem>
+            {/* i commented out the link below bc on the navbar on codepen (link in
+            thread) the circle is actually a button and i think that might be
+            easier to manipulate and move around than an icon within a div and
+            an icon with a list item, inside an unordered list, etc... */}
+            {/* <ListItem className="nav-toggle">
+              <StyledLink to="#">
+                <MinusCircle className="show-nav" size={48} />
+              </StyledLink>
+            </ListItem> */}
             {NavbarData.map((item, index) => {
               return (
                 <ListItem key={index} className={item.cName}>
-                  <NavLink to={item.path}>
+                  <StyledLink to={item.path}>
                     {item.title} {item.icon}
-                  </NavLink>
+                  </StyledLink>
                 </ListItem>
               );
             })}
           </ul>
         </nav>
-      </NavStyle>
+      </NavContainer>
     </IconContext.Provider>
   );
 }
