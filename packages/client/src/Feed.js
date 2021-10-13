@@ -10,17 +10,9 @@ const Feed = () => {
   const FeedDiv = styled.div``;
 
   const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState();
   const [posts, setPosts] = useState();
 
-  const { user } = useContext(AuthContext);
-
-  const getAdminStatus = async () => {
-    const res = await axios.get(
-      `${backend}api/get/admin-status/${user.userId}`
-    );
-    setIsAdmin(res.data.isAdmin);
-  };
+  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
 
   const populateFeed = async (adminState) => {
     const res = await axios.get(
@@ -31,7 +23,7 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    user.userId ? getAdminStatus() : setIsAdmin(false);
+    getAdminStatus(user.userId);
     populateFeed(isAdmin);
   }, [isAdmin]);
 
