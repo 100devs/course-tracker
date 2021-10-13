@@ -4,18 +4,26 @@ import styled from "styled-components";
 import { MinusCircle, PlusCircle, IconContext } from "phosphor-react";
 import NavbarData from "./NavbarData";
 
-const NavContainer = styled.div`
+const Wrapper = styled.div`
+  width: 20vw;
+  height: 100vh;
+`;
+
+const NavContainer = styled.nav`
   text-align: left;
   background-color: black;
-  width: 10vw;
-  padding: 2rem;
   color: #ccc;
+  border: none;
+  border-top-right-radius: 15%;
+  border-bottom-right-radius: 15%;
+  padding: 0.5rem 0 1.5rem 0;
 `;
 
 const ListItem = styled.li`
   text-decoration: none;
   list-style: none;
   color: #ccc;
+  line-height: 2rem;
 `;
 
 const StyledLink = styled(NavLink)`
@@ -24,7 +32,39 @@ const StyledLink = styled(NavLink)`
   position: relative;
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+  background-color: black;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem;
+  &::before,
+  &::after {
+    content: " ";
+    background-color: white;
+    position: absolute;
+    transition: all 0.3s ease;
+    left: 25%;
+    right: 25%;
+    width: 50%;
+    height: 10%;
+    top: 45%;
+  }
+
+  &::before {
+    transform: ${(props) => (props.clicked ? "rotate(0)" : "rotate(90deg)")};
+  }
+  &::after {
+    transform: ${(props) => (props.clicked ? "rotate(0)" : "rotate(0)")};
+  }
+`;
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -33,14 +73,14 @@ function Navbar() {
 
   return (
     <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
-      <div className="navbar" style={{ backgroundColor: "white" }}>
+      <Wrapper>
         <StyledLink to="#" className="show-nav">
-          <Button onClick={showSidebar}> + </Button>
+          <Button clicked={sidebar} onClick={showSidebar}>
+            +
+          </Button>
         </StyledLink>
-      </div>
-      <NavContainer>
-        {/* I wonder if we can make the nav the NavContainer and not have two wrappers  */}
-        <nav className={sidebar ? "nav-menu on" : "nav-menu"}>
+
+        <NavContainer className={sidebar ? "nav-menu on" : "nav-menu"}>
           <ul className="nav-menu-options" onClick={showSidebar}>
             {/* i commented out the link below bc on the navbar on codepen (link in
             thread) the circle is actually a button and i think that might be
@@ -54,15 +94,15 @@ function Navbar() {
             {NavbarData.map((item, index) => {
               return (
                 <ListItem key={index} className={item.cName}>
-                  <StyledLink to={item.path}>
+                  <StyledLink to={item.path} exact>
                     {item.title} {item.icon}
                   </StyledLink>
                 </ListItem>
               );
             })}
           </ul>
-        </nav>
-      </NavContainer>
+        </NavContainer>
+      </Wrapper>
     </IconContext.Provider>
   );
 }
