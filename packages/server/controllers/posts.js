@@ -41,4 +41,14 @@ module.exports = {
       res.status(500).json({ message: error });
     }
   },
+
+  deletePost: async (req, res) => {
+    try {
+      await Post.deleteOne({ _id: req.params.id });
+      res.json({ message: "Post has been deleted!" });
+      res.redirect("/feed");
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  },
 };
