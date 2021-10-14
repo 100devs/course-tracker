@@ -3,7 +3,7 @@ module.exports = {
     if (req.session.isAdmin) {
       next();
     } else {
-      res.redirect("./login");
+      return res.status(403).send({ message: "Access forbidden" });
     }
   },
 };
