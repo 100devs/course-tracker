@@ -5,8 +5,8 @@ import { IconContext } from "phosphor-react";
 import NavbarData from "./NavbarData";
 
 const Wrapper = styled.div`
-  width: 20vw;
-  height: 100vh;
+  width: 10vw;
+  margin-top: 3rem;
 `;
 
 const NavContainer = styled.nav`
@@ -30,6 +30,7 @@ const StyledLink = styled(NavLink)`
   color: #ccc;
   text-decoration: none;
   position: relative;
+  font-weight: 600;
 `;
 
 const Button = styled.button`
@@ -68,7 +69,6 @@ const Button = styled.button`
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
@@ -82,15 +82,6 @@ function Navbar() {
 
         <NavContainer className={sidebar ? "nav-menu on" : "nav-menu"}>
           <ul className="nav-menu-options" onClick={showSidebar}>
-            {/* i commented out the link below bc on the navbar on codepen (link in
-            thread) the circle is actually a button and i think that might be
-            easier to manipulate and move around than an icon within a div and
-            an icon within a list item, inside an unordered list, etc... */}
-            {/* <ListItem className="nav-toggle">
-              <StyledLink to="#">
-                <MinusCircle className="show-nav" size={48} />
-              </StyledLink>
-            </ListItem> */}
             {NavbarData.map((item, index) => {
               return (
                 <ListItem key={index} className={item.cName}>
