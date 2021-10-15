@@ -15,6 +15,7 @@ export const NavContainer = styled.nav`
   padding: 0.5rem 2.5rem 1.5rem 0;
   position: absolute;
   left: ${(props) => (props.clicked ? "0px" : "-300px")};
+  transition: ${(props) => (props.clicked ? "400ms" : "800ms")};
 `;
 
 export const ListItem = styled.li`
