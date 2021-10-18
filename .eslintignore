@@ -1,2 +1,2 @@
-build/*
-!build/index.js
+packages/client/build/*
+!packages/client/build/index.js
