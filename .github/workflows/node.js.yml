@@ -31,11 +31,7 @@ jobs:
     # - name: Start server package
     #   run: yarn start
     - name: Run Linters
-      uses: wearerequired/lint-action@v1
-      with:
-        eslint: true
-        prettier: true
-        
+      run: yarn lint-staged    
     
     # - name: Run tests
     #   run: yarn test
