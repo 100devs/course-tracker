@@ -27,8 +27,19 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.deleteItem("Token Object");
   }, []);
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const getAdminStatus = useCallback(async (id) => {
+    if (id) {
+      const res = await axios.get(`${backend}api/get/admin-status/${id}`);
+      setIsAdmin(res.data.isAdmin);
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, isAdmin, getAdminStatus }}
+    >
       {children}
     </AuthContext.Provider>
   );
