@@ -28,7 +28,7 @@ const Footer = (props) => {
 
         <div className="iconDiv flex">
           <IconAnchor
-            href={`https://leonnoel.com/blog/100devs/`}
+            href="https://leonnoel.com/blog/100devs/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -36,7 +36,7 @@ const Footer = (props) => {
           </IconAnchor>
 
           <IconAnchor
-            href={`https://www.twitch.tv/learnwithleon`}
+            href="https://www.twitch.tv/learnwithleon"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -44,7 +44,7 @@ const Footer = (props) => {
           </IconAnchor>
 
           <IconAnchor
-            href={`https://twitter.com/leonnoel`}
+            href="https://twitter.com/leonnoel"
             target="_blank"
             rel="noopener noreferrer"
           >
