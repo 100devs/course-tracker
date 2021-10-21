@@ -28,7 +28,6 @@ const Feed = () => {
   if (loading) {
     return <div>loading...</div>;
   }
-  console.log(isAdmin);
   return (
     <FeedDiv>
       {posts.map((post, i) => {
