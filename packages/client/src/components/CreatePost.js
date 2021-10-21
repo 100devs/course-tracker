@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
@@ -10,7 +10,7 @@ import Form from "./styled/Form";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
-import Footer from "./Footer";
+import { AuthContext } from "../context/AuthContext";
 
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/create-post`;
@@ -103,7 +103,6 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
-      <Footer isAdmin={true} />
     </>
   );
 }

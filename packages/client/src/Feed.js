@@ -1,17 +1,15 @@
 import { useContext, useState, useEffect } from "react";
 import Post from "./components/Post";
-import styled from "styled-components";
 import axios from "axios";
+import Footer from "./components/Footer";
+import FeedDiv from "./components/styled/FeedDiv";
 import { AuthContext } from "./context/AuthContext";
 
 const backend = process.env.REACT_APP_BACKEND;
 
 const Feed = () => {
-  const FeedDiv = styled.div``;
-
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
-
   const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
 
   const populateFeed = async (adminState) => {
@@ -30,7 +28,7 @@ const Feed = () => {
   if (loading) {
     return <div>loading...</div>;
   }
-
+  console.log(isAdmin);
   return (
     <FeedDiv>
       {posts.map((post, i) => {
@@ -45,6 +43,7 @@ const Feed = () => {
           />
         );
       })}
+      <Footer isAdmin={isAdmin} />
     </FeedDiv>
   );
 };
