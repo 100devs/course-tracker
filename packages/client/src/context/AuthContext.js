@@ -24,7 +24,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = useCallback(() => {
     _dispatch({});
-    localStorage.deleteItem("Token Object");
+    localStorage.removeItem("Token Object");
+    window.location.reload(false);
   }, []);
 
   const [isAdmin, setIsAdmin] = useState(false);
