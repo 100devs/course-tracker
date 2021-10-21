@@ -11,10 +11,13 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
+import Footer from "./Footer";
 
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/create-post`;
 function CreatePost() {
+  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+
   const [post, setPost] = useState({
     title: "",
     body: "",
@@ -46,6 +49,10 @@ function CreatePost() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getAdminStatus(user.userId);
+  }, []);
 
   if (redirect) {
     return <Redirect to="/" />;
@@ -103,6 +110,7 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
+      <Footer isAdmin={isAdmin} />
     </>
   );
 }
