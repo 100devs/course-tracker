@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-// if (req.session.isAdmin) <= prev session check
 
 const checkAdmin = async (req, res, next) => {
   const token =
@@ -12,8 +11,7 @@ const checkAdmin = async (req, res, next) => {
   }
 
   try {
-    const accessToken = JSON.parse(token)["accesstoken"];
-    const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     req.user = await User.findOne({ _id: decoded.userId });
     if (req.user.isAdmin) {
       return next();
