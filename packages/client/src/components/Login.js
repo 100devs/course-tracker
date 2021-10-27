@@ -10,6 +10,9 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import { Redirect } from "react-router-dom";
+import { loginValidation } from "../formValidation";
+
+//need to figure out how to work this validation into form, maybe create a useForm useEffect, change/submit handlers, handle errors for backend
 
 const Login = () => {
   const [cancel, setCancel] = useState(false);
