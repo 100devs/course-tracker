@@ -23,8 +23,7 @@ const PostSchema = new mongoose.Schema(
 
 PostSchema.pre("save", function save() {
   const changes = this.getChanges();
-
-  if (changes.isDraft === false) {
+  if (changes["$set"].isDraft === false) {
     this.publishedAt = new Date();
   }
 });
