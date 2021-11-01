@@ -20,6 +20,9 @@ const userSchema = new Schema(
     isAdmin: {
       type: Boolean,
     },
+    refreshtoken: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
@@ -32,14 +35,5 @@ userSchema.pre("save", async function () {
     throw new Error(err);
   }
 });
-
-// TODO: use this to clean up authRoutes.js post login
-// userSchema.methods.comparePassword = function(candidatePassword) {
-//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-//       if (err) return console.log(err);
-//       console.log(isMatch);
-//       return isMatch;
-//   });
-// };
 
 module.exports = model("User", userSchema);

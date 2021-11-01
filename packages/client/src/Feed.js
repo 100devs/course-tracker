@@ -23,7 +23,7 @@ const Feed = () => {
   useEffect(() => {
     getAdminStatus(user.userId);
     populateFeed(isAdmin);
-  }, [isAdmin]);
+  }, [isAdmin]); // eslint-disable-line
 
   if (loading) {
     return <div>loading...</div>;
