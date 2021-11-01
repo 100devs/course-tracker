@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
+//const session = require("express-session");
+//const MongoStore = require("connect-mongo");
 const apiRoutes = require("./routes/apiRoutes");
 const path = require("path");
 
@@ -16,21 +16,22 @@ if (process.env.NODE_ENV !== "production") {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const { connectDB, DB_STRING } = require("./config/database");
+// const { connectDB, DB_STRING } = require("./config/database");
+const { connectDB } = require("./config/database");
 connectDB();
 
 //session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-      mongoUrl: DB_STRING,
-      ttl: 24 * 60 * 60, // 1 day
-    }),
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     store: MongoStore.create({
+//       mongoUrl: DB_STRING,
+//       ttl: 24 * 60 * 60, // 1 day
+//     }),
+//   })
+// );
 
 // sets up root route
 app.use("/api", apiRoutes);
@@ -44,7 +45,7 @@ if (process.env.NODE_ENV === "production") {
   });
 } else {
   app.get("/", (req, res) => {
-    res.send("Api running");
+    res.send("API running");
   });
 }
 
