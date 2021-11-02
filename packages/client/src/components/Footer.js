@@ -6,18 +6,16 @@ import IconAnchor from "./styled/IconAnchor";
 import { AuthContext } from "../context/AuthContext";
 
 const Footer = (props) => {
-  const { logout } = useContext(AuthContext);
-
   return (
     <FooterDiv>
       {props.isAdmin && (
         <div className="linkDiv flex">
           <TextLink
             text="Create a post"
-            link="/create-post"
+            onClickGoTo="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" link="/" onClick={() => logout()} />
+          <TextLink text="Log out" onClickGoTo="/" onClick={props.logout} />
         </div>
       )}
 

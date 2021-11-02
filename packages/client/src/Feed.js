@@ -10,7 +10,8 @@ const backend = process.env.REACT_APP_BACKEND;
 const Feed = () => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
+  const [userState, setUserState] = useState(user);
 
   const populateFeed = async (adminState) => {
     const res = await axios.get(
@@ -19,11 +20,10 @@ const Feed = () => {
     setPosts(res.data.posts);
     setLoading(false);
   };
-
   useEffect(() => {
     getAdminStatus(user.userId);
     populateFeed(isAdmin);
-  }, [isAdmin]);
+  }, [posts]);
 
   if (loading) {
     return <div>loading...</div>;
@@ -39,10 +39,11 @@ const Feed = () => {
             isAdmin={isAdmin}
             id={post._id}
             key={i}
+            user={user}
           />
         );
       })}
-      <Footer isAdmin={isAdmin} />
+      <Footer isAdmin={isAdmin} logout={logout} />
     </FeedDiv>
   );
 };

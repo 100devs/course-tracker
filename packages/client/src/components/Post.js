@@ -95,7 +95,7 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
             <TextLink
               onClick={() => setIsEdit((prevState) => !prevState)}
               text="Cancel"
-              link="/"
+              onClickGoTo="/"
             />
 
             <div className="subButtonDiv">

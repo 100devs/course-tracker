@@ -16,7 +16,7 @@ import Footer from "./Footer";
 const backend = process.env.REACT_APP_BACKEND;
 const endpoint = `${backend}/api/create-post`;
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
 
   const [post, setPost] = useState({
     title: "",
@@ -90,11 +90,7 @@ function CreatePost() {
           {/* Publish and Submit Section */}
 
           <ButtonDiv>
-            <TextLink
-              onClick={() => setRedirect(true)}
-              text="Cancel"
-              link="/"
-            />
+            <TextLink text="Cancel" onClickGoTo="/" />
             <div className="subButtonDiv">
               <Button value={true} onClick={handleSubmit}>
                 Save Draft
@@ -110,7 +106,7 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
-      <Footer isAdmin={isAdmin} />
+      <Footer isAdmin={isAdmin} logout={logout} />
     </>
   );
 }

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import TextLinkDiv from "./styled/TextLinkDiv";
 
 const TextLink = (props) => {
+  const history = useHistory();
   return (
     <TextLinkDiv
       flexDirection={props.flexDirection}
@@ -11,9 +12,7 @@ const TextLink = (props) => {
       padding={props.padding}
       onClick={props.onClick}
     >
-      <Link to={props.link}>
-        <span>{props.text}</span>
-      </Link>
+      <span onClick={() => history.push(props.onClickGoTo)}>{props.text}</span>
     </TextLinkDiv>
   );
 };
