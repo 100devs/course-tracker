@@ -6,9 +6,6 @@ const {
 } = require("../middleware/tokens");
 
 module.exports = {
-  getSession: async (req, res) => {
-    res.json({ session: req.session });
-  },
   login: async (req, res) => {
     const { email, password } = req.body;
 
@@ -29,7 +26,6 @@ module.exports = {
           { refreshtoken: refreshToken }
         );
 
-        req.session.isAdmin = user.isAdmin;
         return res.status(200).json({
           message: "User logged in successfully",
           userId: user._id,

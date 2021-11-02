@@ -8,11 +8,8 @@ import InputLabel from "./styled/InputLabel";
 import AuthForm from "./styled/AuthForm";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
-import TextLink from "./styled/TextLink";
-import axios from "axios";
+import TextLink from "./TextLink";
 import { Redirect } from "react-router-dom";
-
-const backend = process.env.REACT_APP_BACKEND;
 
 const Login = () => {
   const [cancel, setCancel] = useState(false);
@@ -40,7 +37,7 @@ const Login = () => {
   }
 
   return (
-    <Container height="100vh">
+    <Container minHeight="100vh">
       <AuthForm height="auto">
         <FormHeader>
           <h2>Task Lemon</h2>

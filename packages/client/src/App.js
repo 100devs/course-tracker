@@ -32,6 +32,7 @@ function App() {
               restricted={true}
               exact
             />
+            <PublicRoute component={Feed} path="/" restricted={false} exact />
             <AdminRoute component={CreatePost} path="/create-post" exact />
           </Switch>
         </Router>

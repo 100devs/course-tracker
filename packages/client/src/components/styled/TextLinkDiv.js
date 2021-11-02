@@ -1,5 +1,6 @@
 import styled from "styled-components";
-const TextLink = styled.div.attrs((props) => ({
+
+const TextLinkDiv = styled.div.attrs((props) => ({
   flexDirection: props.flexDirection || "column",
   justify: props.justify || "flext-start",
   align: props.align || "center",
@@ -12,6 +13,10 @@ const TextLink = styled.div.attrs((props) => ({
   justify-content: ${(props) => props.justify};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
+  a {
+    text-decoration: none;
+    color: black;
+  }
   span {
     cursor: pointer;
     font-size: 1.2rem;
@@ -19,6 +24,10 @@ const TextLink = styled.div.attrs((props) => ({
       text-decoration: underline;
     }
   }
+  .spanMargin {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+  }
 `;
 
-export default TextLink;
+export default TextLinkDiv;

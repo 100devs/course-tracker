@@ -24,11 +24,23 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = useCallback(() => {
     _dispatch({});
-    localStorage.deleteItem("Token Object");
+    localStorage.removeItem("Token Object");
+    window.location.reload(false);
+  }, []);
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const getAdminStatus = useCallback(async (id) => {
+    if (id) {
+      const res = await axios.get(`${backend}api/get/admin-status/${id}`);
+      setIsAdmin(res.data.isAdmin);
+    }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, isAdmin, getAdminStatus }}
+    >
       {children}
     </AuthContext.Provider>
   );

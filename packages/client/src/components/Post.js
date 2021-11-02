@@ -13,9 +13,10 @@ import Input from "./styled/Input";
 import InputLabel from "./styled/InputLabel";
 import TextArea from "./styled/TextArea";
 import Container from "./styled/Container";
-import TextLink from "./styled/TextLink";
+import TextLink from "./TextLink";
+import axios from "axios";
 
-const Post = ({ title, body, isDraft, isAdmin, id }) => {
+const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
 
@@ -36,16 +37,21 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
   };
 
   const sendChangeObj = async (e) => {
-    setChangeObj({ ...changeObj, isDraft: e.target.value });
-    // make call to api/post/editPost/:id and pass in the updated object
-    // ex
-    // const res = await axios.put('api/post/editPost/id', changeObj)
-    // use updatePost to update ... the post ?? Will this automagically update via the feed useEffect and it's dependencies ?
-    // updatePost(res.data)
-    // clear out changeObj to start your next edit with a fresh change object
-    // setChangeObj({});
-    // display the post
+    e.preventDefault();
+    await axios.put(
+      `api/post/edit-post/${id}`,
+      { ...changeObj, isDraft: e.target.value },
+      { headers: { Authentication: user.accesstoken } }
+    );
+    setChangeObj({});
     setIsEdit((prevState) => !prevState);
+  };
+
+  const deletePost = async (e) => {
+    e.preventDefault();
+    await axios.delete(`api/post/delete-post/${id}`, {
+      headers: { Authentication: user.accesstoken },
+    });
   };
 
   const handleCollapse = () => {
@@ -58,7 +64,7 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
         <Form>
           <FormHeader justify="space-between">
             {/* phantom eye for correct eye placement ... yikes! */}
-            {post.isDraft ? (
+            {isDraft ? (
               <EyeSlash aria-label="" size={48} color="none" />
             ) : (
               <Eye aria-label="" size={48} color="none" />
@@ -66,7 +72,7 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
 
             <h2>Edit Post</h2>
 
-            {post.isDraft ? (
+            {isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
             ) : (
               <Eye aria-label="" size={48} color="green" />
@@ -92,16 +98,19 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
 
           {/* Publish and Submit Section */}
           <ButtonDiv>
-            <TextLink onClick={() => setIsEdit((prevState) => !prevState)}>
-              <span>Cancel</span>
-            </TextLink>
+            <TextLink
+              onClick={() => setIsEdit((prevState) => !prevState)}
+              text="Cancel"
+              link="/"
+            />
+
             <div className="subButtonDiv">
-              <Button value={true} onClick={(id) => sendChangeObj(id)}>
+              <Button value={true} onClick={(e) => sendChangeObj(e)}>
                 Save Draft
               </Button>
               <Button
                 value={false}
-                onClick={(id) => sendChangeObj(id)}
+                onClick={(e) => sendChangeObj(e)}
                 margin="0 0 0 1.5rem"
               >
                 Publish
@@ -117,20 +126,21 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
         <PostDiv>
           <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
             <h2>{title}</h2>
-            {/* look into logic for eye; should be isAdmin && published? */}
-            {isAdmin && post.isDraft ? (
+            {isAdmin && isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
-            ) : (
+            ) : isAdmin ? (
               <Eye aria-label="" size={48} color="green" />
+            ) : (
+              <></>
             )}
           </PostHeader>
 
           <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
             <Body>{body}</Body>
 
-            {isAdmin && (
+            {isAdmin ? (
               <ButtonDiv justify="flex-end">
-                <Button>Delete</Button>
+                <Button onClick={(e) => deletePost(e)}>Delete</Button>
                 <Button
                   onClick={() => setIsEdit((prevState) => !prevState)}
                   margin="0 0 0 1.5rem"
@@ -138,6 +148,8 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
                   Edit
                 </Button>
               </ButtonDiv>
+            ) : (
+              <> </>
             )}
           </CollapsibleDiv>
         </PostDiv>
