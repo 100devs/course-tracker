@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  margin-top: 3rem;
+  z-index: 1000000;
+  width: 100%;
+  position: fixed;
+  background: white;
+  padding: 3rem 1.5rem;
 `;
 
 export const NavContainer = styled.nav`
@@ -12,23 +16,36 @@ export const NavContainer = styled.nav`
   border: none;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
-  padding: 0.5rem 2.5rem 1.5rem 0;
+  padding: 3rem 1.5rem;
+  margin-top: 1.5rem;
   position: absolute;
-  left: ${(props) => (props.clicked ? "0px" : "-300px")};
+  left: ${(props) => (props.clicked ? "0px" : "-3000px")};
   transition: ${(props) => (props.clicked ? "400ms" : "800ms")};
+
+  ul {
+    padding: 0;
+  }
 `;
 
 export const ListItem = styled.li`
   text-decoration: none;
   list-style: none;
   color: #ccc;
-  line-height: 3rem;
+  line-height: 2rem;
   font-weight: 600;
 
   p {
     color: #666;
     padding-top: 2.5rem;
     margin: 0;
+  }
+
+  a {
+    color: #ccc;
+  }
+
+  span:hover {
+    text-decoration: none;
   }
 `;
 
@@ -38,7 +55,6 @@ export const Button = styled.button`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  margin: 1.5rem 1.5rem 1.5rem 5rem;
   cursor: pointer;
   display: flex;
   justify-content: center;

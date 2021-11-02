@@ -2,8 +2,8 @@ import React from "react";
 import { ArrowSquareOut } from "phosphor-react";
 
 export const internalLinks = [
-  { title: "Home", path: "/" },
-  { title: "Assignments", path: "/feed" },
+  { title: "Create a Post", path: "/create-post" },
+  { title: "Logout", path: "/" },
 ];
 
 export const externalLinks = [
