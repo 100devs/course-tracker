@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
-import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Feed from "./Feed";
 import CreatePost from "./components/CreatePost";
@@ -24,7 +23,6 @@ function App() {
     <AuthContextProvider>
       <AppContainer>
         <Router>
-          <Navbar />
           <Switch>
             <PublicRoute
               component={Login}
