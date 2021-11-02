@@ -5,6 +5,8 @@ const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  //position: relative;
+  padding-top: 9rem;
 `;
 
 export default FeedDiv;
