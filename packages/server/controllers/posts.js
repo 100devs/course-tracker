@@ -34,7 +34,6 @@ module.exports = {
       const post = await Post.findOneAndUpdate({ _id: id }, changeObject, {
         new: true,
       });
-      console.log(post);
       res.json({ message: "Post has been updated!", post });
     } catch (error) {
       res.status(500).json({ message: error });
