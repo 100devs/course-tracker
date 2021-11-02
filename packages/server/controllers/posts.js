@@ -29,7 +29,6 @@ module.exports = {
     }
 
     changeObject.isDraft = isDraft;
-    console.log(changeObject);
     try {
       const post = await Post.findOneAndUpdate({ _id: id }, changeObject, {
         new: true,
