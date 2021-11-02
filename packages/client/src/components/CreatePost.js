@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -16,6 +16,8 @@ import axios from "axios";
 
 function CreatePost() {
   const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+
+  const history = useHistory();
 
   const [post, setPost] = useState({
     title: "",
@@ -37,16 +39,12 @@ function CreatePost() {
       { ...post, isDraft: e.target.value },
       { headers: { Authentication: user.accesstoken } }
     );
-    setRedirect(true);
+    history.push("/");
   };
 
   useEffect(() => {
     getAdminStatus(user.userId);
   }, []);
-
-  if (redirect) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <>
