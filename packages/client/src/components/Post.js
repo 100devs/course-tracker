@@ -37,15 +37,13 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   };
 
   const sendChangeObj = async (e) => {
-    setChangeObj({ ...changeObj, isDraft: e.target.value });
-    // make call to api/post/editPost/:id and pass in the updated object
-    // ex
-    // const res = await axios.put('api/post/editPost/id', changeObj)
-    // use updatePost to update ... the post ?? Will this automagically update via the feed useEffect and it's dependencies ?
-    // updatePost(res.data)
-    // clear out changeObj to start your next edit with a fresh change object
-    // setChangeObj({});
-    // display the post
+    e.preventDefault();
+    await axios.put(
+      `api/post/edit-post/${id}`,
+      { ...changeObj, isDraft: e.target.value },
+      { headers: { Authentication: user.accesstoken } }
+    );
+    setChangeObj({});
     setIsEdit((prevState) => !prevState);
   };
 
@@ -66,7 +64,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
         <Form>
           <FormHeader justify="space-between">
             {/* phantom eye for correct eye placement ... yikes! */}
-            {post.isDraft ? (
+            {isDraft ? (
               <EyeSlash aria-label="" size={48} color="none" />
             ) : (
               <Eye aria-label="" size={48} color="none" />
@@ -74,7 +72,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
 
             <h2>Edit Post</h2>
 
-            {post.isDraft ? (
+            {isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
             ) : (
               <Eye aria-label="" size={48} color="green" />
@@ -107,12 +105,12 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
             />
 
             <div className="subButtonDiv">
-              <Button value={true} onClick={(id) => sendChangeObj(id)}>
+              <Button value={true} onClick={(e) => sendChangeObj(e)}>
                 Save Draft
               </Button>
               <Button
                 value={false}
-                onClick={(id) => sendChangeObj(id)}
+                onClick={(e) => sendChangeObj(e)}
                 margin="0 0 0 1.5rem"
               >
                 Publish
@@ -128,7 +126,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
         <PostDiv>
           <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
             <h2>{title}</h2>
-            {isAdmin && post.isDraft ? (
+            {isAdmin && isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
             ) : isAdmin ? (
               <Eye aria-label="" size={48} color="green" />
