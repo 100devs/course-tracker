@@ -14,8 +14,9 @@ import InputLabel from "./styled/InputLabel";
 import TextArea from "./styled/TextArea";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
+import axios from "axios";
 
-const Post = ({ title, body, isDraft, isAdmin, id }) => {
+const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
 
@@ -46,6 +47,13 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
     // setChangeObj({});
     // display the post
     setIsEdit((prevState) => !prevState);
+  };
+
+  const deletePost = async (e) => {
+    e.preventDefault();
+    await axios.delete(`api/post/delete-post/${id}`, {
+      headers: { Authentication: user.accesstoken },
+    });
   };
 
   const handleCollapse = () => {
@@ -134,7 +142,7 @@ const Post = ({ title, body, isDraft, isAdmin, id }) => {
 
             {isAdmin ? (
               <ButtonDiv justify="flex-end">
-                <Button>Delete</Button>
+                <Button onClick={(e) => deletePost(e)}>Delete</Button>
                 <Button
                   onClick={() => setIsEdit((prevState) => !prevState)}
                   margin="0 0 0 1.5rem"

@@ -23,7 +23,7 @@ const Feed = () => {
   useEffect(() => {
     getAdminStatus(user.userId);
     populateFeed(isAdmin);
-  }, [isAdmin]); // eslint-disable-line
+  }, [isAdmin, posts]);
 
   if (loading) {
     return <div>loading...</div>;
@@ -39,6 +39,7 @@ const Feed = () => {
             isAdmin={isAdmin}
             id={post._id}
             key={i}
+            user={user}
           />
         );
       })}
