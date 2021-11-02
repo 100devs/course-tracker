@@ -11,11 +11,12 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -48,6 +49,7 @@ function CreatePost() {
 
   return (
     <>
+      <Navbar isAdmin={isAdmin} logout={logout} />
       <Container minHeight="100vh">
         <Form onSubmit={handleSubmit}>
           <FormHeader>
