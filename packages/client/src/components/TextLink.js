@@ -12,7 +12,10 @@ const TextLink = (props) => {
       onClick={props.onClick}
     >
       <Link to={props.link}>
-        <span>{props.text}</span>
+        <span>
+          {props.text}
+          {props.icon}
+        </span>
       </Link>
     </TextLinkDiv>
   );
