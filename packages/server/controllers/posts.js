@@ -27,15 +27,12 @@ module.exports = {
     if (body) {
       changeObject.body = body;
     }
-    if (isDraft !== undefined) {
-      changeObject.isDraft = isDraft;
-    }
 
+    changeObject.isDraft = isDraft;
     try {
       const post = await Post.findOneAndUpdate({ _id: id }, changeObject, {
         new: true,
       });
-
       res.json({ message: "Post has been updated!", post });
     } catch (error) {
       res.status(500).json({ message: error });
