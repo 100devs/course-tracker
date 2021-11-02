@@ -19,13 +19,12 @@ import axios from "axios";
 const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
-
   const [post, updatePost] = useState({
-    title,
-    body,
-    isDraft,
-    isAdmin,
-    id,
+    title: title,
+    body: body,
+    isDraft: isDraft,
+    isAdmin: isAdmin,
+    id: id,
   });
 
   const [changeObj, setChangeObj] = useState({});
