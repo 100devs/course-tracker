@@ -13,13 +13,11 @@ module.exports = {
     res.json({ posts });
   },
   postById: async (req, res) => {
-    const isAdmin = req.session.isAdmin;
-    const { id } = req.params.id;
-    const post = await Post.findById({ _id: id });
-    if (post.isDraft && !isAdmin) {
-      res.status(401).json({ message: "Permission denied" });
-    } else {
+    try {
+      const post = await Post.findById({ _id: req.params.id });
       res.json({ post });
+    } catch (err) {
+      console.log(err);
     }
   },
   getAdminStatus: async (req, res) => {

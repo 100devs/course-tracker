@@ -23,7 +23,7 @@ const Feed = () => {
   useEffect(() => {
     getAdminStatus(user.userId);
     populateFeed(isAdmin);
-  }, [isAdmin, posts]);
+  }, [posts]);
 
   if (loading) {
     return <div>loading...</div>;
@@ -38,7 +38,7 @@ const Feed = () => {
             isDraft={post.isDraft}
             isAdmin={isAdmin}
             id={post._id}
-            key={i}
+            key={post._id}
             user={user}
           />
         );

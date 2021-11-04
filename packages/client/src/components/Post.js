@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CollapsibleDiv from "./styled/CollapsibleDiv";
 import PostDiv from "./styled/PostDiv";
 import PostHeader from "./styled/PostHeader";
@@ -16,15 +16,16 @@ import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import axios from "axios";
 
-const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
+const Post = ({ title, body, isDraft, isAdmin, id, user, key }) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
   const [post, updatePost] = useState({
-    title: title,
-    body: body,
-    isDraft: isDraft,
-    isAdmin: isAdmin,
-    id: id,
+    title,
+    body,
+    isDraft,
+    isAdmin,
+    id,
+    key,
   });
 
   const [changeObj, setChangeObj] = useState({});
@@ -32,18 +33,18 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   const createChangeObject = (e) => {
     const { name, value } = e.target;
     setChangeObj({ ...changeObj, [name]: value });
-    updatePost({ ...changeObj, [name]: value });
+    updatePost({ ...post, [name]: value });
   };
 
   const sendChangeObj = async (e) => {
     e.preventDefault();
+    setIsEdit((prevState) => !prevState);
     await axios.put(
       `api/post/edit-post/${id}`,
       { ...changeObj, isDraft: e.target.value },
       { headers: { Authentication: user.accesstoken } }
     );
     setChangeObj({});
-    setIsEdit((prevState) => !prevState);
   };
 
   const deletePost = async (e) => {
@@ -56,6 +57,14 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   const handleCollapse = () => {
     setHiddenState((prev) => !prev);
   };
+
+  const cancel = async () => {
+    setChangeObj({});
+    const originalPost = await axios.get(`api/get/post/${id}`);
+    updatePost(originalPost.data.post);
+    setIsEdit((prevState) => !prevState);
+  };
+
   if (isEdit) {
     // all the stuff from create post form
     return (
@@ -97,11 +106,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
 
           {/* Publish and Submit Section */}
           <ButtonDiv>
-            <TextLink
-              onClick={() => setIsEdit((prevState) => !prevState)}
-              text="Cancel"
-              link="/"
-            />
+            <TextLink onClick={cancel} text="Cancel" link="/" />
 
             <div className="subButtonDiv">
               <Button value={true} onClick={(e) => sendChangeObj(e)}>
