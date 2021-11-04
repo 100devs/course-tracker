@@ -30,7 +30,7 @@ const Feed = () => {
   }
   return (
     <FeedDiv>
-      {posts.map((post, i) => {
+      {posts.map((post) => {
         return (
           <Post
             title={post.title}

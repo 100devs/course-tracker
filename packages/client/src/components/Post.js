@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CollapsibleDiv from "./styled/CollapsibleDiv";
 import PostDiv from "./styled/PostDiv";
 import PostHeader from "./styled/PostHeader";
