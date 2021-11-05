@@ -25,8 +25,6 @@ function CreatePost() {
     isDraft: true,
   });
 
-  const [redirect, setRedirect] = useState(false);
-
   const createPostObject = (e) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
@@ -39,7 +37,7 @@ function CreatePost() {
       { ...post, isDraft: e.target.value },
       { headers: { Authentication: user.accesstoken } }
     );
-    history.push("/");
+    history.goBack();
   };
 
   useEffect(() => {
@@ -79,7 +77,7 @@ function CreatePost() {
 
           <ButtonDiv>
             <TextLink
-              onClick={() => setRedirect(true)}
+              onClick={() => history.push("/")}
               text="Cancel"
               link="/"
             />
