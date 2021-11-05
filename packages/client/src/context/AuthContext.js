@@ -18,6 +18,7 @@ export const AuthContextProvider = ({ children }) => {
       email,
       password,
     });
+    console.log(result.data.message);
     _dispatch(result.data);
     localStorage.setItem("Token Object", JSON.stringify(result.data));
   }, []);

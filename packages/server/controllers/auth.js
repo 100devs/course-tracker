@@ -29,7 +29,6 @@ module.exports = {
           { refreshtoken: refreshToken }
         );
 
-        req.session.isAdmin = user.isAdmin;
         return res.status(200).json({
           message: "User logged in successfully",
           userId: user._id,
