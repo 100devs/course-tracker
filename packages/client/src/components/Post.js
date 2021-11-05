@@ -16,7 +16,7 @@ import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import axios from "axios";
 
-const Post = ({ title, body, isDraft, isAdmin, id, user, key }) => {
+const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
   const [post, updatePost] = useState({
@@ -25,7 +25,6 @@ const Post = ({ title, body, isDraft, isAdmin, id, user, key }) => {
     isDraft,
     isAdmin,
     id,
-    key,
   });
 
   const [changeObj, setChangeObj] = useState({});
