@@ -9,11 +9,10 @@ import InputLabel from "./styled/InputLabel";
 import AuthForm from "./styled/AuthForm";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
+import ErrorDiv from "./styled/ErrorDiv";
 import TextLink from "./TextLink";
 import { emailValidation, passwordValidation } from "../formValidation";
 
-//need to figure out how to work this validation into form, maybe create a useForm useEffect, change/submit handlers, handle errors for backend
-//add touched logic rendering?
 const validate = {
   email: emailValidation,
   password: passwordValidation,
@@ -21,9 +20,6 @@ const validate = {
 
 const Login = () => {
   const history = useHistory();
-
-  //set errors state
-  const [errors, setErrors] = useState({});
 
   //importing user object and login function from AuthContext
   const { user, login } = useContext(AuthContext);
@@ -34,6 +30,9 @@ const Login = () => {
     password: "",
   });
 
+  //set errors state
+  const [errors, setErrors] = useState({});
+
   //handle change
   function updateUser(e) {
     const { name, value } = e.target;
@@ -42,11 +41,19 @@ const Login = () => {
       [name]: value,
     });
   }
+
   //handle blur and validate
   function handleBlur(e) {
     const { name, value } = e.target;
-    // replace this console log with a setErrorObject()
-    console.log(validate[name](value));
+
+    // check for a new error
+    const error = validate[name](value);
+
+    // validate the field if the value has been touched
+    setErrors({
+      ...errors,
+      [name]: error,
+    });
   }
 
   //handle submit - add validation logic
@@ -77,10 +84,11 @@ const Login = () => {
             value={user.email}
             onChange={updateUser}
             onBlur={handleBlur}
+            border={errors.email && "1px solid #EE5F5F"}
           />
+          {errors.email && <ErrorDiv> {errors.email} </ErrorDiv>}
         </InputDiv>
-        {/* email error div goes here */}
-        {/* errorObject.email && display div */}
+
         <InputDiv>
           <InputLabel htmlFor="password">Password</InputLabel>
           <Input
@@ -90,7 +98,9 @@ const Login = () => {
             value={user.password}
             onChange={updateUser}
             onBlur={handleBlur}
+            border={errors.password && "1px solid #EE5F5F"}
           />
+          {errors.password && <ErrorDiv> {errors.password} </ErrorDiv>}
         </InputDiv>
 
         <ButtonDiv>
@@ -99,6 +109,9 @@ const Login = () => {
             Login
           </Button>
         </ButtonDiv>
+
+        {/* backend errors */}
+        <ErrorDiv>Error test backend errors: need to handle </ErrorDiv>
       </AuthForm>
     </Container>
   );
