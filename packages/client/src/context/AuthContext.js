@@ -34,6 +34,7 @@ export const AuthContextProvider = ({ children }) => {
     if (id) {
       const res = await axios.get(`${backend}api/get/admin-status/${id}`);
       setIsAdmin(res.data.isAdmin);
+      return res.data.isAdmin;
     }
   }, []);
 

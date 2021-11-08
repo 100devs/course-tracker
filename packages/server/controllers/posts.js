@@ -30,20 +30,12 @@ module.exports = {
     changeObject.isDraft = isDraft;
 
     try {
-      const originalPost = await Post.findById({ _id: id });
-
-      if (originalPost.isDraft && changeObject.isDraft == "false") {
-        changeObject.publishedAt = new Date();
-        const post = await Post.findOneAndUpdate({ _id: id }, changeObject, {
-          new: true,
-        });
-        res.json({ message: "Post has been updated!", post });
-      } else {
-        const post = await Post.findOneAndUpdate({ _id: id }, changeObject, {
-          new: true,
-        });
-        res.json({ message: "Post has been updated!", post });
+      const post = await Post.findById({ _id: id });
+      for (const key in changeObject) {
+        post[key] = changeObject[key];
       }
+      await post.save();
+      res.json({ message: "Post has been updated!", post });
     } catch (error) {
       res.status(500).json({ message: error });
     }

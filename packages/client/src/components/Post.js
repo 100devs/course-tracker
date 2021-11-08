@@ -16,7 +16,15 @@ import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import axios from "axios";
 
-const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
+const Post = ({
+  title,
+  body,
+  isDraft,
+  isAdmin,
+  id,
+  user,
+  setEditSubmitted,
+}) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
   const [post, updatePost] = useState({
@@ -44,6 +52,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
       { headers: { Authentication: user.accesstoken } }
     );
     setChangeObj({});
+    setEditSubmitted((prev) => !prev);
   };
 
   const deletePost = async (e) => {
@@ -51,6 +60,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
     await axios.delete(`api/post/delete-post/${id}`, {
       headers: { Authentication: user.accesstoken },
     });
+    setEditSubmitted((prev) => !prev);
   };
 
   const handleCollapse = () => {
