@@ -8,29 +8,31 @@ import { AuthContext } from "./context/AuthContext";
 const backend = process.env.REACT_APP_BACKEND;
 
 const Feed = () => {
+  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
 
-  const populateFeed = async (adminState) => {
+  const populateFeed = async () => {
+    const adminCheck = await getAdminStatus(user.userId);
     const res = await axios.get(
-      `${backend}api/get/${adminState ? "all-posts" : "published"}`
+      `${backend}api/get/${adminCheck ? "all-posts" : "published"}`
     );
     setPosts(res.data.posts);
     setLoading(false);
   };
 
+  const [editSubmitted, setEditSubmitted] = useState(false);
+
   useEffect(() => {
-    getAdminStatus(user.userId);
-    populateFeed(isAdmin);
-  }, [isAdmin, posts]);
+    populateFeed();
+  }, [editSubmitted]);
 
   if (loading) {
-    return <div>loading...</div>;
+    return <></>;
   }
   return (
     <FeedDiv>
-      {posts.map((post, i) => {
+      {posts.map((post) => {
         return (
           <Post
             title={post.title}
@@ -38,8 +40,9 @@ const Feed = () => {
             isDraft={post.isDraft}
             isAdmin={isAdmin}
             id={post._id}
-            key={i}
+            key={post._id}
             user={user}
+            setEditSubmitted={setEditSubmitted}
           />
         );
       })}

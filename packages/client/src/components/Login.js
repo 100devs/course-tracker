@@ -9,10 +9,10 @@ import AuthForm from "./styled/AuthForm";
 import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  const [cancel, setCancel] = useState(false);
+  const history = useHistory();
   const { user, login } = useContext(AuthContext);
   const [userObj, setUserObj] = useState({
     email: "",
@@ -31,10 +31,6 @@ const Login = () => {
     e.preventDefault();
     login(userObj);
   };
-
-  if (cancel) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <Container minHeight="100vh">
@@ -66,9 +62,7 @@ const Login = () => {
         </InputDiv>
 
         <ButtonDiv>
-          <TextLink onClick={() => setCancel(true)}>
-            <span>Cancel</span>
-          </TextLink>
+          <TextLink onClick={() => history.goBack()} text="Cancel" />
           <Button fontSize="1.5rem" size="11rem" onClick={loginFunc}>
             Login
           </Button>
