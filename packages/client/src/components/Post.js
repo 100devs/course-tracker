@@ -39,8 +39,8 @@ const Post = ({
 
   const createChangeObject = (e) => {
     const { name, value } = e.target;
-    setChangeObj({ ...changeObj, [name]: value });
-    updatePost({ ...post, [name]: value });
+    setChangeObj((prevChangeObj) => ({ ...prevChangeObj, [name]: value }));
+    updatePost((prevPost) => ({ ...prevPost, [name]: value }));
   };
 
   const sendChangeObj = async (e) => {
@@ -69,8 +69,16 @@ const Post = ({
 
   const cancel = async () => {
     setChangeObj({});
-    const originalPost = await axios.get(`api/get/post/${id}`);
-    updatePost(originalPost.data.post);
+    setEditSubmitted((prev) => !prev);
+    updatePost({
+      title,
+      body,
+      isDraft,
+      isAdmin,
+      id,
+      user,
+      setEditSubmitted,
+    });
     setIsEdit((prevState) => !prevState);
   };
 

@@ -12,14 +12,6 @@ module.exports = {
       .lean();
     res.json({ posts });
   },
-  postById: async (req, res) => {
-    try {
-      const post = await Post.findById({ _id: req.params.id });
-      res.json({ post });
-    } catch (err) {
-      console.log(err);
-    }
-  },
   getAdminStatus: async (req, res) => {
     try {
       const user = await User.findById({ _id: req.params.id });
