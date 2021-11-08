@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useEffect } from "react";
 import Post from "./components/Post";
 import axios from "axios";
 import Footer from "./components/Footer";
