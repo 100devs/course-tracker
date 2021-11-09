@@ -23,6 +23,8 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   const logout = useCallback(() => {
+    const user = JSON.parse(localStorage.getItem("Token Object"));
+    axios.post(`${backend}api/auth/logout/${user.userId}`);
     _dispatch({});
     localStorage.removeItem("Token Object");
     window.location.reload(false);
