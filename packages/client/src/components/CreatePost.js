@@ -50,7 +50,7 @@ function CreatePost() {
   return (
     <>
       <Navbar isAdmin={isAdmin} logout={logout} />
-      <Container minHeight="100vh">
+      <Container minHeight="100vh" padding="9rem">
         <Form onSubmit={handleSubmit}>
           <FormHeader>
             <h2>Create Post</h2>
