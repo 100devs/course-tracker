@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const TextLinkDiv = styled.div.attrs((props) => ({
   flexDirection: props.flexDirection || "column",
-  justify: props.justify || "flex-start",
+  justify: props.justify || "flext-start",
   align: props.align || "center",
   margin: props.margin || "0",
   padding: props.padding || "auto",

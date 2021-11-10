@@ -16,10 +16,17 @@ import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import axios from "axios";
 
-const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
+const Post = ({
+  title,
+  body,
+  isDraft,
+  isAdmin,
+  id,
+  user,
+  setEditSubmitted,
+}) => {
   const [hiddenState, setHiddenState] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
-
   const [post, updatePost] = useState({
     title,
     body,
@@ -32,19 +39,20 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
 
   const createChangeObject = (e) => {
     const { name, value } = e.target;
-    setChangeObj({ ...changeObj, [name]: value });
-    updatePost({ ...changeObj, [name]: value });
+    setChangeObj((prevChangeObj) => ({ ...prevChangeObj, [name]: value }));
+    updatePost((prevPost) => ({ ...prevPost, [name]: value }));
   };
 
   const sendChangeObj = async (e) => {
     e.preventDefault();
+    setIsEdit((prevState) => !prevState);
     await axios.put(
       `api/post/edit-post/${id}`,
       { ...changeObj, isDraft: e.target.value },
       { headers: { Authentication: user.accesstoken } }
     );
     setChangeObj({});
-    setIsEdit((prevState) => !prevState);
+    setEditSubmitted((prev) => !prev);
   };
 
   const deletePost = async (e) => {
@@ -52,11 +60,28 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
     await axios.delete(`api/post/delete-post/${id}`, {
       headers: { Authentication: user.accesstoken },
     });
+    setEditSubmitted((prev) => !prev);
   };
 
   const handleCollapse = () => {
     setHiddenState((prev) => !prev);
   };
+
+  const cancel = async () => {
+    setChangeObj({});
+    setEditSubmitted((prev) => !prev);
+    updatePost({
+      title,
+      body,
+      isDraft,
+      isAdmin,
+      id,
+      user,
+      setEditSubmitted,
+    });
+    setIsEdit((prevState) => !prevState);
+  };
+
   if (isEdit) {
     // all the stuff from create post form
     return (
@@ -98,11 +123,7 @@ const Post = ({ title, body, isDraft, isAdmin, id, user }) => {
 
           {/* Publish and Submit Section */}
           <ButtonDiv>
-            <TextLink
-              onClick={() => setIsEdit((prevState) => !prevState)}
-              text="Cancel"
-              link="/"
-            />
+            <TextLink onClick={cancel} text="Cancel" link="/" />
 
             <div className="subButtonDiv">
               <Button value={true} onClick={(e) => sendChangeObj(e)}>

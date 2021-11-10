@@ -2,14 +2,13 @@ import { useContext, useState, useEffect } from "react";
 import Post from "./components/Post";
 import axios from "axios";
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
 import FeedDiv from "./components/styled/FeedDiv";
 import { AuthContext } from "./context/AuthContext";
 
 const backend = process.env.REACT_APP_BACKEND;
 
 const Feed = () => {
-  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
 
@@ -32,26 +31,23 @@ const Feed = () => {
     return <></>;
   }
   return (
-    <>
-      <Navbar isAdmin={isAdmin} logout={logout} />
-      <FeedDiv>
-        {posts.map((post) => {
-          return (
-            <Post
-              title={post.title}
-              body={post.body}
-              isDraft={post.isDraft}
-              isAdmin={isAdmin}
-              id={post._id}
-              key={post._id}
-              user={user}
-              setEditSubmitted={setEditSubmitted}
-            />
-          );
-        })}
-        <Footer isAdmin={isAdmin} />
-      </FeedDiv>
-    </>
+    <FeedDiv>
+      {posts.map((post) => {
+        return (
+          <Post
+            title={post.title}
+            body={post.body}
+            isDraft={post.isDraft}
+            isAdmin={isAdmin}
+            id={post._id}
+            key={post._id}
+            user={user}
+            setEditSubmitted={setEditSubmitted}
+          />
+        );
+      })}
+      <Footer isAdmin={isAdmin} />
+    </FeedDiv>
   );
 };
 
