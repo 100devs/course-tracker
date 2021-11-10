@@ -38,12 +38,6 @@ module.exports = {
     }
     res.status(401).json({ message: "Invalid credentials" });
   },
-  logout: async (req) => {
-    await User.findByIdAndUpdate(
-      { _id: req.params.userId },
-      { refreshtoken: "" }
-    );
-  },
   createUser: async (req, res) => {
     const { username, email, password } = req.body;
 

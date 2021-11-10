@@ -23,8 +23,6 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   const logout = useCallback(() => {
-    const user = JSON.parse(localStorage.getItem("Token Object"));
-    axios.post(`${backend}api/auth/logout/${user.userId}`);
     _dispatch({});
     localStorage.removeItem("Token Object");
     window.location.reload(false);
@@ -36,7 +34,6 @@ export const AuthContextProvider = ({ children }) => {
     if (id) {
       const res = await axios.get(`${backend}api/get/admin-status/${id}`);
       setIsAdmin(res.data.isAdmin);
-      return res.data.isAdmin;
     }
   }, []);
 

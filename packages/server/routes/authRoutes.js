@@ -11,7 +11,6 @@ router.put(
   checkAdmin,
   authController.updatePassword
 );
-router.post("/logout/:userId", authController.logout);
 
 if (process.env.NODE_ENV !== "production") {
   router.get("/get-user/:id", authController.getUser);

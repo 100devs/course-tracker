@@ -11,11 +11,12 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -24,6 +25,8 @@ function CreatePost() {
     body: "",
     isDraft: true,
   });
+
+  const [redirect, setRedirect] = useState(false);
 
   const createPostObject = (e) => {
     const { name, value } = e.target;
@@ -37,7 +40,7 @@ function CreatePost() {
       { ...post, isDraft: e.target.value },
       { headers: { Authentication: user.accesstoken } }
     );
-    history.goBack();
+    history.push("/");
   };
 
   useEffect(() => {
@@ -46,7 +49,8 @@ function CreatePost() {
 
   return (
     <>
-      <Container minHeight="100vh">
+      <Navbar isAdmin={isAdmin} logout={logout} />
+      <Container minHeight="100vh" padding="9rem">
         <Form onSubmit={handleSubmit}>
           <FormHeader>
             <h2>Create Post</h2>
@@ -77,7 +81,7 @@ function CreatePost() {
 
           <ButtonDiv>
             <TextLink
-              onClick={() => history.push("/")}
+              onClick={() => setRedirect(true)}
               text="Cancel"
               link="/"
             />
