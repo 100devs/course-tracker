@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Navbar from "./Navbar";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -46,6 +47,7 @@ function CreatePost() {
 
   return (
     <>
+      <Navbar isAdmin={isAdmin}></Navbar>
       <Container minHeight="100vh">
         <Form onSubmit={handleSubmit}>
           <FormHeader>
