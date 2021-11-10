@@ -111,7 +111,7 @@ const Login = () => {
         </ButtonDiv>
 
         {/* backend errors */}
-        <ErrorDiv>Error test backend errors: need to handle </ErrorDiv>
+        <ErrorDiv> import errs from AuthContext </ErrorDiv>
       </AuthForm>
     </Container>
   );

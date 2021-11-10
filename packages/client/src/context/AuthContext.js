@@ -3,6 +3,12 @@ import axios from "axios";
 
 const backend = process.env.REACT_APP_BACKEND;
 
+//NEED TO: create res.errors state (but not like this...)
+// export const ResponseErrors = (err) => {
+//   const [resErrors, setResErrors] = useState({});
+
+// }
+
 //creating the auth context object
 export const AuthContext = createContext();
 
@@ -14,13 +20,26 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const login = useCallback(async ({ email, password }) => {
-    const result = await axios.post(`${backend}api/auth/login`, {
-      email,
-      password,
-    });
-    console.log(result.data.message);
-    _dispatch(result.data);
-    localStorage.setItem("Token Object", JSON.stringify(result.data));
+    await axios
+      .post(`${backend}api/auth/login`, {
+        email,
+        password,
+      })
+      .then((response) => {
+        _dispatch(response.data);
+        localStorage.setItem("Token Object", JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data.message);
+          // save error.response.data.message to resError state
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
   }, []);
 
   const logout = useCallback(() => {
