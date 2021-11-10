@@ -42,11 +42,21 @@ export const ListItem = styled.li`
 
   a {
     color: #ccc;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 
   span:hover {
     text-decoration: none;
   }
+`;
+
+export const NavAnchor = styled.a`
+  text-align: left;
 `;
 
 export const Button = styled.button`
