@@ -57,10 +57,6 @@ export const ListItem = styled.li`
   }
 `;
 
-export const NavAnchor = styled.a`
-  text-align: left;
-`;
-
 export const Button = styled.button`
   background-color: black;
   border: none;
