@@ -6,6 +6,8 @@ export const Wrapper = styled.div`
   position: fixed;
   background: white;
   padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const NavContainer = styled.nav`
@@ -17,10 +19,10 @@ export const NavContainer = styled.nav`
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   padding: 3rem 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 5rem;
   position: absolute;
   left: ${(props) => (props.clicked ? "0px" : "-3000px")};
-  transition: ${(props) => (props.clicked ? "400ms" : "800ms")};
+  transition: ${(props) => (props.clicked ? "400ms" : "750ms")};
 
   ul {
     padding: 0;
@@ -66,7 +68,6 @@ export const Button = styled.button`
   height: 3rem;
   border-radius: 50%;
   cursor: pointer;
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;

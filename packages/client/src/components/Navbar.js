@@ -1,8 +1,7 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
 import { Wrapper, NavContainer, Button, ListItem } from "./styled/NavStyle";
 import { IconContext } from "phosphor-react";
-import { internalLinks, externalLinks } from "./NavbarData";
+import { externalLinks } from "./NavbarData";
 import TextLink from "./TextLink";
 
 const Navbar = (props) => {
@@ -12,11 +11,10 @@ const Navbar = (props) => {
   return (
     <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
       <Wrapper>
-        <Link to="#">
-          <Button clicked={sidebar} onClick={() => showSidebar()}>
-            +
-          </Button>
-        </Link>
+        <Button clicked={sidebar} onClick={() => showSidebar()}>
+          +
+        </Button>
+        <TextLink link="/" text="Task Lemon" flexDirection={`row`} />
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>
@@ -39,18 +37,6 @@ const Navbar = (props) => {
                     onClick={props.logout}
                   />
                 </ListItem>
-                {/* {internalLinks.map((item, index) => {
-                  return (
-                    <ListItem key={index}>
-                      <TextLink
-                        text={item.title}
-                        link={item.path}
-                        align={`left`}
-                        exact
-                      />
-                    </ListItem>
-                  );
-                })} */}
               </>
             )}
             <ListItem>
@@ -59,19 +45,15 @@ const Navbar = (props) => {
             {externalLinks.map((item, index) => {
               return (
                 <ListItem key={index}>
-                  <TextLink
-                    text={item.title}
-                    icon={item.icon}
-                    link={item.path}
-                    align={`left`}
-                    exact
-                  />
+                  <a href={item.path} target="_blank" rel="noreferrer">
+                    {item.title}
+                    {item.icon}
+                  </a>
                 </ListItem>
               );
             })}
           </ul>
         </NavContainer>
-        <TextLink text="Task Lemon" align={`right`} />
       </Wrapper>
     </IconContext.Provider>
   );
