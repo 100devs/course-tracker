@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import Login from "./components/Login";
 import Feed from "./Feed";
