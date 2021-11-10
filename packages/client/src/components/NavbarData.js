@@ -1,8 +1,6 @@
 import React from "react";
 import { ArrowSquareOut } from "phosphor-react";
 
-export const internalLinks = [{}];
-
 export const externalLinks = [
   {
     title: "Twitch",

@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   padding: 3rem 1.5rem;
   display: flex;
   justify-content: space-between;
+
+  span:hover {
+    text-decoration: none;
+  }
 `;
 
 export const NavContainer = styled.nav`
