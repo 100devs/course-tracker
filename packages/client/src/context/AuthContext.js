@@ -3,12 +3,6 @@ import axios from "axios";
 
 const backend = process.env.REACT_APP_BACKEND;
 
-//NEED TO: create res.errors state (but not like this...)
-// export const ResponseErrors = (err) => {
-//   const [resErrors, setResErrors] = useState({});
-
-// }
-
 //creating the auth context object
 export const AuthContext = createContext();
 
@@ -18,6 +12,8 @@ export const AuthContextProvider = ({ children }) => {
     // retrieve token from local storage or returns null/empty object or false?
     return JSON.parse(localStorage.getItem("Token Object")) || false;
   });
+
+  const [resErrors, setResErrors] = useState(false);
 
   const login = useCallback(async ({ email, password }) => {
     await axios
@@ -32,17 +28,16 @@ export const AuthContextProvider = ({ children }) => {
       .catch((error) => {
         if (error.response) {
           console.log(error.response.data.message);
-          // save error.response.data.message to resError state
-        } else if (error.request) {
-          console.log(error.request);
+          setResErrors(error.response.data.message);
         } else {
           console.log("Error", error.message);
         }
-        console.log(error.config);
       });
   }, []);
 
   const logout = useCallback(() => {
+    const user = JSON.parse(localStorage.getItem("Token Object"));
+    axios.post(`${backend}api/auth/logout/${user.userId}`);
     _dispatch({});
     localStorage.removeItem("Token Object");
     window.location.reload(false);
@@ -54,12 +49,13 @@ export const AuthContextProvider = ({ children }) => {
     if (id) {
       const res = await axios.get(`${backend}api/get/admin-status/${id}`);
       setIsAdmin(res.data.isAdmin);
+      return res.data.isAdmin;
     }
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, isAdmin, getAdminStatus }}
+      value={{ user, login, logout, isAdmin, getAdminStatus, resErrors }}
     >
       {children}
     </AuthContext.Provider>

@@ -12,16 +12,6 @@ module.exports = {
       .lean();
     res.json({ posts });
   },
-  postById: async (req, res) => {
-    const isAdmin = req.session.isAdmin;
-    const { id } = req.params.id;
-    const post = await Post.findById({ _id: id });
-    if (post.isDraft && !isAdmin) {
-      res.status(401).json({ message: "Permission denied" });
-    } else {
-      res.json({ post });
-    }
-  },
   getAdminStatus: async (req, res) => {
     try {
       const user = await User.findById({ _id: req.params.id });

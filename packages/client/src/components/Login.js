@@ -20,9 +20,7 @@ const validate = {
 
 const Login = () => {
   const history = useHistory();
-
-  //importing user object and login function from AuthContext
-  const { user, login } = useContext(AuthContext);
+  const { user, login, resErrors } = useContext(AuthContext);
 
   //creating state for user object set to empty email/pw values
   const [userObj, setUserObj] = useState({
@@ -64,10 +62,6 @@ const Login = () => {
     //handle backend errors
   };
 
-  const cancel = () => {
-    history.goBack();
-  };
-
   return (
     <Container minHeight="100vh">
       <AuthForm validate={validate} height="auto">
@@ -104,14 +98,14 @@ const Login = () => {
         </InputDiv>
 
         <ButtonDiv>
-          <TextLink text="Cancel" onClick={cancel} />
+          <TextLink onClick={() => history.goBack()} text="Cancel" />
           <Button fontSize="1.5rem" size="11rem" onClick={loginFunc}>
             Login
           </Button>
         </ButtonDiv>
 
         {/* backend errors */}
-        <ErrorDiv> import errs from AuthContext </ErrorDiv>
+        {resErrors && <ErrorDiv> {resErrors} </ErrorDiv>}
       </AuthForm>
     </Container>
   );
