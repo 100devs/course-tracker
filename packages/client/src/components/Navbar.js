@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
-import { Wrapper, NavContainer, Button, ListItem } from "./styled/NavStyle";
-import { IconContext } from "phosphor-react";
+import { useState, useContext, useEffect } from "react";
+import { Wrapper, NavContainer, ListItem } from "./styled/NavStyle";
+import { IconContext, PlusCircle } from "phosphor-react";
 import { externalLinks } from "./NavbarData";
 import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
@@ -10,17 +10,37 @@ const Navbar = (props) => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
 
+  const NavButton = () => {
+    return (
+      <PlusCircle
+        size={80}
+        weight="fill"
+        color="black"
+        clicked={sidebar}
+        onClick={() => showSidebar()}
+      >
+        {/* needs finagling --> <animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="rotate"
+          dur="1s"
+          from="0 0 0"
+          to="45 0 0"
+          begin="click"
+        ></animateTransform> */}
+      </PlusCircle>
+    );
+  };
+
   return (
     <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
       <Wrapper>
-        <Button clicked={sidebar} onClick={() => showSidebar()}>
-          +
-        </Button>
-        <TextLink link="/" text="Task Lemon" flexDirection={`row`} />
+        <NavButton />
+        <TextLink link="/" text="Task Lemon" flexDirection="row" />
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>
-              <TextLink text="Home" link="/" align={`left`} />
+              <TextLink text="Home" link="/" align="left" />
             </ListItem>
             {props.isAdmin && (
               <>
@@ -28,14 +48,14 @@ const Navbar = (props) => {
                   <TextLink
                     text="Create a Post"
                     link="/create-post"
-                    align={`left`}
+                    align="left"
                   />
                 </ListItem>
                 <ListItem>
                   <TextLink
                     text="Logout"
                     link="/"
-                    align={`left`}
+                    align="left"
                     onClick={() => logout()}
                   />
                 </ListItem>
