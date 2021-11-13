@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Wrapper, NavContainer, ListItem } from "./styled/NavStyle";
 import { IconContext, PlusCircle } from "phosphor-react";
 import { externalLinks } from "./NavbarData";
