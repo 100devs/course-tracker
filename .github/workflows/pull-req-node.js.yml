@@ -5,9 +5,8 @@ name: Pull Request Lint & Build
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: 
-      - [ $default-branch ]
+  push:
+    branches: [ $default-branch ]
 
 jobs:
   CI:

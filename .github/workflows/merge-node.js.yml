@@ -6,9 +6,7 @@ name: Merge Build
 on:
   workflow_dispatch:
   push:
-    branches:
-      - [ $default-branch ]
-      - staging-*
+    branches: [ $default-branch ]
 
 jobs:
   merge_build:
