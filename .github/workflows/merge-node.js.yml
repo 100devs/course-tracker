@@ -4,14 +4,14 @@
 name: Merge Build
 
 on:
-  pull_request:
-    branches: [ $default-branch ]
-    types: [ closed ]
+  workflow_dispatch:
+  push:
+    branches:
+      - [ $default-branch ]
+      - staging-*
 
 jobs:
   merge_build:
-    # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,5 +29,5 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build client package
-      run: CI='' yarn build --if-present
+      run: yarn build --if-present
     - run: echo PR \#${{ github.event.number }} has been merged
