@@ -4,9 +4,10 @@
 name: Pull Request Lint & Build
 
 on:
+  workflow_dispatch:
   push:
     branches: 
-      - [ $default-branch ]
+      - main
       - github-actions
 
 jobs:
