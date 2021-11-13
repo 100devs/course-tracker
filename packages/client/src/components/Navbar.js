@@ -23,7 +23,7 @@ const Navbar = (props) => {
           attributeName="transform"
           attributeType="XML"
           type="rotate"
-          dur="1s"
+          dur="0.4s"
           fill="freeze"
           from={`${sidebar ? 0 : 45} 0 0`}
           to={`${sidebar ? 45 : 0} 0 0`}
