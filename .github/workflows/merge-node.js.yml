@@ -4,10 +4,6 @@
 name: Merge Build
 
 on:
-  workflow_dispatch:
-    branches: 
-      - [ $default-branch ]
-      - github-actions
   push:
     branches: 
       - [ $default-branch ]
