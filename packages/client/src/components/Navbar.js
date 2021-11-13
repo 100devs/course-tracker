@@ -19,15 +19,15 @@ const Navbar = (props) => {
         clicked={sidebar}
         onClick={() => showSidebar()}
       >
-        {/* needs finagling --> <animateTransform
+        <animateTransform
           attributeName="transform"
           attributeType="XML"
           type="rotate"
           dur="1s"
-          from="0 0 0"
-          to="45 0 0"
-          begin="click"
-        ></animateTransform> */}
+          fill="freeze"
+          from={`${sidebar ? 0 : 45} 0 0`}
+          to={`${sidebar ? 45 : 0} 0 0`}
+        ></animateTransform>
       </PlusCircle>
     );
   };
