@@ -6,7 +6,9 @@ name: Merge Build
 on:
   workflow_dispatch:
   push:
-    branches: [ $default-branch ]
+    branches: 
+      - [ $default-branch ]
+      - github-actions
 
 jobs:
   merge_build:
