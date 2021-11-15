@@ -27,7 +27,6 @@ export const AuthContextProvider = ({ children }) => {
       })
       .catch((error) => {
         if (error.response) {
-          console.log(error.response.data.message);
           setResErrors(error.response.data.message);
         } else {
           console.log("Error", error.message);

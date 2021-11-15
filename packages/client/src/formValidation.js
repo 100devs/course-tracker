@@ -1,36 +1,21 @@
-module.exports = {
-  emailValidation: function (email) {
-    if (
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    ) {
-      return null;
-    }
-    if (email.trim() === "") {
-      return "Email is required";
-    }
-    return "Please enter a valid email";
-  },
+import * as Yup from 'yup';
 
-  passwordValidation: function (password) {
-    if (password.trim() === "") {
-      return "Password is required";
-    }
-  },
-  // loginValidation: function (values) {
-  //   let errors = {};
-  //   // email
-  //   if (!values.email.trim()) {
-  //     errors.email = "Email is required";
-  //   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-  //     errors.email = "Email address is invalid";
-  //   }
+const emailSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Email is required')
+  });
 
-  //   // password
-  //   if (!values.password) {
-  //     errors.password = "Password is required";
-  //   }
-  //   return errors;
-  // },
-};
+const passwordSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(6)
+    .max(21)
+    .required('Password is required')
+  });
+  
+export {emailSchema, passwordSchema};
+
+// below are yup methods using regEx that could be added to passwordSchema for further validation:
+    // .matches(/^(?=.*?[#?!@$ %^&*-])/)  must contain a symbol
+    // .matches(/^(?=.*?[A-Z])/)          must contain a capital letter
+

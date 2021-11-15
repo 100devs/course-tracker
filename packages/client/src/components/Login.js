@@ -11,12 +11,7 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import ErrorDiv from "./styled/ErrorDiv";
 import TextLink from "./TextLink";
-import { emailValidation, passwordValidation } from "../formValidation";
-
-const validate = {
-  email: emailValidation,
-  password: passwordValidation,
-};
+import { emailSchema, passwordSchema } from "../formValidation";
 
 const Login = () => {
   const history = useHistory();
@@ -42,29 +37,28 @@ const Login = () => {
 
   //handle blur and validate
   function handleBlur(e) {
-    const { name, value } = e.target;
+    const { name } = e.target;
 
-    // check for a new error
-    const error = validate[name](value);
-
-    // validate the field if the value has been touched
-    setErrors({
-      ...errors,
-      [name]: error,
-    });
+    if (name === 'email'){
+      emailSchema.validate({email: userObj.email})
+      .then(value => setErrors(prevErrors => ({...prevErrors, email: null})))
+      .catch(err => setErrors(prevErrors => ({...prevErrors, email: err.errors[0]})));
+    }
+    if  (name === 'password'){
+      passwordSchema.validate({password: userObj.password})
+      .then(value => setErrors(prevErrors => ({...prevErrors, password: null})))
+      .catch(err => setErrors(prevErrors => ({...prevErrors, password: err.errors[0]})));
+    }
   }
 
-  //handle submit - add validation logic
   const loginFunc = async (e) => {
     e.preventDefault();
-    //should this be await? if the logic check out, call login, otherwise, display frontend errors
     login(userObj);
-    //handle backend errors
   };
 
   return (
     <Container minHeight="100vh">
-      <AuthForm validate={validate} height="auto">
+      <AuthForm height="auto">
         <FormHeader>
           <h2>Task Lemon</h2>
         </FormHeader>
