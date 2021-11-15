@@ -1,11 +1,11 @@
-import Body from "./styled/Body";
+import DisplayMarkdown from "./styled/DisplayMarkdown";
 import ReactMarkdown from "react-markdown";
 
 const MarkdownParser = (props) => {
   return (
-    <Body>
+    <DisplayMarkdown>
       <ReactMarkdown linkTarget="_blank">{props.markdown}</ReactMarkdown>
-    </Body>
+    </DisplayMarkdown>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Body = styled.section`
+const DisplayMarkdown = styled.section`
   text-align: left;
   padding: 3rem;
   color: black;
@@ -10,4 +10,4 @@ const Body = styled.section`
   }
 `;
 
-export default Body;
+export default DisplayMarkdown;
