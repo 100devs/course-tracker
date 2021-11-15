@@ -15,7 +15,8 @@ import Footer from "./Footer";
 import axios from "axios";
 
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
+  const [editSubmitted, setEditSubmitted] = useState(false);
 
   const history = useHistory();
 
@@ -96,7 +97,7 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
-      <Footer isAdmin={isAdmin} />
+      <Footer isAdmin={isAdmin} logout={logout} setEditSubmitted={setEditSubmitted}/>
     </>
   );
 }

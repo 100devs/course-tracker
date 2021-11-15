@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown"
 import CollapsibleDiv from "./styled/CollapsibleDiv";
 import PostDiv from "./styled/PostDiv";
 import PostHeader from "./styled/PostHeader";
@@ -157,7 +158,11 @@ const Post = ({
           </PostHeader>
 
           <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
-            <Body>{body}</Body>
+            <Body>
+              <ReactMarkdown linkTarget="_blank">
+                {body}
+              </ReactMarkdown>
+            </Body>
 
             {isAdmin ? (
               <ButtonDiv justify="flex-end">
