@@ -39,16 +39,10 @@ const Login = () => {
   function handleBlur(e) {
     const { name } = e.target;
 
-    if (name === 'email'){
-      emailSchema.validate({email: userObj.email})
-      .then(value => setErrors(prevErrors => ({...prevErrors, email: null})))
-      .catch(err => setErrors(prevErrors => ({...prevErrors, email: err.errors[0]})));
-    }
-    if  (name === 'password'){
-      passwordSchema.validate({password: userObj.password})
-      .then(value => setErrors(prevErrors => ({...prevErrors, password: null})))
-      .catch(err => setErrors(prevErrors => ({...prevErrors, password: err.errors[0]})));
-    }
+    const schemas = { emailSchema, passwordSchema };
+    schemas[`${name}Schema`].validate({ [name]: userObj[name] })
+      .then(_ => setErrors(prevErrors => ({ ...prevErrors, [name]: null })))
+      .catch(({ errors }) => setErrors(prevErrors => ({ ...prevErrors, [name]: errors[0] })));
   }
 
   const loginFunc = async (e) => {
@@ -72,9 +66,9 @@ const Login = () => {
             value={user.email}
             onChange={updateUser}
             onBlur={handleBlur}
-            border={errors.email && "1px solid #EE5F5F"}
+            error={errors.email}
           />
-          {errors.email && <ErrorDiv> {errors.email} </ErrorDiv>}
+          {errors.email ? <ErrorDiv> {errors.email} </ErrorDiv> : null}
         </InputDiv>
 
         <InputDiv>
@@ -86,9 +80,9 @@ const Login = () => {
             value={user.password}
             onChange={updateUser}
             onBlur={handleBlur}
-            border={errors.password && "1px solid #EE5F5F"}
+            error={errors.password}
           />
-          {errors.password && <ErrorDiv> {errors.password} </ErrorDiv>}
+          {errors.password ? <ErrorDiv> {errors.password} </ErrorDiv> : null}
         </InputDiv>
 
         <ButtonDiv>
@@ -99,7 +93,7 @@ const Login = () => {
         </ButtonDiv>
 
         {/* backend errors */}
-        {resErrors && <ErrorDiv> {resErrors} </ErrorDiv>}
+        {resErrors ? <ErrorDiv> {resErrors} </ErrorDiv> : null}
       </AuthForm>
     </Container>
   );

@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
         password,
       })
       .then((response) => {
+        setResErrors(false);
         _dispatch(response.data);
         localStorage.setItem("Token Object", JSON.stringify(response.data));
       })
