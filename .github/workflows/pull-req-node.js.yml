@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build client package
-      run: CI='' yarn build --if-present
+      run: yarn build --if-present
     - name: Run Prettier
       run: yarn format
     - name: Run Linters
