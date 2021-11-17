@@ -20,7 +20,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
       setLoading(false);
     };
 
-    if (user) {
+    if (user.userId) {
       getAdminStatus();
     } else {
       setLoading(false);

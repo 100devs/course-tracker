@@ -27,16 +27,24 @@ module.exports = {
     if (body) {
       changeObject.body = body;
     }
-    if (isDraft !== undefined) {
-      changeObject.isDraft = isDraft;
-    }
+    changeObject.isDraft = isDraft;
 
     try {
-      const post = await Post.findOneAndUpdate({ _id: id }, changeObject, {
-        new: true,
-      });
-
+      const post = await Post.findById({ _id: id });
+      for (const key in changeObject) {
+        post[key] = changeObject[key];
+      }
+      await post.save();
       res.json({ message: "Post has been updated!", post });
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  },
+
+  deletePost: async (req, res) => {
+    try {
+      await Post.deleteOne({ _id: req.params.id });
+      res.json({ message: "Post has been deleted!" });
     } catch (error) {
       res.status(500).json({ message: error });
     }

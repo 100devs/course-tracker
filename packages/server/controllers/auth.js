@@ -6,15 +6,12 @@ const {
 } = require("../middleware/tokens");
 
 module.exports = {
-  getSession: async (req, res) => {
-    res.json({ session: req.session });
-  },
   login: async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).send({ error: "User not found" });
+      return res.status(400).send({ message: "User not found" });
     }
     try {
       const passwordMatch = await bcrypt.compare(password, user.password);
@@ -29,7 +26,6 @@ module.exports = {
           { refreshtoken: refreshToken }
         );
 
-        req.session.isAdmin = user.isAdmin;
         return res.status(200).json({
           message: "User logged in successfully",
           userId: user._id,
@@ -41,6 +37,12 @@ module.exports = {
       console.log(err);
     }
     res.status(401).json({ message: "Invalid credentials" });
+  },
+  logout: async (req) => {
+    await User.findByIdAndUpdate(
+      { _id: req.params.userId },
+      { refreshtoken: "" }
+    );
   },
   createUser: async (req, res) => {
     const { username, email, password } = req.body;
