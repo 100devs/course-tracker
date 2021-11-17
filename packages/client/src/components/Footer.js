@@ -1,13 +1,14 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { DiscordLogo, TwitchLogo, TwitterLogo } from "phosphor-react";
 import TextLink from "./TextLink";
 import FooterDiv from "./styled/FooterDiv";
 import IconAnchor from "./styled/IconAnchor";
 
-const Footer = ({isAdmin, setEditSubmitted, logout}) => {
-  const logoutRefresh = () => {
-    logout();
-    setEditSubmitted((prev) => !prev);
-  }
+
+const Footer = () => {
+  const { isAdmin, logout } = useContext(AuthContext);
+  
   return (
     <FooterDiv>
       {isAdmin && (
@@ -17,7 +18,7 @@ const Footer = ({isAdmin, setEditSubmitted, logout}) => {
             link="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" link="/" onClick={logoutRefresh}/>
+          <TextLink text="Log out" link="/" onClick={() =>  logout()}/>
         </div>
       )}
 
