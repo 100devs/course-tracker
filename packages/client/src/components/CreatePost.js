@@ -33,6 +33,7 @@ function CreatePost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await axios.post(
       `/api/post/create-post`,
       { ...post, isDraft: e.target.value },
