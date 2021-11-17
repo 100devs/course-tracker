@@ -18,7 +18,7 @@ const Footer = () => {
             link="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" link="/" onClick={() =>  logout()}/>
+          <TextLink text="Log out" link="/" onClick={logout}/>
         </div>
       )}
 
