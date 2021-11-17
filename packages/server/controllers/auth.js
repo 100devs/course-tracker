@@ -11,7 +11,7 @@ module.exports = {
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).send({ error: "User not found" });
+      return res.status(400).send({ message: "User not found" });
     }
     try {
       const passwordMatch = await bcrypt.compare(password, user.password);
