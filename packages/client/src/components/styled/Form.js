@@ -2,8 +2,9 @@ import styled from "styled-components";
 const Form = styled.form.attrs((props) => ({
   padding: props.padding || "3rem",
   height: props.height || "100%",
+  marginTop: props.marginTop || "0"
 }))`
-  margin-top: 4rem;
+  margin-top: ${(props) => props.marginTop};
   border-radius: .25rem;
   height: ${(props) => props.height};
   width: 75%;
@@ -19,7 +20,6 @@ const Form = styled.form.attrs((props) => ({
   @media (max-width: 600px) {
     width: 95%;
     padding: 1.5rem;
-    margin-top: 3.5rem;
   }
 `;
 export default Form;

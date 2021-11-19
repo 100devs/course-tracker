@@ -86,7 +86,7 @@ const Post = ({
     // all the stuff from create post form
     return (
       <Container height="100vh">
-        <Form>
+        <Form marginTop="0">
           <FormHeader justify="space-between">
             {/* phantom eye for correct eye placement ... yikes! */}
             {isDraft ? (
