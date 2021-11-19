@@ -43,5 +43,3 @@ const PostHeader = styled.div`
   `;
   
   export default PostHeader;
-  
-  // background-color: #e5e5e5;

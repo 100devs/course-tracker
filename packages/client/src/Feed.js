@@ -35,7 +35,6 @@ const Feed = () => {
     <>
       <Navbar isAdmin={isAdmin}></Navbar>
       <FeedDiv>
-        <div>
         {posts.map((post) => {
           return (
             <Post
@@ -50,9 +49,8 @@ const Feed = () => {
             />
           );
         })}
-        </div>
-        <Footer isAdmin={isAdmin} />
       </FeedDiv>
+      <Footer isAdmin={isAdmin} />
     </>
   );
 };

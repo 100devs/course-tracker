@@ -6,7 +6,6 @@ import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = (props) => {
-
   const { logout } = useContext(AuthContext);
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
