@@ -40,9 +40,12 @@ const Login = () => {
     const { name } = e.target;
 
     const schemas = { emailSchema, passwordSchema };
-    schemas[`${name}Schema`].validate({ [name]: userObj[name] })
-      .then(_ => setErrors(prevErrors => ({ ...prevErrors, [name]: null })))
-      .catch(({ errors }) => setErrors(prevErrors => ({ ...prevErrors, [name]: errors[0] })));
+    schemas[`${name}Schema`]
+      .validate({ [name]: userObj[name] })
+      .then((_) => setErrors((prevErrors) => ({ ...prevErrors, [name]: null })))
+      .catch(({ errors }) =>
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: errors[0] }))
+      );
   }
 
   const loginFunc = async (e) => {
@@ -87,7 +90,7 @@ const Login = () => {
 
         <ButtonDiv>
           <TextLink onClick={() => history.goBack()} text="Cancel" />
-          <Button fontSize="1rem" size="11rem" onClick={loginFunc}>
+          <Button size="11rem" onClick={loginFunc}>
             Login
           </Button>
         </ButtonDiv>

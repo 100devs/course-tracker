@@ -5,25 +5,20 @@ export const Wrapper = styled.div`
   width: 100%;
   position: fixed;
   background: white;
-  padding: 2rem 3rem .5rem;
+  padding: 2rem 3rem 0.5rem;
   display: flex;
   justify-content: space-between;
-  .plusCircle{
+  .plusCircle {
     width: 3rem;
     height: 3rem;
   }
-  @media (max-width: 900px) {
-    .plusCircle{
+
+  @media (max-width: 600px) {
+    .plusCircle {
       width: 2.5rem;
       height: 2.5rem;
     }
-  }
-  @media (max-width: 600px) {
-    .plusCircle{
-      width: 2rem;
-      height: 2rem;
-    }
-    padding: 1.5rem 2rem .5rem;
+    padding: 1.5rem 2rem 0.5rem;
   }
   span:hover {
     text-decoration: none;
@@ -70,7 +65,7 @@ export const ListItem = styled.li`
     font-size: 1.2rem;
   }
 
-  span{
+  span {
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 400;
@@ -81,14 +76,15 @@ export const ListItem = styled.li`
   }
 
   a > svg {
-    margin-left: .25rem;
+    margin-left: 0.25rem;
   }
 
   span:hover {
     text-decoration: underline;
   }
   @media (max-width: 500px) {
-    a, span {
+    a,
+    span {
       font-size: 1rem;
     }
   }
