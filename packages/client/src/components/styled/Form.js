@@ -2,10 +2,10 @@ import styled from "styled-components";
 const Form = styled.form.attrs((props) => ({
   padding: props.padding || "3rem",
   height: props.height || "100%",
-  marginTop: props.marginTop || "0"
+  marginTop: props.marginTop || "0",
 }))`
   margin-top: ${(props) => props.marginTop};
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   height: ${(props) => props.height};
   width: 75%;
   background-color: #e5e5e5;

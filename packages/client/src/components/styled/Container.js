@@ -10,8 +10,8 @@ const Container = styled.div.attrs((props) => ({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media(max-width: 600px){
-    .createPost{
+  @media (max-width: 600px) {
+    .createPost {
       margin-top: 3rem;
     }
   }

@@ -9,15 +9,17 @@ const DisplayMarkdown = styled.section`
     font-size: 1.5rem;
     font-weight: 500;
   }
-  p, a{
+  p,
+  a {
     font-size: 1rem;
   }
   @media (max-width: 900px) {
     h2 {
       font-size: 1.2rem;
     }
-    p, a{
-      font-size: .8rem;
+    p,
+    a {
+      font-size: 0.8rem;
     }
   }
   @media (max-width: 500px) {
