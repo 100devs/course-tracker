@@ -89,7 +89,7 @@ export const ListItem = styled.li`
   }
   @media (max-width: 500px) {
     a, span {
-      font-size: .8rem;
+      font-size: 1rem;
     }
   }
 `;
