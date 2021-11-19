@@ -87,7 +87,7 @@ const Login = () => {
 
         <ButtonDiv>
           <TextLink onClick={() => history.goBack()} text="Cancel" />
-          <Button fontSize="1.5rem" size="11rem" onClick={loginFunc}>
+          <Button fontSize="1rem" size="11rem" onClick={loginFunc}>
             Login
           </Button>
         </ButtonDiv>

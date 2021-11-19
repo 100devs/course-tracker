@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const Button = styled.button.attrs((props) => ({
-  fontSize: props.fontSize || "1.2rem",
+  fontSize: props.fontSize || "1rem",
   size: props.size || "8rem",
   background: props.background || "black",
   hoverBG: props.hoverBG || "#3D3D3D",
   margin: props.margin || "0",
 }))`
+  border-radius: .25rem;
   width: ${(props) => props.size};
   background-color: ${(props) => props.background};
   color: white;

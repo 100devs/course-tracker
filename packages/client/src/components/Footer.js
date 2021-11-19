@@ -11,7 +11,7 @@ const Footer = (props) => {
   return (
     <FooterDiv>
       {props.isAdmin && (
-        <div className="linkDiv flex">
+        <div className="linkDiv flex spanWhite">
           <TextLink
             text="Create a post"
             link="/create-post"
@@ -32,7 +32,7 @@ const Footer = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <DiscordLogo width="2.5rem" height="2.5rem" weight="duotone" />
+            <DiscordLogo width="2.5rem" height="2.5rem" weight="duotone"/>
           </IconAnchor>
 
           <IconAnchor
@@ -40,7 +40,7 @@ const Footer = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TwitchLogo width="2.5rem" height="2.5rem" weight="duotone" />
+            <TwitchLogo width="2.5rem" height="2.5rem" weight="duotone"/>
           </IconAnchor>
 
           <IconAnchor
@@ -48,7 +48,7 @@ const Footer = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TwitterLogo width="2.5rem" height="2.5rem" weight="duotone" />
+            <TwitterLogo width="2.5rem" height="2.5rem" weight="duotone"/>
           </IconAnchor>
         </div>
       </div>

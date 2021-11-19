@@ -5,7 +5,10 @@ const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 9rem;
+  padding-top: 5rem;
+  @media(max-width: 600px){
+    padding-top: 4rem;
+  }
 `;
 
 export default FeedDiv;

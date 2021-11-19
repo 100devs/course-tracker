@@ -6,6 +6,7 @@ import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = (props) => {
+
   const { logout } = useContext(AuthContext);
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
@@ -13,11 +14,11 @@ const Navbar = (props) => {
   const NavButton = () => {
     return (
       <PlusCircle
-        size={80}
         weight="fill"
         color="black"
         clicked={sidebar}
         onClick={() => showSidebar()}
+        className="plusCircle"
       >
         <animateTransform
           attributeName="transform"
