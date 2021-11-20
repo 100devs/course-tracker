@@ -3,7 +3,6 @@ import CollapsibleDiv from "./styled/CollapsibleDiv";
 import PostDiv from "./styled/PostDiv";
 import PostHeader from "./styled/PostHeader";
 import Button from "./styled/Button";
-import Body from "./styled/Body";
 import ButtonDiv from "./styled/ButtonDiv";
 import { Eye, EyeSlash } from "phosphor-react";
 import Form from "./styled/Form";
@@ -15,6 +14,7 @@ import TextArea from "./styled/TextArea";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import axios from "axios";
+import MarkdownParser from "./MarkdownParser";
 
 const Post = ({
   title,
@@ -157,7 +157,7 @@ const Post = ({
           </PostHeader>
 
           <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
-            <Body>{body}</Body>
+            <MarkdownParser markdown={body} />
 
             {isAdmin ? (
               <ButtonDiv justify="flex-end">
