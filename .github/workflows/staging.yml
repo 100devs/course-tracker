@@ -17,4 +17,3 @@ jobs:
         with:
           app-name: "course-tracker-100devs"
           api-key: "${{secrets.HEROKU_API_KEY}}"
-          path: "./build"
