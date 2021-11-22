@@ -16,7 +16,7 @@ const Navbar = (props) => {
         size={80}
         weight="fill"
         color="black"
-        clicked={sidebar}
+        clicked={sidebar.toString()}
         onClick={() => showSidebar()}
       >
         <animateTransform

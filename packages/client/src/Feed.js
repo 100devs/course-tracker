@@ -1,9 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import Post from "./components/Post";
 import axios from "axios";
-import Footer from "./components/Footer";
 import FeedDiv from "./components/styled/FeedDiv";
-import Navbar from "./components/Navbar";
 import { AuthContext } from "./context/AuthContext";
 
 const backend = process.env.REACT_APP_BACKEND;
@@ -33,7 +31,6 @@ const Feed = () => {
   }
   return (
     <>
-      <Navbar isAdmin={isAdmin}></Navbar>
       <FeedDiv>
         {posts.map((post) => {
           return (
@@ -49,7 +46,6 @@ const Feed = () => {
             />
           );
         })}
-        <Footer isAdmin={isAdmin} />
       </FeedDiv>
     </>
   );
