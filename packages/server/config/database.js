@@ -1,9 +1,12 @@
-const mongoose = require("mongoose");
 require("dotenv").config();
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
+const mongoose = require("mongoose");
 
-const DB_STRING = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@user-dashboard.p60yz.mongodb.net/user-dashboard?retryWrites=true&w=majority`;
+const { DB_USER, DB_PASSWORD, NODE_ENV } = process.env;
+
+const DB_STRING =
+  NODE_ENV === "production"
+    ? `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.gkxtg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+    : `mongodb+srv://${DB_USER}:${DB_PASSWORD}@user-dashboard.p60yz.mongodb.net/user-dashboard?retryWrites=true&w=majority`;
 
 const connectDB = async () => {
   try {

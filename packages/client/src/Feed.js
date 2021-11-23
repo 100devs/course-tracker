@@ -49,8 +49,8 @@ const Feed = () => {
             />
           );
         })}
-        <Footer/>
       </FeedDiv>
+      <Footer/>
     </>
   );
 };
