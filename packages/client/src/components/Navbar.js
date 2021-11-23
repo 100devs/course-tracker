@@ -15,7 +15,7 @@ const Navbar = (props) => {
       <PlusCircle
         weight="fill"
         color="black"
-        clicked={sidebar}
+        clicked={sidebar.toString()}
         onClick={() => showSidebar()}
         className="plusCircle"
       >
