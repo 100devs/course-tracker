@@ -5,7 +5,7 @@ const Form = styled.form.attrs((props) => ({
 }))`
   height: ${(props) => props.height};
   width: 100%;
-  background-color: #e5e5e5;
+  background-color: ${(props) => props.theme.colors.bgPrimary};
   padding: ${(props) => props.padding};
   display: flex;
   flex-flow: column nowrap;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const PostHeader = styled.div`
   text-align: left;
-  background-color: #e5e5e5;
+  background-color: ${(props) => props.theme.colors.bgPrimary};
   padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;

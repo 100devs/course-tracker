@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
 export const NavContainer = styled.nav`
   width: fit-content;
   text-align: left;
-  background-color: black;
+  background-color: ${(props) => props.theme.colors.primary};
   color: #ccc;
   border: none;
   border-top-right-radius: 2rem;
@@ -47,7 +47,7 @@ export const ListItem = styled.li`
   }
 
   a {
-    color: #ccc;
+    color: ${(props) => props.theme.colors.navLink};
     font-weight: 600;
     text-decoration: none;
   }

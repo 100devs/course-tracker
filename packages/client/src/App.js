@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import React from "react";
+import Theme from "./components/styled/Theme";
+import styled from "styled-components";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import Login from "./components/Login";
@@ -20,22 +21,24 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AuthContextProvider>
-      <AppContainer>
-        <Router>
-          <Switch>
-            <PublicRoute
-              component={Login}
-              path="/login"
-              restricted={true}
-              exact
-            />
-            <PublicRoute component={Feed} path="/" restricted={false} exact />
-            <AdminRoute component={CreatePost} path="/create-post" exact />
-          </Switch>
-        </Router>
-      </AppContainer>
-    </AuthContextProvider>
+    <Theme>
+      <AuthContextProvider>
+        <AppContainer>
+          <Router>
+            <Switch>
+              <PublicRoute
+                component={Login}
+                path="/login"
+                restricted={true}
+                exact
+              />
+              <PublicRoute component={Feed} path="/" restricted={false} exact />
+              <AdminRoute component={CreatePost} path="/create-post" exact />
+            </Switch>
+          </Router>
+        </AppContainer>
+      </AuthContextProvider>
+    </Theme>
   );
 }
 
