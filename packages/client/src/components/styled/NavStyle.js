@@ -5,10 +5,21 @@ export const Wrapper = styled.div`
   width: 100%;
   position: fixed;
   background: white;
-  padding: 3rem 1.5rem;
+  padding: 2rem 3rem 0.5rem;
   display: flex;
   justify-content: space-between;
+  .plusCircle {
+    width: 3rem;
+    height: 3rem;
+  }
 
+  @media (max-width: 600px) {
+    .plusCircle {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    padding: 1.5rem 2rem 0.5rem;
+  }
   span:hover {
     text-decoration: none;
   }
@@ -20,8 +31,8 @@ export const NavContainer = styled.nav`
   background-color: black;
   color: #ccc;
   border: none;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   padding: 3rem 1.5rem;
   margin-top: 5rem;
   position: absolute;
@@ -44,19 +55,37 @@ export const ListItem = styled.li`
     color: #666;
     padding-top: 2.5rem;
     margin: 0;
+    font-size: 1.5rem;
   }
 
   a {
     color: #ccc;
     font-weight: 600;
     text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  span {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 
   a:hover {
-    text-decoration: none;
+    text-decoration: underline;
+  }
+
+  a > svg {
+    margin-left: 0.25rem;
   }
 
   span:hover {
-    text-decoration: none;
+    text-decoration: underline;
+  }
+  @media (max-width: 500px) {
+    a,
+    span {
+      font-size: 1rem;
+    }
   }
 `;

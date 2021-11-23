@@ -49,8 +49,8 @@ const Feed = () => {
             />
           );
         })}
-        <Footer isAdmin={isAdmin} />
       </FeedDiv>
+      <Footer isAdmin={isAdmin} />
     </>
   );
 };

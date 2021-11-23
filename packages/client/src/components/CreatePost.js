@@ -49,7 +49,7 @@ function CreatePost() {
     <>
       <Navbar isAdmin={isAdmin}></Navbar>
       <Container minHeight="100vh">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="createPost">
           <FormHeader>
             <h2>Create Post</h2>
           </FormHeader>

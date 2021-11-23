@@ -13,11 +13,11 @@ const Navbar = (props) => {
   const NavButton = () => {
     return (
       <PlusCircle
-        size={80}
         weight="fill"
         color="black"
         clicked={sidebar}
         onClick={() => showSidebar()}
+        className="plusCircle"
       >
         <animateTransform
           attributeName="transform"
