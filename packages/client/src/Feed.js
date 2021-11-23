@@ -9,7 +9,7 @@ import { AuthContext } from "./context/AuthContext";
 const backend = process.env.REACT_APP_BACKEND;
 
 const Feed = () => {
-  const { user, isAdmin, getAdminStatus, logout } = useContext(AuthContext);
+  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
   const [editSubmitted, setEditSubmitted] = useState(false);
