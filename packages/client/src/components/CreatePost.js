@@ -94,7 +94,6 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
-      <Footer/>
     </>
   );
 }
