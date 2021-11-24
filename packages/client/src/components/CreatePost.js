@@ -14,8 +14,7 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
-
+  const { user, isAdmin, getAdminStatus} = useContext(AuthContext);
   const history = useHistory();
 
   const [post, setPost] = useState({
@@ -95,6 +94,7 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
+      <Footer/>
     </>
   );
 }

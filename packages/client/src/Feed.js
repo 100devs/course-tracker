@@ -10,6 +10,7 @@ const Feed = () => {
   const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
+  const [editSubmitted, setEditSubmitted] = useState(false);
 
   const populateFeed = async () => {
     const adminCheck = await getAdminStatus(user.userId);
@@ -20,7 +21,6 @@ const Feed = () => {
     setLoading(false);
   };
 
-  const [editSubmitted, setEditSubmitted] = useState(false);
 
   useEffect(() => {
     populateFeed();
@@ -47,7 +47,7 @@ const Feed = () => {
           );
         })}
       </FeedDiv>
-      <Footer isAdmin={isAdmin} />
+      <Footer/>
     </>
   );
 };
