@@ -14,7 +14,7 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus} = useContext(AuthContext);
+  const { user, getAdminStatus} = useContext(AuthContext);
   const history = useHistory();
 
   const [post, setPost] = useState({
@@ -40,7 +40,7 @@ function CreatePost() {
 
   useEffect(() => {
     getAdminStatus(user.userId);
-  }, []);
+  }, [getAdminStatus, user.userId]);
 
   return (
     <>
