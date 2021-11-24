@@ -8,6 +8,7 @@ import Feed from "./Feed";
 import CreatePost from "./components/CreatePost";
 import AdminRoute from "./components/AdminRoute";
 import PublicRoute from "./components/PublicRoute";
+import Layout from "./components/Layout";
 
 const AppContainer = styled.div`
   text-align: center;
@@ -25,16 +26,23 @@ function App() {
       <AuthContextProvider>
         <AppContainer>
           <Router>
-            <Switch>
-              <PublicRoute
-                component={Login}
-                path="/login"
-                restricted={true}
-                exact
-              />
-              <PublicRoute component={Feed} path="/" restricted={false} exact />
-              <AdminRoute component={CreatePost} path="/create-post" exact />
-            </Switch>
+            <Layout>
+              <Switch>
+                <PublicRoute
+                  component={Login}
+                  path="/login"
+                  restricted={true}
+                  exact
+                />
+                <PublicRoute
+                  component={Feed}
+                  path="/"
+                  restricted={false}
+                  exact
+                />
+                <AdminRoute component={CreatePost} path="/create-post" exact />
+              </Switch>
+            </Layout>
           </Router>
         </AppContainer>
       </AuthContextProvider>

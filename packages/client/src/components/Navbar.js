@@ -6,18 +6,21 @@ import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = (props) => {
-  const { logout } = useContext(AuthContext);
+  const { logout, isAdmin } = useContext(AuthContext);
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-
+  const logoutFunc = () => {
+    logout();
+    setSidebar(!sidebar);
+  };
   const NavButton = () => {
     return (
       <PlusCircle
-        size={80}
         weight="fill"
         color="black"
-        clicked={sidebar}
+        clicked={sidebar.toString()}
         onClick={() => showSidebar()}
+        className="plusCircle"
       >
         <animateTransform
           attributeName="transform"
@@ -40,15 +43,21 @@ const Navbar = (props) => {
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>
-              <TextLink text="Home" link="/" align="left" />
+              <TextLink
+                text="Home"
+                link="/"
+                align="left"
+                onClick={() => showSidebar()}
+              />
             </ListItem>
-            {props.isAdmin && (
+            {isAdmin && (
               <>
                 <ListItem>
                   <TextLink
                     text="Create a Post"
                     link="/create-post"
                     align="left"
+                    onClick={() => showSidebar()}
                   />
                 </ListItem>
                 <ListItem>
@@ -56,7 +65,7 @@ const Navbar = (props) => {
                     text="Logout"
                     link="/"
                     align="left"
-                    onClick={() => logout()}
+                    onClick={() => logoutFunc()}
                   />
                 </ListItem>
               </>

@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Navbar from "./Navbar";
 import ButtonDiv from "./styled/ButtonDiv";
 import Button from "./styled/Button";
 import InputDiv from "./styled/InputDiv";
@@ -12,12 +11,10 @@ import FormHeader from "./styled/FormHeader";
 import Container from "./styled/Container";
 import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
-import Footer from "./Footer";
 import axios from "axios";
 
 function CreatePost() {
-  const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
-
+  const { user, getAdminStatus } = useContext(AuthContext);
   const history = useHistory();
 
   const [post, setPost] = useState({
@@ -43,13 +40,12 @@ function CreatePost() {
 
   useEffect(() => {
     getAdminStatus(user.userId);
-  }, []);
+  }, [getAdminStatus, user.userId]);
 
   return (
     <>
-      <Navbar isAdmin={isAdmin}></Navbar>
       <Container minHeight="100vh">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="createPost">
           <FormHeader>
             <h2>Create Post</h2>
           </FormHeader>
@@ -98,7 +94,6 @@ function CreatePost() {
           </ButtonDiv>
         </Form>
       </Container>
-      <Footer isAdmin={isAdmin} />
     </>
   );
 }

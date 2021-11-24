@@ -39,8 +39,8 @@ export const AuthContextProvider = ({ children }) => {
     const user = JSON.parse(localStorage.getItem("Token Object"));
     axios.post(`${backend}api/auth/logout/${user.userId}`);
     _dispatch({});
+    setIsAdmin(false);
     localStorage.removeItem("Token Object");
-    window.location.reload(false);
   }, []);
 
   const [isAdmin, setIsAdmin] = useState(false);

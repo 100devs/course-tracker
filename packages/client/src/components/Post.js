@@ -86,7 +86,7 @@ const Post = ({
     // all the stuff from create post form
     return (
       <Container height="100vh">
-        <Form>
+        <Form marginTop="0">
           <FormHeader justify="space-between">
             {/* phantom eye for correct eye placement ... yikes! */}
             {isDraft ? (
@@ -148,9 +148,9 @@ const Post = ({
           <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
             <h2>{title}</h2>
             {isAdmin && isDraft ? (
-              <EyeSlash aria-label="" size={48} color="grey" />
+              <EyeSlash aria-label="" color="grey" />
             ) : isAdmin ? (
-              <Eye aria-label="" size={48} color="black" />
+              <Eye aria-label="" color="green" />
             ) : (
               <></>
             )}

@@ -7,6 +7,7 @@ const Button = styled.button.attrs((props) => ({
   hoverBG: props.hoverBG || props.theme.colors.bgHover,
   margin: props.margin || "0",
 }))`
+  border-radius: 0.25rem;
   width: ${(props) => props.size};
   background-color: ${(props) => props.background};
   color: ${(props) => props.theme.colors.buttonText};

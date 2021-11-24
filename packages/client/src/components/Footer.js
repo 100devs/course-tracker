@@ -1,23 +1,23 @@
 import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { DiscordLogo, TwitchLogo, TwitterLogo } from "phosphor-react";
 import TextLink from "./TextLink";
 import FooterDiv from "./styled/FooterDiv";
 import IconAnchor from "./styled/IconAnchor";
-import { AuthContext } from "../context/AuthContext";
 
-const Footer = (props) => {
-  const { logout } = useContext(AuthContext);
+const Footer = () => {
+  const { isAdmin, logout } = useContext(AuthContext);
 
   return (
     <FooterDiv>
-      {props.isAdmin && (
+      {isAdmin && (
         <div className="linkDiv flex">
           <TextLink
             text="Create a post"
             link="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" link="/" onClick={() => logout()} />
+          <TextLink text="Log out" link="/" onClick={logout} />
         </div>
       )}
 
