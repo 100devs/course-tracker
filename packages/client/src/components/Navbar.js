@@ -4,6 +4,7 @@ import { IconContext, PlusCircle } from "phosphor-react";
 import { externalLinks } from "./NavbarData";
 import TextLink from "./TextLink";
 import { AuthContext } from "../context/AuthContext";
+import { ReactComponent as ReactLogo } from "./task-lemon-logo.svg";
 
 const Navbar = (props) => {
   const { logout } = useContext(AuthContext);
@@ -37,6 +38,7 @@ const Navbar = (props) => {
       <Wrapper>
         <NavButton />
         <TextLink link="/" text="Task Lemon" flexDirection="row" />
+        <ReactLogo />
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>
