@@ -5,9 +5,9 @@ const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 5rem;
+  padding-top: 7rem;
   @media (max-width: 600px) {
-    padding-top: 4rem;
+    padding-top: 6rem;
   }
 `;
 

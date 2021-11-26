@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const FooterDiv = styled.footer`
-  background-color: #e5e5e5;
+  background-color: #1f321d;
   padding: 4.5rem 1.5rem 1.5rem;
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
+  color: #effbee;
   .flex {
     display: flex;
   }

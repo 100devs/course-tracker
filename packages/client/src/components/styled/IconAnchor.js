@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const IconAnchor = styled.a`
-  background: #fff;
+  background: #effbee;
   border-radius: 50%;
   width: 5rem;
   height: 5rem;

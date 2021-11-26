@@ -4,8 +4,8 @@ export const Wrapper = styled.div`
   z-index: 1000000;
   width: 100%;
   position: fixed;
-  background: white;
-  padding: 2rem 3rem 0.5rem;
+  background: #effbee;
+  padding: 2rem 3rem;
   display: flex;
 
   justify-content: space-between;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    padding: 1.5rem 2rem 0.5rem;
+    padding: 1.5rem 2rem;
   }
   span:hover {
     text-decoration: none;

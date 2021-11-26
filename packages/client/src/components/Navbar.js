@@ -23,6 +23,7 @@ const Navbar = (props) => {
     logout();
     setSidebar(!sidebar);
   };
+
   const NavButton = () => {
     return (
       <PlusCircle
@@ -50,7 +51,6 @@ const Navbar = (props) => {
       <Wrapper>
         <NavButton />
         <Logo lemonView={lemonView} />
-        {/* <TextLink link="/" text="Task Lemon" flexDirection="row" /> */}
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>
