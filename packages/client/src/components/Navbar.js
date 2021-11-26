@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Wrapper, NavContainer, ListItem } from "./styled/NavStyle";
 import { IconContext, PlusCircle } from "phosphor-react";
 import { externalLinks } from "./NavbarData";
@@ -9,6 +9,15 @@ import Logo from "./Logo";
 const Navbar = (props) => {
   const { logout, isAdmin } = useContext(AuthContext);
   const [sidebar, setSidebar] = useState(false);
+  const [lemonView, setLemonView] = useState(window.innerWidth < 400);
+
+  const updateView = () => setLemonView(window.innerWidth < 400);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateView);
+    return () => window.removeEventListener("resize", updateView);
+  });
+
   const showSidebar = () => setSidebar(!sidebar);
   const logoutFunc = () => {
     logout();
@@ -40,7 +49,7 @@ const Navbar = (props) => {
     <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
       <Wrapper>
         <NavButton />
-        <Logo />
+        <Logo lemonView={lemonView} />
         {/* <TextLink link="/" text="Task Lemon" flexDirection="row" /> */}
         <NavContainer clicked={sidebar}>
           <ul>

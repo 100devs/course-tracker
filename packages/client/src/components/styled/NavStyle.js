@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   background: white;
   padding: 2rem 3rem 0.5rem;
   display: flex;
+
   justify-content: space-between;
   .plusCircle {
     width: 3rem;
@@ -14,10 +15,6 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    .plusCircle {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
     padding: 1.5rem 2rem 0.5rem;
   }
   span:hover {
