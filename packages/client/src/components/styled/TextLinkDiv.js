@@ -13,20 +13,22 @@ const TextLinkDiv = styled.div.attrs((props) => ({
   justify-content: ${(props) => props.justify};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
+  font-weight: 500;
   a {
     text-decoration: none;
     color: black;
   }
   span {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    color: ${(props) => props.color};
     &:hover {
       text-decoration: underline;
     }
   }
   .spanMargin {
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `;
 

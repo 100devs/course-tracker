@@ -6,7 +6,6 @@ const FormHeader = styled.div.attrs((props) => ({
 }))`
   width: 100%;
   text-align: center;
-  background-color: inherit;
   justify-content: ${(props) => props.justify};
   display: flex;
   align-items: ${(props) => props.align};
@@ -15,6 +14,16 @@ const FormHeader = styled.div.attrs((props) => ({
   h2 {
     font-size: 2rem;
     margin: 0;
+  }
+  @media (max-width: 900px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 500px) {
+    h2 {
+      font-size: 1.2rem;
+    }
   }
 `;
 

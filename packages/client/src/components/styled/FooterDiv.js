@@ -3,7 +3,7 @@ import styled from "styled-components";
 const FooterDiv = styled.footer`
   background-color: #e5e5e5;
   padding: 4.5rem 1.5rem 1.5rem;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   .flex {
@@ -22,7 +22,7 @@ const FooterDiv = styled.footer`
   }
   .copyright {
     span {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
   @media (max-width: 750px) {
