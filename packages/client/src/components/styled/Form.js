@@ -7,8 +7,8 @@ const Form = styled.form.attrs((props) => ({
   margin-top: ${(props) => props.marginTop};
   border-radius: 0.25rem;
   height: ${(props) => props.height};
+  background-color: ${(props) => props.theme.colors.bgPrimary};
   width: 75%;
-  background-color: #e5e5e5;
   padding: ${(props) => props.padding};
   display: flex;
   flex-flow: column nowrap;

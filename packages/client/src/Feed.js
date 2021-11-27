@@ -21,7 +21,6 @@ const Feed = () => {
     setLoading(false);
   };
 
-
   useEffect(() => {
     populateFeed();
   }, [editSubmitted, user.userId]);

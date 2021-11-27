@@ -5,10 +5,9 @@ import TextLink from "./TextLink";
 import FooterDiv from "./styled/FooterDiv";
 import IconAnchor from "./styled/IconAnchor";
 
-
 const Footer = () => {
   const { isAdmin, logout } = useContext(AuthContext);
-  
+
   return (
     <FooterDiv>
       {isAdmin && (
@@ -18,7 +17,7 @@ const Footer = () => {
             link="/create-post"
             margin="0 0 1rem 0"
           />
-          <TextLink text="Log out" link="/" onClick={logout}/>
+          <TextLink text="Log out" link="/" onClick={logout} />
         </div>
       )}
 

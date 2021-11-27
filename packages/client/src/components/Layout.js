@@ -10,15 +10,15 @@ function Layout({ children }) {
     return (
       <>
         {children}
-        <Footer/>
+        <Footer />
       </>
     );
   }
   return (
     <>
-      <Navbar/>
+      <Navbar />
       {children}
-      <Footer/>
+      <Footer />
     </>
   );
 }

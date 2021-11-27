@@ -3,7 +3,7 @@ import styled from "styled-components";
 const PostHeader = styled.div`
   border-radius: 0.25rem;
   text-align: left;
-  background-color: #e5e5e5;
+  background-color: ${(props) => props.theme.colors.bgPrimary};
   padding: 2rem;
   display: flex;
   justify-content: space-between;

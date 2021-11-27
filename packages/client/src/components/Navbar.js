@@ -10,9 +10,9 @@ const Navbar = (props) => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
   const logoutFunc = () => {
-      logout();
-      setSidebar(!sidebar);
-  }
+    logout();
+    setSidebar(!sidebar);
+  };
   const NavButton = () => {
     return (
       <PlusCircle
@@ -43,7 +43,12 @@ const Navbar = (props) => {
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>
-              <TextLink text="Home" link="/" align="left" onClick={() => showSidebar()}/>
+              <TextLink
+                text="Home"
+                link="/"
+                align="left"
+                onClick={() => showSidebar()}
+              />
             </ListItem>
             {isAdmin && (
               <>
