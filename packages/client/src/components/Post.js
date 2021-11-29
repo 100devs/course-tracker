@@ -100,7 +100,7 @@ const Post = ({
             {isDraft ? (
               <EyeSlash aria-label="" size={48} color="grey" />
             ) : (
-              <Eye aria-label="" size={48} color="green" />
+              <Eye aria-label="" size={48} color="black" />
             )}
           </FormHeader>
           <InputDiv>

@@ -3,14 +3,14 @@ import styled from "styled-components";
 const Button = styled.button.attrs((props) => ({
   fontSize: props.fontSize || "1.2rem",
   size: props.size || "8rem",
-  background: props.background || "black",
-  hoverBG: props.hoverBG || "#3D3D3D",
+  background: props.background || props.theme.colors.primary,
+  hoverBG: props.hoverBG || props.theme.colors.bgHover,
   margin: props.margin || "0",
 }))`
   border-radius: 0.25rem;
   width: ${(props) => props.size};
   background-color: ${(props) => props.background};
-  color: white;
+  color: ${(props) => props.theme.colors.buttonText};
   font-size: ${(props) => props.fontSize};
   border: none;
   padding: 1rem 0;

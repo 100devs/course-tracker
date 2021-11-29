@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FooterDiv = styled.footer`
-  background-color: #1f321d;
+  background-color: ${(props) => props.theme.colors.bgSecondary};
   padding: 4.5rem 1.5rem 1.5rem;
   margin-top: 1.5rem;
   display: flex;
