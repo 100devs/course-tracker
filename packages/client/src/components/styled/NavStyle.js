@@ -4,10 +4,10 @@ export const Wrapper = styled.div`
   z-index: 1000000;
   width: 100%;
   position: fixed;
-  background: #effbee;
+  background: ${(props) => props.theme.colors.bgSecondary};
   padding: 2rem 3rem;
   display: flex;
-
+  align-items: center;
   justify-content: space-between;
   .plusCircle {
     width: 3rem;
@@ -26,12 +26,12 @@ export const NavContainer = styled.nav`
   width: fit-content;
   text-align: left;
   background-color: ${(props) => props.theme.colors.primary};
-  color: #ccc;
   border: none;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   padding: 3rem 1.5rem;
   margin-top: 5rem;
+  align-self: flex-start;
   position: absolute;
   left: ${(props) => (props.clicked ? "0px" : "-3000px")};
   transition: ${(props) => (props.clicked ? "400ms" : "750ms")};
@@ -44,19 +44,18 @@ export const NavContainer = styled.nav`
 export const ListItem = styled.li`
   text-decoration: none;
   list-style: none;
-  color: #ccc;
   line-height: 2rem;
   font-weight: 600;
 
   p {
-    color: #666;
+    color: ${(props) => props.theme.colors.accent};
     padding-top: 2.5rem;
     margin: 0;
     font-size: 1.5rem;
   }
 
   a {
-    color: ${(props) => props.theme.colors.navLink};
+    color: ${(props) => props.theme.colors.textLight};
     font-weight: 600;
     text-decoration: none;
     font-size: 1.2rem;

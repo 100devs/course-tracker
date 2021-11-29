@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const IconAnchor = styled.a`
-  background: #effbee;
+  background: ${(props) => props.theme.colors.bgSecondary};
   border-radius: 50%;
   width: 5rem;
   height: 5rem;

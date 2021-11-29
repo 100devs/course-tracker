@@ -6,6 +6,7 @@ const TextLinkDiv = styled.div.attrs((props) => ({
   align: props.align || "center",
   margin: props.margin || "0",
   padding: props.padding || "auto",
+  color: props.color || props.theme.colors.textLight,
 }))`
   display: flex;
   flex-direction: ${(props) => props.flexDirection};

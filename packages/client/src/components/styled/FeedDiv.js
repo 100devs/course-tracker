@@ -5,7 +5,7 @@ const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 7rem;
+  padding-top: 8rem;
   @media (max-width: 600px) {
     padding-top: 6rem;
   }
