@@ -12,10 +12,20 @@ export const Wrapper = styled.div`
   .plusCircle {
     width: 3rem;
     height: 3rem;
+    color: ${(props) => props.theme.colors.primary};
+  }
+  .textLogo {
+    height: 1.9rem;
+  }
+  .lemonLogo {
+    height: 2.5rem;
   }
 
   @media (max-width: 600px) {
     padding: 1.5rem 2rem;
+    .textLogo {
+      height: 2.6rem;
+    }
   }
   span:hover {
     text-decoration: none;
