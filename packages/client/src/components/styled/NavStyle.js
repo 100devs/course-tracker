@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   .plusCircle {
     width: 3rem;
     height: 3rem;
+    color: ${(props) => props.theme.colors.primary};
   }
 
   @media (max-width: 600px) {

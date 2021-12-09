@@ -8,7 +8,7 @@ const IconAnchor = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: ${(props) => props.theme.colors.primary};
   margin-left: 1.5rem;
   @media (max-width: 500px) {
     margin-left: 0;

@@ -98,9 +98,9 @@ const Post = ({
             <h2>Edit Post</h2>
 
             {isDraft ? (
-              <EyeSlash aria-label="" size={48} color="black" />
+              <EyeSlash aria-label="" size={48} color="#4E4B4C" />
             ) : (
-              <Eye aria-label="" size={48} color="green" />
+              <Eye aria-label="" size={48} color="#004A33" />
             )}
           </FormHeader>
           <InputDiv>
@@ -148,9 +148,9 @@ const Post = ({
           <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
             <h2>{title}</h2>
             {isAdmin && isDraft ? (
-              <EyeSlash aria-label="" color="black" />
+              <EyeSlash aria-label="" />
             ) : isAdmin ? (
-              <Eye aria-label="" color="green" />
+              <Eye aria-label="" className="published" color="#096536" />
             ) : (
               <></>
             )}

@@ -19,6 +19,10 @@ const PostHeader = styled.div`
   svg {
     width: 2.5rem;
     height: 2.5rem;
+    color: ${(props) =>
+      props.className === "published"
+        ? `${props.theme.colors.secondary}`
+        : `${props.theme.colors.tertiary}`};
   }
   @media (max-width: 900px) {
     h2 {
