@@ -10,10 +10,9 @@ const TextLink = (props) => {
       margin={props.margin}
       padding={props.padding}
       onClick={props.onClick}
-      color={props.color}
     >
       <Link to={props.link}>
-        <span>{props.text}</span>
+        <span className={props.className}>{props.text}</span>
       </Link>
     </TextLinkDiv>
   );

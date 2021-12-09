@@ -92,7 +92,7 @@ const Login = () => {
           <TextLink
             onClick={() => history.goBack()}
             text="Cancel"
-            color="black"
+            className="alt-color"
           />
           <Button size="11rem" onClick={loginFunc}>
             Login

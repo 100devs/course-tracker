@@ -15,6 +15,14 @@ const FormHeader = styled.div.attrs((props) => ({
     font-size: 2rem;
     margin: 0;
   }
+  svg {
+    width: 3rem;
+    height: 3rem;
+    color: ${(props) => props.theme.color.tertiary};
+  }
+  svg.published {
+    color: ${(props) => props.theme.color.secondary};
+  }
   @media (max-width: 900px) {
     h2 {
       font-size: 1.5rem;

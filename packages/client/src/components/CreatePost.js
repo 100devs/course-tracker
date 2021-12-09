@@ -78,7 +78,7 @@ function CreatePost() {
               onClick={() => history.push("/")}
               text="Cancel"
               link="/"
-              color="black"
+              className="alt-color"
             />
             <div className="subButtonDiv">
               <Button value={true} onClick={handleSubmit}>
