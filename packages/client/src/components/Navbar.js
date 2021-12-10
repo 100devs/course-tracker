@@ -28,7 +28,6 @@ const Navbar = (props) => {
     return (
       <PlusCircle
         weight="fill"
-        color="black"
         clicked={sidebar.toString()}
         onClick={() => showSidebar()}
         className="plusCircle"
@@ -47,7 +46,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <IconContext.Provider value={{ color: "#CCC", size: 16 }}>
+    <IconContext.Provider value={{ size: 16 }}>
       <Wrapper>
         <NavButton />
         <Logo lemonView={lemonView} />

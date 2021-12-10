@@ -6,7 +6,7 @@ const Input = styled.input.attrs((props) => ({
 }))`
   width: 100%;
   border: ${(props) =>
-    props.error ? `2px solid ${props.theme.colors.error}` : props.border};
+    props.error ? `2px solid ${props.theme.color.error}` : props.border};
   border-radius: ${(props) => (props.error ? "4px" : ".15rem")};
   padding: ${(props) => props.size};
   font-size: 1rem;

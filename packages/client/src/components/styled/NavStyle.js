@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   z-index: 1000000;
   width: 100%;
   position: fixed;
-  background: ${(props) => props.theme.colors.bgSecondary};
+  background: ${(props) => props.theme.color.bgSecondary};
   padding: 2rem 3rem;
   display: flex;
   align-items: center;
@@ -12,10 +12,16 @@ export const Wrapper = styled.div`
   .plusCircle {
     width: 3rem;
     height: 3rem;
-    color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.color.primary};
   }
   .textLogo {
     height: 1.9rem;
+  }
+  .textLogo text {
+    fill: ${(props) => props.theme.color.primary};
+    font-family: WorkSans-Bold, Work Sans;
+    font-size: 7px;
+    font-weight: 700;
   }
   .lemonLogo {
     height: 2.5rem;
@@ -35,7 +41,7 @@ export const Wrapper = styled.div`
 export const NavContainer = styled.nav`
   width: fit-content;
   text-align: left;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.color.primary};
   border: none;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -58,14 +64,14 @@ export const ListItem = styled.li`
   font-weight: 600;
 
   p {
-    color: ${(props) => props.theme.colors.accent};
+    color: ${(props) => props.theme.color.accent};
     padding-top: 2.5rem;
     margin: 0;
     font-size: 1.5rem;
   }
 
   a {
-    color: ${(props) => props.theme.colors.textLight};
+    color: ${(props) => props.theme.color.textLight};
     font-weight: 600;
     text-decoration: none;
     font-size: 1.2rem;

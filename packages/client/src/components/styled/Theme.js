@@ -2,15 +2,21 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 
 const theme = {
-  colors: {
-    primary: "black",
-    secondary: "#CCC",
-    bgPrimary: "#BBC9BA",
+  color: {
+    primary: "#000000",
+    secondary: "#096536",
+    tertiary: "#4E4B4C",
+
+    bgPrimary: "#CDDBCC",
     bgSecondary: "#EFFBEE",
     bgTertiary: "#1f321d",
-    accent: "#879786",
+
+    accent: "#B1BD55",
+
+    textPrimary: "#000000",
     textLight: "#EFFBEE",
     textDark: "#1f321d",
+
     bgHover: "#3D3D3D",
     buttonText: "white",
     error: "#ee5f5f",

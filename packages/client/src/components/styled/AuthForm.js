@@ -6,7 +6,7 @@ const AuthForm = styled.form.attrs((props) => ({
   border-radius: 0.25rem;
   height: ${(props) => props.height};
   width: 50%;
-  background-color: ${(props) => props.theme.colors.bgPrimary};
+  background-color: ${(props) => props.theme.color.bgPrimary};
   padding: ${(props) => props.padding};
   display: flex;
   flex-flow: column nowrap;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 const FooterDiv = styled.footer`
-  background-color: ${(props) => props.theme.colors.bgTertiary};
+  background-color: ${(props) => props.theme.color.bgTertiary};
   padding: 4.5rem 1.5rem 1.5rem;
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.colors.textLight};
+  color: ${(props) => props.theme.color.textLight};
   .flex {
     display: flex;
   }
