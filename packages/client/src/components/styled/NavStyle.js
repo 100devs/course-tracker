@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  h1 {
+    margin: 0;
+  }
   .plusCircle {
     width: 3rem;
     height: 3rem;
@@ -80,7 +83,7 @@ export const ListItem = styled.li`
   span {
     display: inline-block;
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 500;
   }
 
   a:hover {

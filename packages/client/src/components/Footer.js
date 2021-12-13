@@ -29,6 +29,7 @@ const Footer = () => {
         <div className="iconDiv flex">
           <IconAnchor
             href="https://leonnoel.com/blog/100devs/"
+            aria-label="Learn more about how to join us on Discord"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -37,6 +38,7 @@ const Footer = () => {
 
           <IconAnchor
             href="https://www.twitch.tv/learnwithleon"
+            aria-label="Learn With Leon Twitch Channel"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -45,6 +47,7 @@ const Footer = () => {
 
           <IconAnchor
             href="https://twitter.com/leonnoel"
+            aria-label="Leon Noel on Twitter"
             target="_blank"
             rel="noopener noreferrer"
           >

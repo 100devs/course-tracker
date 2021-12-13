@@ -48,8 +48,10 @@ const Navbar = (props) => {
   return (
     <IconContext.Provider value={{ size: 16 }}>
       <Wrapper>
-        <NavButton />
-        <Logo lemonView={lemonView} />
+        <NavButton aria-label="Expand Navigation Menu" />
+        <h1 aria-label="Task Lemon">
+          <Logo lemonView={lemonView} />
+        </h1>
         <NavContainer clicked={sidebar}>
           <ul>
             <ListItem>

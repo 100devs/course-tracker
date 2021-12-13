@@ -57,12 +57,13 @@ const Login = () => {
     <Container minHeight="100vh">
       <AuthForm height="auto">
         <FormHeader>
-          <h2>Task Lemon</h2>
+          <h1>Task Lemon</h1>
         </FormHeader>
 
         <InputDiv>
-          <InputLabel htmlFor="email">Email</InputLabel>
+          <InputLabel htmlFor="emailInput">Email</InputLabel>
           <Input
+            id="emailInput"
             type="email"
             name="email"
             placeholder="Email"
@@ -75,8 +76,9 @@ const Login = () => {
         </InputDiv>
 
         <InputDiv>
-          <InputLabel htmlFor="password">Password</InputLabel>
+          <InputLabel htmlFor="passwordInput">Password</InputLabel>
           <Input
+            id="passwordInput"
             type="password"
             name="password"
             placeholder="Password"

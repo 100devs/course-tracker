@@ -11,7 +11,8 @@ const FormHeader = styled.div.attrs((props) => ({
   align-items: ${(props) => props.align};
   margin: 0;
   padding: 0 0 1.5rem 0;
-  h2 {
+  h2,
+  h1 {
     font-size: 2rem;
     margin: 0;
   }
@@ -24,12 +25,14 @@ const FormHeader = styled.div.attrs((props) => ({
     color: ${(props) => props.theme.color.secondary};
   }
   @media (max-width: 900px) {
-    h2 {
+    h2,
+    h1 {
       font-size: 1.5rem;
     }
   }
   @media (max-width: 500px) {
-    h2 {
+    h2,
+    h1 {
       font-size: 1.2rem;
     }
   }

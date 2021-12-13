@@ -19,7 +19,7 @@ const theme = {
 
     bgHover: "#3D3D3D",
     buttonText: "white",
-    error: "#ee5f5f",
+    error: "#A91F1F",
   },
 };
 

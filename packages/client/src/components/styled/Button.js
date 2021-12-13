@@ -12,6 +12,7 @@ const Button = styled.button.attrs((props) => ({
   background-color: ${(props) => props.background};
   color: ${(props) => props.theme.color.buttonText};
   font-size: ${(props) => props.fontSize};
+  font-weight: 500;
   border: none;
   padding: 1rem 0;
   margin: ${(props) => props.margin};
