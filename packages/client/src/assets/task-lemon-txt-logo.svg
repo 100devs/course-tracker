@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 8" class="textLogo">
+  <defs>
+    <linearGradient id="a" x1="-82.73" y1="-207.07" x2="-81.71" y2="-207.07" gradientTransform="matrix(-8.71 0 0 7.24 -708.97 1503.07)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00eee1"/>
+      <stop offset="1" stop-color="#ffd233"/>
+    </linearGradient>
+  </defs>
+  <path d="M9.23 3.46a2.2 2.2 0 0 1-.69-.57 3.53 3.53 0 0 0-3.07-1.56 3.54 3.54 0 0 0-3.08 1.58s-.39.48-.66.55a.61.61 0 0 0-.41.54v.17a.63.63 0 0 0 .41.55c.27.07.65.55.65.55a3.53 3.53 0 0 0 3.09 1.6 3.55 3.55 0 0 0 3-1.52s.44-.55.72-.62a.64.64 0 0 0 .41-.55V4a.62.62 0 0 0-.37-.54Z" fill="url(#a)"/>
+  <path d="M5.36 1.88a2.8 2.8 0 0 1 2.85 1.51C7.55 2.15 6 2.64 5.36 1.88Z" fill="#fff" fill-opacity=".6"/>
+  <text transform="translate(11.61 6.6)" font-size="7" letter-spacing=".01em" style="isolation:isolate">t<tspan x="3.08" y="0">a</tspan><tspan x="7.2" y="0" letter-spacing="0em">s</tspan><tspan x="10.9" y="0" letter-spacing="-.05em">k</tspan></text>
+  <text transform="translate(28.14 6.6)" font-size="7" letter-spacing="-.03em" style="isolation:isolate">lemon</text>
+</svg>
+
+<!-- 
+fill="#1f321d" 
+font-family="WorkSans-Bold, Work Sans" 
+font-weight="700" 
+
+fill, family, and weight for logo text moved from this svg to styled-components;
+FONT-SIZE here is the base size, and should only be adjusted in NavStyle > .textLogo > height, not here.
+-->

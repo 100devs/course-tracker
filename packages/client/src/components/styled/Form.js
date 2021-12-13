@@ -7,7 +7,7 @@ const Form = styled.form.attrs((props) => ({
   margin-top: ${(props) => props.marginTop};
   border-radius: 0.25rem;
   height: ${(props) => props.height};
-  background-color: ${(props) => props.theme.colors.bgPrimary};
+  background-color: ${(props) => props.theme.color.bgPrimary};
   width: 75%;
   padding: ${(props) => props.padding};
   display: flex;

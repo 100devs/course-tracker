@@ -16,14 +16,17 @@ const TextLinkDiv = styled.div.attrs((props) => ({
   font-weight: 500;
   a {
     text-decoration: none;
-    color: black;
+    color: ${(props) => props.theme.color.primary};
   }
   span {
     cursor: pointer;
     font-size: 1rem;
-    color: ${(props) => props.color};
+    color: ${(props) => props.theme.color.textLight};
     &:hover {
       text-decoration: underline;
+    }
+    &.alt-color {
+      color: ${(props) => props.theme.color.primary};
     }
   }
   .spanMargin {

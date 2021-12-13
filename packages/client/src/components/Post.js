@@ -98,9 +98,9 @@ const Post = ({
             <h2>Edit Post</h2>
 
             {isDraft ? (
-              <EyeSlash aria-label="" size={48} color="grey" />
+              <EyeSlash aria-label="" />
             ) : (
-              <Eye aria-label="" size={48} color="black" />
+              <Eye aria-label="" className="published" />
             )}
           </FormHeader>
           <InputDiv>
@@ -123,7 +123,12 @@ const Post = ({
 
           {/* Publish and Submit Section */}
           <ButtonDiv>
-            <TextLink onClick={cancel} text="Cancel" link="/" />
+            <TextLink
+              onClick={cancel}
+              text="Cancel"
+              link="/"
+              className="alt-color"
+            />
 
             <div className="subButtonDiv">
               <Button value={true} onClick={(e) => sendChangeObj(e)}>
@@ -148,9 +153,9 @@ const Post = ({
           <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
             <h2>{title}</h2>
             {isAdmin && isDraft ? (
-              <EyeSlash aria-label="" color="grey" />
+              <EyeSlash aria-label="" />
             ) : isAdmin ? (
-              <Eye aria-label="" color="green" />
+              <Eye aria-label="" className="published" />
             ) : (
               <></>
             )}

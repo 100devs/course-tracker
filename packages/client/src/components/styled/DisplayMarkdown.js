@@ -3,7 +3,7 @@ import styled from "styled-components";
 const DisplayMarkdown = styled.section`
   text-align: left;
   padding: 1.5rem 2rem;
-  color: black;
+  color: ${(props) => props.theme.color.textPrimary};
   width: 100%;
   h2 {
     font-size: 1.5rem;
