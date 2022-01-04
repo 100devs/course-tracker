@@ -85,7 +85,7 @@ const Post = ({
   if (isEdit) {
     // all the stuff from create post form
     return (
-      <Container height="100vh">
+      <Container height="100vh" padding="1.5rem 1.5rem 0 1.5rem">
         <Form marginTop="0">
           <FormHeader justify="space-between">
             {/* phantom eye for correct eye placement ... yikes! */}

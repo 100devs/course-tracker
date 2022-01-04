@@ -25,26 +25,24 @@ const Feed = () => {
     populateFeed();
   }, [editSubmitted, user.userId]);
 
-  if (loading) {
-    return <></>;
-  }
   return (
     <>
       <FeedDiv>
-        {posts.map((post) => {
-          return (
-            <Post
-              title={post.title}
-              body={post.body}
-              isDraft={post.isDraft}
-              isAdmin={isAdmin}
-              id={post._id}
-              key={post._id}
-              user={user}
-              setEditSubmitted={setEditSubmitted}
-            />
-          );
-        })}
+        {!loading &&
+          posts.map((post) => {
+            return (
+              <Post
+                title={post.title}
+                body={post.body}
+                isDraft={post.isDraft}
+                isAdmin={isAdmin}
+                id={post._id}
+                key={post._id}
+                user={user}
+                setEditSubmitted={setEditSubmitted}
+              />
+            );
+          })}
       </FeedDiv>
     </>
   );
