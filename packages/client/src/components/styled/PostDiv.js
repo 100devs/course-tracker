@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const PostDiv = styled.div`
-  width: 75%;
+  width: 65%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
