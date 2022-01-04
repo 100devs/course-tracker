@@ -102,7 +102,9 @@ const Post = ({
             <MarkdownParser markdown={body} />
             {isAdmin && (
               <ButtonDiv justify="flex-end">
-                <Button onClick={(e) => deletePost(e)}>Delete</Button>
+                <Button dark onClick={(e) => deletePost(e)}>
+                  Delete
+                </Button>
                 <Button
                   onClick={() => setIsEdit((prevState) => !prevState)}
                   margin="0 0 0 1.5rem"

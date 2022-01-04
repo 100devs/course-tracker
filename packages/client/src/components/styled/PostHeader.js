@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const PostHeader = styled.div`
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   text-align: left;
   background-color: ${(props) => props.theme.color.bgPrimary};
   padding: 2rem;
@@ -14,7 +14,9 @@ const PostHeader = styled.div`
   }
   h2 {
     font-size: 2rem;
+    font-weight: bold;
     margin: 0;
+    color: ${(props) => props.theme.color.textDark};
   }
   svg {
     width: 2.5rem;

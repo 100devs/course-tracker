@@ -1,22 +1,25 @@
 import styled from "styled-components";
 
 const Button = styled.button.attrs((props) => ({
-  fontSize: props.fontSize || "1.2rem",
+  fontSize: props.fontSize || ".875rem",
   size: props.size || "8rem",
-  background: props.background || props.theme.color.primary,
+  background: props.background,
   hoverBG: props.hoverBG || props.theme.color.bgHover,
   margin: props.margin || "0",
 }))`
-  border-radius: 0.25rem;
-  width: ${(props) => props.size};
-  background-color: ${(props) => props.background};
-  color: ${(props) => props.theme.color.buttonText};
+  border-radius: 2rem;
+  min-width: ${(props) => props.size};
+  background-color: ${(props) =>
+    props.dark ? props.theme.color.buttonDark : props.theme.color.buttonLight};
+  color: ${(props) =>
+    props.dark
+      ? props.theme.color.buttonTextDark
+      : props.theme.color.buttonTextLight};
   font-size: ${(props) => props.fontSize};
-  border: none;
-  padding: 1rem 0;
+  border: 0;
+  padding: 0.5rem 2rem;
   margin: ${(props) => props.margin};
   &:hover {
-    background-color: ${(props) => props.hoverBG};
     cursor: pointer;
   }
   @media (max-width: 500px) {

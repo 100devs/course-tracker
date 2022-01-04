@@ -16,7 +16,8 @@ const AppContainer = styled.div`
   *:before,
   *:after {
     box-sizing: border-box;
-    font-family: "Work Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.7rem;
   }
 `;
 

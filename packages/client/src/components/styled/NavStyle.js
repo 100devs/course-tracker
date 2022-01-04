@@ -4,7 +4,8 @@ export const Wrapper = styled.div`
   z-index: 1000000;
   width: 100%;
   position: fixed;
-  background: ${(props) => props.theme.color.bgSecondary};
+  box-shadow: 0 0 25px rgba(140, 152, 164, 0.25);
+  background: ${(props) => props.theme.color.bgPrimary};
   padding: 2rem 3rem;
   display: flex;
   align-items: center;
@@ -19,7 +20,7 @@ export const Wrapper = styled.div`
   }
   .textLogo text {
     fill: ${(props) => props.theme.color.primary};
-    font-family: WorkSans-Bold, Work Sans;
+    font-family: "WorkSans-Bold", "Work Sans", sans-serif;
     font-size: 7px;
     font-weight: 700;
   }

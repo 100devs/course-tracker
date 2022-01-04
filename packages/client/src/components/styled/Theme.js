@@ -7,18 +7,21 @@ const theme = {
     secondary: "#096536",
     tertiary: "#4E4B4C",
 
-    bgPrimary: "#CDDBCC",
-    bgSecondary: "#EFFBEE",
-    bgTertiary: "#1f321d",
+    buttonDark: "#6366f1",
+    buttonLight: "#e0e7ff",
+    buttonTextDark: "white",
+    buttonTextLight: "#3730a3",
+
+    bgPrimary: "#FFF",
+    bgSecondary: "#f6f7fa",
+    bgTertiary: "#e0e7ff",
 
     accent: "#B1BD55",
 
     textPrimary: "#000000",
     textLight: "#EFFBEE",
-    textDark: "#1f321d",
+    textDark: "#2d3748",
 
-    bgHover: "#3D3D3D",
-    buttonText: "white",
     error: "#ee5f5f",
   },
 };

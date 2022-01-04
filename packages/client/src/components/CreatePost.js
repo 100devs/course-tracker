@@ -81,7 +81,7 @@ function CreatePost() {
               className="alt-color"
             />
             <div className="subButtonDiv">
-              <Button value={true} onClick={handleSubmit}>
+              <Button value={true} onClick={handleSubmit} dark>
                 Save Draft
               </Button>
               <Button

@@ -5,7 +5,7 @@ const Form = styled.form.attrs((props) => ({
   marginTop: props.marginTop || "0",
 }))`
   margin-top: ${(props) => props.marginTop};
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   height: ${(props) => props.height};
   background-color: ${(props) => props.theme.color.bgPrimary};
   width: 75%;
