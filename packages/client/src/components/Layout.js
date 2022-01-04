@@ -6,17 +6,9 @@ const excludeNav = ["/login"];
 
 function Layout({ children }) {
   const { pathname } = useLocation();
-  if (excludeNav.includes(pathname)) {
-    return (
-      <>
-        {children}
-        <Footer />
-      </>
-    );
-  }
   return (
     <>
-      <Navbar />
+      {!excludeNav.includes(pathname) && <Navbar />}
       {children}
       <Footer />
     </>
