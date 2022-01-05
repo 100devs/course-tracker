@@ -4,23 +4,16 @@ const Form = styled.form.attrs((props) => ({
   height: props.height || "100%",
   marginTop: props.marginTop || "0",
 }))`
+  width: 100%;
   box-shadow: 0 0 35px rgba(140, 152, 164, 0.125);
   margin-top: ${(props) => props.marginTop};
   border-radius: 1rem;
   height: ${(props) => props.height};
   background-color: ${(props) => props.theme.color.light};
-  width: 75%;
   padding: ${(props) => props.padding};
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-content: center;
-  @media (max-width: 900px) {
-    width: 85%;
-  }
-  @media (max-width: 600px) {
-    width: 95%;
-    padding: 1.5rem;
-  }
 `;
 export default Form;

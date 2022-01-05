@@ -77,7 +77,7 @@ const Post = ({
   };
 
   return (
-    <Container padding="1.5rem 1.5rem 0 1.5rem">
+    <Container>
       {isEdit ? (
         <EditingForm
           isDraft={isDraft}

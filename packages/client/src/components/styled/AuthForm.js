@@ -1,14 +1,14 @@
 import styled from "styled-components";
 const AuthForm = styled.form.attrs((props) => ({
-  padding: props.padding || "3rem",
   height: props.height || "100%",
 }))`
   box-shadow: 0 0 35px rgba(140, 152, 164, 0.125);
   border-radius: 0.25rem;
   height: ${(props) => props.height};
-  width: 50%;
+  width: 63%;
+  margin: auto;
   background-color: ${(props) => props.theme.color.light};
-  padding: ${(props) => props.padding};
+  padding: 3rem;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

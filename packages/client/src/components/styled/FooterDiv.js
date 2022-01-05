@@ -3,7 +3,7 @@ import styled from "styled-components";
 const FooterDiv = styled.footer`
   background-color: ${(props) => props.theme.color.secondaryBackground};
   padding: 4.5rem 1.5rem 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.color.dark};
