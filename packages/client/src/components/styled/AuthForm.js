@@ -3,6 +3,7 @@ const AuthForm = styled.form.attrs((props) => ({
   padding: props.padding || "3rem",
   height: props.height || "100%",
 }))`
+  box-shadow: 0 0 35px rgba(140, 152, 164, 0.125);
   border-radius: 0.25rem;
   height: ${(props) => props.height};
   width: 50%;
