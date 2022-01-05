@@ -8,9 +8,10 @@ const backend = process.env.REACT_APP_BACKEND;
 
 const Feed = () => {
   const { user, isAdmin, getAdminStatus } = useContext(AuthContext);
+  const [isEdit, setIsEdit] = useState({})
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState();
-  const [editSubmitted, setEditSubmitted] = useState(false);
+  const [isNewUpdates, setIsNewUpdates] = useState(false);
 
   const populateFeed = async () => {
     const adminCheck = await getAdminStatus(user.userId);
@@ -19,11 +20,16 @@ const Feed = () => {
     );
     setPosts(res.data.posts);
     setLoading(false);
+    const isEditMap = {}
+    for(const post of res.data.posts){
+      isEditMap[post._id] = false
+    }
+    setIsEdit(isEditMap)
   };
 
   useEffect(() => {
     populateFeed();
-  }, [editSubmitted, user.userId]);
+  }, [isNewUpdates, user.userId]);
 
   return (
     <>
@@ -39,7 +45,9 @@ const Feed = () => {
                 id={post._id}
                 key={post._id}
                 user={user}
-                setEditSubmitted={setEditSubmitted}
+                setIsNewUpdates={setIsNewUpdates}
+                isEdit={isEdit}
+                setIsEdit={setIsEdit}
               />
             );
           })}
