@@ -53,15 +53,10 @@ const EditingForm = ({
 
       {/* Publish and Submit Section */}
       <ButtonDiv>
-        <TextLink
-          onClick={cancel}
-          text="Cancel"
-          link="/"
-          className="alt-color"
-        />
+        <TextLink onClick={cancel} text="Cancel" link="/" />
 
         <div className="subButtonDiv">
-          <Button value={true} onClick={(e) => sendChangeObj(e)}>
+          <Button dark value={true} onClick={(e) => sendChangeObj(e)}>
             Save Draft
           </Button>
           <Button

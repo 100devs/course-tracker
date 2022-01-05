@@ -4,7 +4,6 @@ const NavButton = ({ sidebar, toggleSidebar }) => {
   return (
     <PlusCircle
       weight="fill"
-      color="black"
       clicked={sidebar.toString()}
       onClick={toggleSidebar}
       className="plusCircle"

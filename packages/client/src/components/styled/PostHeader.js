@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const PostHeader = styled.div`
+  box-shadow: 0 0 35px rgba(140, 152, 164, 0.125);
   border-radius: 1rem;
   text-align: left;
-  background-color: ${(props) => props.theme.color.bgPrimary};
+  background-color: ${(props) => props.theme.color.light};
   padding: 2rem;
   display: flex;
   justify-content: space-between;
@@ -16,15 +17,15 @@ const PostHeader = styled.div`
     font-size: 2rem;
     font-weight: bold;
     margin: 0;
-    color: ${(props) => props.theme.color.textDark};
+    color: ${(props) => props.theme.color.dark};
   }
   svg {
     width: 2.5rem;
     height: 2.5rem;
-    color: ${(props) => props.theme.color.tertiary};
+    color: ${(props) => props.theme.color.dark};
   }
   svg.published {
-    color: ${(props) => props.theme.color.secondary};
+    color: ${(props) => props.theme.color.accentB};
   }
   @media (max-width: 900px) {
     h2 {

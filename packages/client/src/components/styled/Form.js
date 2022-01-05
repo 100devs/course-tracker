@@ -4,10 +4,11 @@ const Form = styled.form.attrs((props) => ({
   height: props.height || "100%",
   marginTop: props.marginTop || "0",
 }))`
+  box-shadow: 0 0 35px rgba(140, 152, 164, 0.125);
   margin-top: ${(props) => props.marginTop};
   border-radius: 1rem;
   height: ${(props) => props.height};
-  background-color: ${(props) => props.theme.color.bgPrimary};
+  background-color: ${(props) => props.theme.color.light};
   width: 75%;
   padding: ${(props) => props.padding};
   display: flex;

@@ -10,11 +10,13 @@ const Button = styled.button.attrs((props) => ({
   border-radius: 2rem;
   min-width: ${(props) => props.size};
   background-color: ${(props) =>
-    props.dark ? props.theme.color.buttonDark : props.theme.color.buttonLight};
+    props.dark
+      ? props.theme.color.darkButtonBackground
+      : props.theme.color.lightButtonBackground};
   color: ${(props) =>
     props.dark
-      ? props.theme.color.buttonTextDark
-      : props.theme.color.buttonTextLight};
+      ? props.theme.color.darkButtonText
+      : props.theme.color.lightButtonText};
   font-size: ${(props) => props.fontSize};
   border: 0;
   padding: 0.5rem 2rem;

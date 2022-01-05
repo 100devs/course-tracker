@@ -3,25 +3,18 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   color: {
-    primary: "#000000",
-    secondary: "#096536",
-    tertiary: "#4E4B4C",
-
-    buttonDark: "#6366f1",
-    buttonLight: "#e0e7ff",
-    buttonTextDark: "white",
-    buttonTextLight: "#3730a3",
-
-    bgPrimary: "#FFF",
-    bgSecondary: "#f6f7fa",
-    bgTertiary: "#e0e7ff",
-
-    accent: "#B1BD55",
-
-    textPrimary: "#000000",
-    textLight: "#EFFBEE",
-    textDark: "#2d3748",
-
+    dark: "#2d3748",
+    light: "#fff",
+    accentA: "#A855F7",
+    accentB: "#6366f1",
+    accentC: "#e0e7ff",
+    primaryBackground: "#FAFAFE",
+    secondaryBackground: "#f6f7fa",
+    formBackground: "#EDF2F7",
+    darkButtonBackground: "#6366f1",
+    darkButtonText: "#fff",
+    lightButtonBackground: "#e0e7ff",
+    lightButtonText: "#3730a3",
     error: "#ee5f5f",
   },
 };

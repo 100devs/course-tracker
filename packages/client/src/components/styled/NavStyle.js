@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   width: 100%;
   position: fixed;
   box-shadow: 0 0 25px rgba(140, 152, 164, 0.25);
-  background: ${(props) => props.theme.color.bgPrimary};
+  background: ${(props) => props.theme.color.light};
   padding: 2rem 3rem;
   display: flex;
   align-items: center;
@@ -13,13 +13,13 @@ export const Wrapper = styled.div`
   .plusCircle {
     width: 3rem;
     height: 3rem;
-    color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.color.dark};
   }
   .textLogo {
     height: 1.9rem;
   }
   .textLogo text {
-    fill: ${(props) => props.theme.color.primary};
+    fill: ${(props) => props.theme.color.dark};
     font-family: "WorkSans-Bold", "Work Sans", sans-serif;
     font-size: 7px;
     font-weight: 700;
@@ -42,7 +42,7 @@ export const Wrapper = styled.div`
 export const NavContainer = styled.nav`
   width: fit-content;
   text-align: left;
-  background-color: ${(props) => props.theme.color.primary};
+  background-color: ${(props) => props.theme.color.dark};
   border: none;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -65,20 +65,21 @@ export const ListItem = styled.li`
   font-weight: 600;
 
   p {
-    color: ${(props) => props.theme.color.accent};
+    color: ${(props) => props.theme.color.accentA};
     padding-top: 2.5rem;
     margin: 0;
     font-size: 1.5rem;
   }
 
   a {
-    color: ${(props) => props.theme.color.textLight};
     font-weight: 600;
     text-decoration: none;
     font-size: 1.2rem;
+    color: ${(props) => props.theme.color.light};
   }
 
   span {
+    color: ${(props) => props.theme.color.light};
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 400;

@@ -5,9 +5,10 @@ const TextArea = styled.textarea.attrs((props) => ({
   height: 10rem;
   min-width: 100%;
   border: ${(props) => props.border};
-  border-radius: 0.15rem;
+  border-radius: ${(props) => (props.error ? "4px" : ".5rem")};
   padding: 0.75rem;
   font-size: 1rem;
+  background: ${(props) => props.theme.color.formBackground};
 `;
 
 export default TextArea;
