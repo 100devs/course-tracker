@@ -17,10 +17,11 @@ const Post = ({
   isAdmin,
   id,
   user,
-  setEditSubmitted,
+  setIsNewUpdates,
+  isEdit,
+  setIsEdit
 }) => {
   const [hiddenState, setHiddenState] = useState(true);
-  const [isEdit, setIsEdit] = useState(false);
   const [post, updatePost] = useState({
     title,
     body,
@@ -39,14 +40,16 @@ const Post = ({
 
   const sendChangeObj = async (e) => {
     e.preventDefault();
-    setIsEdit((prevState) => !prevState);
+    setIsEdit((prevState) => {
+      return {...prevState, id: false}
+    });
     await axios.put(
       `api/post/edit-post/${id}`,
       { ...changeObj, isDraft: e.target.value },
       { headers: { Authentication: user.accesstoken } }
     );
     setChangeObj({});
-    setEditSubmitted((prev) => !prev);
+    setIsNewUpdates((prev) => !prev);
   };
 
   const deletePost = async (e) => {
@@ -54,7 +57,7 @@ const Post = ({
     await axios.delete(`api/post/delete-post/${id}`, {
       headers: { Authentication: user.accesstoken },
     });
-    setEditSubmitted((prev) => !prev);
+    setIsNewUpdates((prev) => !prev);
   };
 
   const handleCollapse = () => {
@@ -63,7 +66,7 @@ const Post = ({
 
   const cancel = async () => {
     setChangeObj({});
-    setEditSubmitted((prev) => !prev);
+    setIsNewUpdates((prev) => !prev);
     updatePost({
       title,
       body,
@@ -71,14 +74,15 @@ const Post = ({
       isAdmin,
       id,
       user,
-      setEditSubmitted,
+      setIsNewUpdates,
     });
-    setIsEdit((prevState) => !prevState);
+    setIsEdit((prevState) => {
+      return {...prevState, [id]: false}
+    });
   };
-
   return (
     <Container padding="1.5rem 1.5rem 0 1.5rem">
-      {isEdit ? (
+      {isEdit[id] ? (
         <EditingForm
           isDraft={isDraft}
           cancel={cancel}
@@ -89,7 +93,7 @@ const Post = ({
         />
       ) : (
         <PostDiv>
-          <PostHeader onClick={() => !isEdit && handleCollapse()} edit={isEdit}>
+          <PostHeader onClick={() => !isEdit[id] && handleCollapse()} edit={isEdit[id]}>
             <h2>{title}</h2>
             {isAdmin &&
               (isDraft ? (
@@ -98,13 +102,15 @@ const Post = ({
                 <Eye aria-label="" className="published" />
               ))}
           </PostHeader>
-          <CollapsibleDiv hidden={hiddenState} edit={isEdit}>
+          <CollapsibleDiv hidden={hiddenState} edit={isEdit[id]}>
             <MarkdownParser markdown={body} />
             {isAdmin && (
               <ButtonDiv justify="flex-end">
                 <Button onClick={(e) => deletePost(e)}>Delete</Button>
                 <Button
-                  onClick={() => setIsEdit((prevState) => !prevState)}
+                  onClick={() =>  setIsEdit((prevState) => {
+                    return {...prevState, [id]: true}
+                  })}
                   margin="0 0 0 1.5rem"
                 >
                   Edit
