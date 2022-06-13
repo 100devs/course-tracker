@@ -1,4 +1,6 @@
-![100devs logo](./assets/100devs.png)
+<p align="center">
+    <img src="https://github.com/rahulkarda/course-tracker/blob/main/assets/100devslogo.png?raw=true" alt="100Devs Logo"> 
+</p>
 
 # 100Devs Course Tracker
 
